@@ -4,7 +4,7 @@
   >
     <img src="/public/images/logo.jpg" alt="" width="150px" height="53px" />
     <div class="flex items-center gap-[48px]">
-      <div class="flex items-center" v-for="nav in navs">
+      <div class="flex items-center" v-for="nav in navs" :key="nav">
         <p
           class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-8 hover:decoration-[#2966f4] hover:decoration-2 leading-[24px]"
         >

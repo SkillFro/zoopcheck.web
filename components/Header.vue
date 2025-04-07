@@ -4,12 +4,11 @@
   >
     <img src="/public/images/logo.jpg" alt="" width="150px" height="53px" />
     <div class="flex items-center gap-[48px]">
-      <div class="flex items-center" v-for="nav in navs">
-        <p
-          class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-8 hover:decoration-[#2966f4] hover:decoration-2 leading-[24px]"
-        >
-          <NuxtLink :to="nav.path">{{ nav.title }} </NuxtLink>
-        </p>
+      <div
+        class="flex items-center hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px]"
+        v-for="nav in navs"
+      >
+        <NuxtLink :to="nav.path">{{ nav.title }} </NuxtLink>
       </div>
       <div class="flex items-center gap-[16px]">
         <button

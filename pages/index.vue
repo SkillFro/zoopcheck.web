@@ -2,17 +2,17 @@
   <div class="bg-[#f8f9fa]">
     <!-- Hero Section -->
     <div
-      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay h-screen bg-cover bg-no-repeat w-full md:min-h-[750px] flex flex-col justify-center items-center text-white gap-[47px] box-border"
+      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay h-screen bg-center bg-no-repeat w-full xl:h-[750px] flex flex-col justify-center items-center text-white gap-[47px]"
     >
-      <div class="md:max-w-[1047px] max-w-[288px]">
+      <div class="lg:max-w-[1047px] md:max-w-[576px] max-w-[288px]">
         <h2
-          class="md:text-[55px] text-[33px] font-light md:leading-[60px] leading-[42px] text-center"
+          class="lg:text-[55px] md:text-[45px] md:leading-[55px] text-[33px] font-light lg:leading-[60px] leading-[42px] text-center"
         >
           Unlocking your career potential <br />
           with ZoopCheck
         </h2>
       </div>
-      <div class="md:max-w-[1047px] max-w-[288px]">
+      <div class="lg:max-w-[1047px] md:max-w-[576px] max-w-[288px]">
         <p
           class="md:text-[20px] text-[17px] leading-[25px] text-[#dddddd] text-center"
         >
@@ -37,12 +37,12 @@
           <div class="w-[30%] h-[2px] bg-[#2966f4]"></div>
         </div>
         <div
-          class="md:max-w-[1080px] w-full flex flex-wrap justify-center gap-[20px]"
+          class="md:max-w-[1080px] w-full flex flex-wrap justify-center gap-[20px] p-2 md:p-0"
         >
           <div
             v-for="job in currentOpenings"
             :key="job.title"
-            class="md:w-[208px] md:h-[144px] w-[139px] h-[165px] rounded-[4px] px-[15px] py-[20px] bg-[#eeeeee] border border-transparent hover:bg-white hover:border-2 hover:border-[#eeeeee] relative overflow-hidden hover:shadow"
+            class="md:w-[208px] xl:max-w-[200px] md:h-[144px] w-full h-[165px] rounded-[4px] md:px-[15px] py-[20px] bg-[#eeeeee] border border-transparent hover:bg-white hover:border-2 hover:border-[#eeeeee] relative overflow-hidden hover:shadow px-[20px]"
           >
             <p
               class="text-[#111111] text-[18px] leading-[27px] font-semibold underline"
@@ -107,8 +107,10 @@
     <!-- Featured Jobs Section -->
     <section class="mt-[70px] flex flex-col items-center gap-1.5">
       <section class="w-full px-4 py-10 text-center">
-        <h2 class="mb-2 text-3xl font-bold text-gray-800">Featured Jobs</h2>
-        <div class="w-20 h-[2px] bg-[#2966f4] mx-auto mb-6"></div>
+        <h2 class="mb-2 text-3xl xl:text-[35px] font-bold text-gray-800">
+          Featured Jobs
+        </h2>
+        <div class="w-20 h-[2px] xl:w-32 bg-[#2966f4] mx-auto mb-6"></div>
 
         <div class="flex flex-wrap justify-center gap-4 mb-8">
           <button
@@ -116,7 +118,7 @@
             :key="tab.key"
             @click="selectedTab = tab.key"
             :class="[
-              'px-6 py-2 border rounded transition-all duration-300 font-medium',
+              'px-6 py-2 xl:px-[30px] xl:py-[14px] xl:font-medium xl:text-[16px] border rounded transition-all duration-300 font-medium',
               selectedTab === tab.key
                 ? 'bg-black text-white'
                 : 'bg-white text-[#333333] hover:bg-[#333333] hover:text-white',
@@ -133,21 +135,26 @@
             <div
               v-for="job in filteredJobs[selectedTab]"
               :key="job.id"
-              class="w-full max-w-4xl p-6 text-left bg-white border border-red-200 rounded shadow"
+              class="w-full xl:max-w-[1080px] p-6 text-left bg-white border-2 rounded shadow xl:py-[40px] xl:px-[30px] border-l-[#2966f4]"
             >
-              <div class="flex items-start justify-between mb-2">
-                <div>
+              <div
+                class="flex flex-col items-start justify-between md:mb-2 md:flex md:flex-row md:items-start md:justify-between"
+              >
+                <div class="flex flex-col items-start justify-between gap-1">
                   <h3
-                    class="text-lg font-semibold text-blue-600 cursor-pointer hover:underline"
+                    class="text-lg font-semibold text-blue-600 cursor-pointer hover:underline xl:text-[20px] xl:font-semibold xl:leading-[25px]"
                   >
                     {{ job.title }}
                   </h3>
                   <p class="text-sm text-gray-700">
                     No. of Openings: <strong>{{ job.openings }}</strong> &nbsp;
+                    <br />
                     Experience: <strong>{{ job.experience }}</strong>
                   </p>
                 </div>
-                <div class="text-sm text-right text-gray-800">
+                <div
+                  class="flex flex-col items-start text-sm text-right text-gray-800"
+                >
                   <p>
                     Job ID: <strong>{{ job.id }}</strong>
                   </p>
@@ -156,7 +163,9 @@
                   </p>
                 </div>
               </div>
-              <div class="flex justify-between mt-4">
+              <div
+                class="flex flex-col items-center justify-between gap-3 mt-4 md:flex md:flex-row md:justify-between md:gap-0"
+              >
                 <p class="flex items-center gap-2 text-sm text-gray-600">
                   📍 {{ job.location }} &nbsp; 💼 {{ job.type }}
                 </p>
@@ -183,56 +192,17 @@
 
     <!-- Why choose us -->
     <section>
-      <div class="hidden md:block">
+      <div
+        class="bg-[#ffffff] w-full border flex justify-center items-center p-4 md:p-0"
+      >
         <div
-          class="bg-[#ffffff] max-w-[1494px] border flex justify-center items-center"
+          class="lg:flex lg:flex-row lg:items-start lg:justify-center gap-[50px] py-[70px] flex flex-col-reverse md:flex md:flex-col md:justify-center md:items-center"
         >
           <div
-            class="md:flex md:flex-row md:items-start md:justify-center gap-[50px] py-[70px]"
+            class="md:max-w-[535px] lg:max-w-[364px] xl:max-w-[515px] lg:max-h-full md:max-h-[444px] max-w-full max-h-full flex flex-col justify-between gap-[30px] lg:gap-[40px]"
           >
-            <div
-              class="max-w-[535px] max-h-[444px] flex flex-col justify-between gap-[30px]"
-            >
-              <h3 class="text-[40px] leading-[45px] text-[#2c3038] font-light">
-                Why Choose our ZoopCheck Placement Service?
-              </h3>
-              <p class="text-[#555a64] text-[16px] leading-[25px] font-normal">
-                ZoopCheck Placement offers expertise, personalized approach, an
-                extensive network, a supportive environment, and efficiency in
-                its career placement services. With years of experience in the
-                industry, ZoopCheck Placement provides personalized services
-                tailored to individual needs, connecting candidates with
-                opportunities that align with their career goals. The company
-                offers ongoing support and guidance throughout the job search
-                process, from resume preparation to salary negotiations.
-                ZoopCheck Placement's goal is to help candidates achieve their
-                career aspirations and unlock their full potential
-              </p>
-
-              <a
-                class="bg-[#2966f4] py-3 text-white rounded max-w-[170px] max-h-[48px] text-center underline"
-                href="#"
-                >Submit Resume</a
-              >
-            </div>
-            <div>
-              <img
-                src="/public/images/blog5.jpg"
-                class="max-w-[500px]"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="block md:hidden">
-        <div
-          class="flex flex-col items-center justify-center w-full gap-5 bg-[#ffffff]"
-        >
-          <img src="/public/images/blog5.jpg" width="288px" alt="" />
-          <div class="flex flex-col justify-center gap-5 p-4">
             <h3
-              class="md:text-[40px] text-[30px] leading-[35px] md:leading-[45px] text-[#2c3038] font-light"
+              class="md:text-[40px] lg:text-[35px] lg:leading-[40px] text-[30px] leading-[35px] md:leading-[45px] text-[#2c3038] font-light"
             >
               Why Choose our ZoopCheck Placement Service?
             </h3>
@@ -249,13 +219,20 @@
               aspirations and unlock their full potential
             </p>
 
-            <a href="#"
-              ><button
+            <div>
+              <a
                 class="bg-[#2966f4] py-[12px] px-[30px] text-white rounded text-center underline"
+                href="#"
+                ><button>Submit Resume</button></a
               >
-                Submit Resume
-              </button></a
-            >
+            </div>
+          </div>
+          <div>
+            <img
+              src="/public/images/blog5.jpg"
+              class="md:max-w-[515px]"
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -269,24 +246,24 @@
         </h3>
         <div class="w-[120px] h-[2px] bg-[#2966f4]"></div>
       </div>
-      <div class="flex flex-row items-center justify-center">
+      <div class="flex items-center justify-center">
         <div
-          class="max-w-[1121px] md:flex md:flex-row md:items-center md:justify-center gap-[30px] flex flex-col items-center justify-center"
+          class="lg:max-w-[1121px] max-w-full lg:grid lg:grid-cols-2 xl:grid xl:grid-cols-3 lg:gap-[30px] md:grid md:grid-cols-2 md:gap-5 grid grid-cols-1 gap-5"
         >
           <div
             v-for="item in cards"
             :key="item"
-            class="flex flex-col items-center justify-around"
+            class="flex flex-col items-center justify-around p-3 transition-all duration-300 md:p-0 hover:scale-105"
           >
             <div>
               <img
                 :src="item.image"
                 alt="image"
-                class="max-w-[300px] px-4 md:px-0 rounded-t-md"
+                class="md:max-w-[300px] max-w-full rounded-t-md"
               />
             </div>
             <div
-              class="flex gap-3 xl:p-[30px] flex-col rounded-b-md bg-white max-w-[300px] p-[30px] shadow"
+              class="flex gap-3 xl:p-[30px] flex-col rounded-b-md bg-white md:max-w-[300px] max-w-full p-[30px] shadow"
             >
               <h5 class="text-[#555a64] text-[16px] leading-[25px]">
                 {{ item.date }}
@@ -378,7 +355,7 @@ export default {
           openings: "4 Openings",
           experience: "0-1 Year",
           location: "Remote",
-          type: "Internship",
+          type: "Full Time",
           date: "2023-10-03",
         },
       ],

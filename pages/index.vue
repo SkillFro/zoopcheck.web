@@ -199,7 +199,7 @@
           class="lg:flex lg:flex-row lg:items-start lg:justify-center gap-[50px] py-[70px] flex flex-col-reverse md:flex md:flex-col md:justify-center md:items-center"
         >
           <div
-            class="md:max-w-[535px] lg:max-w-[364px] lg:max-h-full md:max-h-[444px] max-w-full max-h-full flex flex-col justify-between gap-[30px] lg:gap-[40px]"
+            class="md:max-w-[535px] lg:max-w-[364px] xl:max-w-[515px] lg:max-h-full md:max-h-[444px] max-w-full max-h-full flex flex-col justify-between gap-[30px] lg:gap-[40px]"
           >
             <h3
               class="md:text-[40px] lg:text-[35px] lg:leading-[40px] text-[30px] leading-[35px] md:leading-[45px] text-[#2c3038] font-light"
@@ -230,7 +230,7 @@
           <div>
             <img
               src="/public/images/blog5.jpg"
-              class="md:max-w-[500px] lg:max-w-[364px]"
+              class="md:max-w-[515px]"
               alt=""
             />
           </div>
@@ -253,7 +253,7 @@
           <div
             v-for="item in cards"
             :key="item"
-            class="flex flex-col items-center justify-around p-3 md:p-0"
+            class="flex flex-col items-center justify-around p-3 transition-all duration-300 md:p-0 hover:scale-105"
           >
             <div>
               <img

@@ -1,52 +1,25 @@
 <template>
+  <!-- xl device navbar -->
   <div class="hidden xl:block">
     <div
       class="w-full h-[95px] bg-white fixed top-0 flex justify-center items-center z-10"
     >
-      <div class="max-w-[1296px] flex items-center justify-center gap-[290px]">
+      <div class="max-w-[1296px] flex items-center justify-center gap-[110px]">
         <img src="/public/images/logo.jpg" alt="" width="150px" height="53px" />
-        <div class="flex items-center gap-[48px]">
+        <div class="flex items-center gap-[64px]">
           <div class="flex items-center gap-[16px]">
-            <NuxtLink to="/">
-              <a
-                href=""
-                class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-              >
-                Home
-              </a>
-            </NuxtLink>
-            <NuxtLink to="/about">
-              <a
-                href=""
-                class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-              >
-                About
-              </a>
-            </NuxtLink>
-            <NuxtLink>
-              <a
-                href=""
-                class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-              >
-                Current Openings
-              </a>
-            </NuxtLink>
-            <NuxtLink to="/techstories">
-              <a
-                href=""
-                class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-              >
-                Tech Stories
-              </a>
-            </NuxtLink>
-            <NuxtLink>
-              <a
-                href=""
-                class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-              >
-                Contact
-              </a>
-            </NuxtLink>
+            <div
+              v-for="nav in navs"
+              class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
+              :class="{
+                '  text-[#2966f4] underline underline-offset-[12px] decoration-[#2966f4] decoration-2':
+                  $route.path === nav.path,
+              }"
+            >
+              <NuxtLink :to="nav.path">
+                {{ nav.name }}
+              </NuxtLink>
+            </div>
           </div>
           <div class="flex items-center gap-[16px]">
             <button
@@ -64,6 +37,8 @@
       </div>
     </div>
   </div>
+
+  <!-- sm device navbar -->
   <div class="fixed top-0 z-10 block w-full h-[400px] xl:hidden">
     <div class="flex items-center justify-between p-5 bg-white lg:px-10">
       <img src="/public/images/logo.jpg" width="150px" height="35px" alt="" />
@@ -77,50 +52,19 @@
       </button>
     </div>
     <div v-if="nav" class="w-full p-10 bg-white">
-      <div class="flex flex-col items-start justify-center gap-[48px]">
-        <div class="flex flex-col justify-center items-start gap-[16px]">
-          <NuxtLink to="/">
-            <a
-              href=""
-              class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-            >
-              Home
-            </a>
-          </NuxtLink>
-          <NuxtLink to="/about">
-            <a
-              href=""
-              class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-            >
-              About
-            </a>
-          </NuxtLink>
-          <NuxtLink>
-            <a
-              href=""
-              class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-            >
-              Current Openings
-            </a>
-          </NuxtLink>
-          <NuxtLink to="/techstories">
-            <a
-              href=""
-              class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-            >
-              Tech Stories
-            </a>
-          </NuxtLink>
-          <NuxtLink>
-            <a
-              href=""
-              class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-            >
-              Contact
-            </a>
+      <div class="flex flex-col items-start justify-center gap-[40px]">
+        <div
+          v-for="nav in navs"
+          class="flex flex-col items-start justify-center hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
+          :class="{
+            '  text-[#2966f4]': $route.path === nav.path,
+          }"
+        >
+          <NuxtLink :to="nav.path">
+            {{ nav.name }}
           </NuxtLink>
         </div>
-        <div class="flex items-center gap-[16px]">
+        <div class="flex flex-col items-center gap-[16px]">
           <button
             class="py-[6px] px-[12px] bg-[#2966f4] text-white text-[16px] rounded-[0.375rem]"
           >
@@ -151,6 +95,28 @@ export default {
   data() {
     return {
       nav: false,
+      navs: [
+        {
+          name: "Home",
+          path: "/",
+        },
+        {
+          name: "About",
+          path: "/about",
+        },
+        {
+          name: "Current Openings",
+          path: "/current-openings",
+        },
+        {
+          name: "Tech Stories",
+          path: "/techstories",
+        },
+        {
+          name: "Contact",
+          path: "/contact",
+        },
+      ],
     };
   },
   methods: {

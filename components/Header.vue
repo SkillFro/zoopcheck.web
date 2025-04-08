@@ -6,13 +6,15 @@
       <img src="/public/images/logo.jpg" alt="" width="150px" height="53px" />
       <div class="flex items-center gap-[48px]">
         <div class="flex items-center gap-[16px]">
-          <a
-            href=""
-            class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-          >
-            Home
-          </a>
-          <NuxtLink>
+          <NuxtLink to="/">
+            <a
+              href=""
+              class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
+            >
+              Home
+            </a>
+          </NuxtLink>
+          <NuxtLink to="/about">
             <a
               href=""
               class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
@@ -20,24 +22,30 @@
               About
             </a>
           </NuxtLink>
-          <a
-            href=""
-            class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-          >
-            Current Openings
-          </a>
-          <a
-            href=""
-            class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-          >
-            Tech Stories
-          </a>
-          <a
-            href=""
-            class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-          >
-            Contact
-          </a>
+          <NuxtLink>
+            <a
+              href=""
+              class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
+            >
+              Current Openings
+            </a>
+          </NuxtLink>
+          <NuxtLink to="/techstories">
+            <a
+              href=""
+              class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
+            >
+              Tech Stories
+            </a>
+          </NuxtLink>
+          <NuxtLink>
+            <a
+              href=""
+              class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
+            >
+              Contact
+            </a>
+          </NuxtLink>
         </div>
         <div class="flex items-center gap-[16px]">
           <button

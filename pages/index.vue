@@ -22,14 +22,16 @@
 
     <section>
       <div class="flex flex-col items-center gap-[50px] py-[70px]">
-        <div class="flex items-center justify-center">
+        <div class="flex flex-col items-center justify-center gap-1.5">
           <h1 class="text-[#2c3038] text-[35px] leading-[40px] font-medium">
             Top Companies Currently Hiring
           </h1>
+          <div class="w-[30%] h-[2px] bg-[#2966f4]"></div>
         </div>
         <div class="max-w-[1080px] flex items-center gap-[20px]">
           <div
             v-for="job in jobs"
+            key="job.title"
             class="w-[208px] h-[144px] rounded-[4px] px-[15px] py-[20px] bg-[#eeeeee] border border-transparent hover:bg-white hover:border-2 hover:border-[#eeeeee] relative overflow-hidden hover:shadow"
           >
             <p

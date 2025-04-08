@@ -2,7 +2,7 @@
   <div>
     <div class="relative flex flex-col items-center justify-center mt-40">
       <h1
-        class="md:text-[35px] text-[30px] leading-[24px] font-[400px] text-[#212529] text-center mb-[50px]"
+        class="md:text-[35px] text-[30px] leading-[24px] font-semibold text-[#212529] text-center mb-[50px]"
       >
         Welcome to Zoop Check
       </h1>
@@ -10,16 +10,18 @@
         class="md:w-[200px] w-[120px] bg-[#2966f4] h-0.5 md:-mt-6 -mt-8"
       ></div>
     </div>
-    <div class="flex items-center justify-center gap-14 mt-28">
-      <div>
+    <div
+      class="flex-wrap items-center justify-center p-5 md:flex md:gap-14 md:mt-28 md:p-0"
+    >
+      <div class="">
         <h4
-          class="text-[35px] leading-[40px] font-[400px] text-[#2c3038] w-[699px] h-[120px]"
+          class="md:text-[35px] text-[25px] md:leading-[40px] font-[400px] text-[#2c3038] md:w-[699px] md:h-[120px]"
         >
           A leading consultant company dedicated to helping organizations
           maximize their human assets.
         </h4>
         <p
-          class="text-[16px] leading-[25px] font-[400px] text-[#555A64] w-[699px] h-[324px] mt-4"
+          class="text-[16px] md:leading-[25px] font-[400px] text-[#555A64] md:w-[699px] md:h-[324px] mt-4"
         >
           Our mission is to provide our clients with customized solutions to
           meet their unique needs, and to empower their teams to reach their
@@ -42,16 +44,13 @@
           effective human asset management.
         </p>
       </div>
-      <div>
+      <div class="mt-3 md:mt-0">
         <img
-          src="/public/Tech/about1.jfif"
+          src="/tech/about1.jfif"
           alt="image"
-          class="w-[699px] h-[466px]"
+          class="md:w-[699px] md:h-[466px]"
         />
       </div>
     </div>
-    <!-- <div class="mt-10">
-      <Footer></Footer>
-    </div> -->
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#f9f9f9] mt-28">
+  <div class="bg-[#f9f9f9] mt-28 mb-5">
     <div class="relative flex flex-col items-center justify-center">
       <h1
         class="font-semibold md:text-[35px] text-[30px] leading-[24px] text-[#212529] text-center mb-[50px] mt-20"
@@ -11,7 +11,7 @@
       ></div>
     </div>
     <div class="flex flex-col items-center justify-center gap-2">
-      <Card />
+      <TechBlog />
 
       <!-- <div class="flex flex-wrap items-center justify-around gap-10 mt-10">
         <div v-for="item in items" :key="item">
@@ -41,6 +41,8 @@
   </div>
 </template>
 <script>
+import TechBlog from "~/components/TechBlog.vue";
+
 export default {
   data() {
     return {};

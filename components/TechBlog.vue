@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="grid grid-cols-1 gap-4 mt-20 md:grid-cols-3">
+    <div class="grid grid-cols-1 gap-8 mt-20 md:grid-cols-3">
       <div
         v-for="item in cards"
         :key="item"
@@ -10,11 +10,11 @@
           <img
             :src="item.image"
             alt="image"
-            class="md:w-[456px] md:h-[304px] w-full px-4 md:px-0 rounded-t-md"
+            class="md:w-[456px] md:h-[304px] w-full rounded-t-md"
           />
         </div>
         <div
-          class="md:w-[456px] md:h-[206px] flex gap-3 p-5 xl:p-[30px] w-full flex-col bg-white rounded-b-md"
+          class="md:w-[456px] md:h-[206px] flex gap-3 p-2 xl:p-[30px] w-full flex-col bg-white rounded-b-md"
         >
           <h5 class="text-[#555a64] text-[16px]">{{ item.date }}</h5>
           <a

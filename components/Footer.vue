@@ -1,28 +1,32 @@
 <template>
   <div class="bg-[#000000] opacity 0%">
-    <div class="flex items-center justify-around gap-4 px-20">
-      <div class="flex gap-[70px]">
-        <div class="flex flex-col gap-6">
-          <h6 class="text-white text-[26px]">Get In touch</h6>
+    <div
+      class="flex flex-wrap items-center justify-around gap-2 px-4 mt-3 md:gap-4 md:px-20 md:mt-0"
+    >
+      <div class="flex md:gap-[70px]">
+        <div class="flex flex-col gap-3 md:gap-6">
+          <h6 class="text-white md:text-[22px] text-[18px] font-semibold">
+            Get In touch
+          </h6>
           <p class="text-[#888888] text-[18px]">
-            Are you interested in jobs, need to get latest updates and <br />
+            Are you interested in jobs, need to get latest updates and
             information?
           </p>
-          <div>
+          <div class="flex gap-0.5">
             <input
               type="text"
               placeholder="Enter Email"
               class="text-[#888888] text-[16px] bg-[#1d1d1d] px-20 p-3"
             />
-            <!-- <img
-            src="/paper-plane(1).svg"
-            alt="paper plane"
-            class="w-[20px] h-[20px]"
-          /> -->
+            <div class="bg-[#2966f4] w-[60px] h-[50px] rounded-sm relative">
+              <i
+                class="text-white fa fa-paper-plane text-[20px] absolute p-4"
+              ></i>
+            </div>
           </div>
         </div>
         <div class="flex flex-col gap-4">
-          <h6 class="text-white text-[26px]">Company</h6>
+          <h6 class="text-white text-[22px] font-semibold">Company</h6>
           <p class="text-[#888888] text-[18px] cursor-pointer hover:text-white">
             About
           </p>
@@ -38,7 +42,7 @@
         </div>
       </div>
       <div class="flex flex-col gap-4 mt-8">
-        <h6 class="text-white text-[26px]">Hot Links</h6>
+        <h6 class="text-white text-[22px] font-semibold">Hot Links</h6>
         <p class="text-[#888888] text-[18px] cursor-pointer hover:text-white">
           Hot Links
         </p>
@@ -74,3 +78,13 @@
     </div>
   </div>
 </template>
+<script setup>
+useHead({
+  link: [
+    {
+      rel: "stylesheet",
+      href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+    },
+  ],
+});
+</script>

@@ -9,12 +9,16 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
   },
+
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
+  compatibilityDate: "2025-04-07",
 });

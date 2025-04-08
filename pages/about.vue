@@ -1,13 +1,14 @@
 <template>
   <div>
-    <Header></Header>
     <div class="relative flex flex-col items-center justify-center mt-40">
       <h1
-        class="text-[35px] leading-[24px] font-[400px] text-[#212529] text-center mb-[50px]"
+        class="md:text-[35px] text-[30px] leading-[24px] font-[400px] text-[#212529] text-center mb-[50px]"
       >
         Welcome to Zoop Check
       </h1>
-      <div class="w-[200px] bg-[#2966f4] h-0.5 -mt-6"></div>
+      <div
+        class="md:w-[200px] w-[120px] bg-[#2966f4] h-0.5 md:-mt-6 -mt-8"
+      ></div>
     </div>
     <div class="flex items-center justify-center gap-14 mt-28">
       <div>
@@ -18,7 +19,7 @@
           maximize their human assets.
         </h4>
         <p
-          class="text-[16px] leading-[25px] font-[400px] text-[#2c3038] w-[699px] h-[324px] mt-4"
+          class="text-[16px] leading-[25px] font-[400px] text-[#555A64] w-[699px] h-[324px] mt-4"
         >
           Our mission is to provide our clients with customized solutions to
           meet their unique needs, and to empower their teams to reach their
@@ -49,8 +50,8 @@
         />
       </div>
     </div>
-    <div class="mt-10">
+    <!-- <div class="mt-10">
       <Footer></Footer>
-    </div>
+    </div> -->
   </div>
 </template>

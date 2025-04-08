@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="bg-[#f8f9fa]">
     <div
-      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay bg-cover bg-no-repeat w-full h-screen flex flex-col justify-center items-center text-white gap-[47px]"
+      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay bg-cover bg-no-repeat w-full min-h-[750px] flex flex-col justify-center items-center text-white gap-[47px]"
     >
       <div class="max-w-[1047px]">
         <h2 class="text-[55px] font-light leading-[60px]">
@@ -11,7 +11,7 @@
           with ZoopCheck
         </h2>
       </div>
-      <div class="max-w-[1047px] mt-[15px]">
+      <div class="max-w-[1047px]">
         <p class="text-[20px] leading-[25px] text-[#dddddd] text-center">
           ZoopCheck Placement is a company that helps individuals realize their
           full potential <br />
@@ -27,10 +27,10 @@
             Top Companies Currently Hiring
           </h1>
         </div>
-        <div class="max-w-[1490px] flex items-center gap-[20px]">
+        <div class="max-w-[1080px] flex items-center gap-[20px]">
           <div
             v-for="job in jobs"
-            class="w-[208px] h-[144px] rounded-[4px] px-[15px] py-[20px] bg-[#f8f9fa] border border-transparent hover:bg-white hover:border-2 hover:border-[#f8f9fa]"
+            class="w-[208px] h-[144px] rounded-[4px] px-[15px] py-[20px] bg-[#eeeeee] border border-transparent hover:bg-white hover:border-2 hover:border-[#eeeeee] relative overflow-hidden hover:shadow"
           >
             <p
               class="text-[#111111] text-[18px] leading-[27px] font-semibold underline"
@@ -47,6 +47,11 @@
             >
               View Jobs
             </button>
+            <i
+              class="absolute right-[-10px] bottom-[-10px] rotate-[-30deg] text-[#999999] text-[60px] leading-[60px] font-black opacity-10"
+              :class="job.icon ? job.icon : 'fa fa-car '"
+            >
+            </i>
           </div>
         </div>
       </div>
@@ -56,7 +61,7 @@
       <div
         class="bg-[url('/images/banner1.jpg')] bg-fixed bg-no-repeat bg-cover h-[363px] bg-blend-overlay bg-black/60 z-7"
       >
-        <div class="max-w-[75%] h-full flex items-center mx-[200px]">
+        <div class="max-w-[75%] h-full flex items-center mx-[190px]">
           <div class="max-w-[555px]">
             <h1
               class="w-full text-[40px] leading-[45px] font-light text-white mb-1px"
@@ -88,6 +93,16 @@
     <section class="my-[200px]"></section>
   </div>
 </template>
+<script setup>
+useHead({
+  link: [
+    {
+      rel: "stylesheet",
+      href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+    },
+  ],
+});
+</script>
 <script>
 export default {
   data() {
@@ -96,22 +111,27 @@ export default {
         {
           title: "Graphics Designer",
           openings: "3 Openings",
+          icon: "fa fa-laptop",
         },
         {
           title: "Vedio Editor",
           openings: "1 Openings",
+          icon: "fa fa-headphones",
         },
         {
           title: "Content Writer",
           openings: "2 Openings",
+          icon: "fa fa-tablet",
         },
         {
           title: "Digital Marketer",
           openings: "2 Openings",
+          icon: "fa fa-cogs",
         },
         {
           title: "UX UI Designer",
           openings: "10 Openings",
+          icon: "fa fa-car",
         },
       ],
     };

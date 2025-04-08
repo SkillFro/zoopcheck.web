@@ -1,7 +1,7 @@
 <template>
   <div class="bg-[#000000] opacity 0%">
-    <!-- <div class="block md:hidden">
-      <div class="p-4 px-6">
+    <div class="block md:hidden">
+      <div class="p-2 px-6">
         <div class="flex-wrap">
           <div class="flex flex-col gap-3">
             <h6 class="text-white text-[18px] font-semibold mt-10">
@@ -15,16 +15,16 @@
               <input
                 type="text"
                 placeholder="Enter Email"
-                class="text-[#1d1d1d] text-[16px] bg-[#1d1d1d] md:px-20 md:p-3 p-2 px-12"
+                class="text-[#1d1d1d] text-[16px] bg-[#1d1d1d] p-2 px-10"
               />
               <div class="bg-[#2966f4] w-[60px] h-[50px] rounded-sm relative">
                 <i
-                  class="text-white fa fa-paper-plane text-[14px] absolute p-5 pl-4"
+                  class="text-white fa fa-paper-plane text-[14px] absolute p-5"
                 ></i>
               </div>
             </div>
           </div>
-          <div class="flex flex-row-reverse flex-wrap gap-10 pr-5 mt-8">
+          <div class="flex flex-row-reverse gap-10 mt-8 pr-14">
             <div class="flex flex-col gap-4 mt-0">
               <h6 class="text-white text-[19px] font-semibold">Company</h6>
               <p
@@ -83,10 +83,10 @@
       <div class="flex flex-col items-center justify-center mt-10">
         <div class="w-full h-0.5 bg-[#131313]"></div>
         <div class="mt-10 mb-10">
-          <p class="text-[#888888] text-[16px]">
+          <p class="text-[#888888] text-[14px]">
             &nbsp; All Rights Reserved © 2023 by ZoopCheck.
           </p>
-          <p class="text-[#888888] text-[16px]">
+          <p class="text-[#888888] text-[14px]">
             Designed by
             <span
               class="cursor-pointer underline hover:text-[#2966f4] text-white"
@@ -96,7 +96,7 @@
           </p>
         </div>
       </div>
-    </div> -->
+    </div>
     <div class="hidden md:block">
       <div class="">
         <div class="flex gap-[70px] mt-5 justify-around items-center">

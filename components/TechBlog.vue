@@ -10,11 +10,11 @@
           <img
             :src="item.image"
             alt="image"
-            class="md:w-[456px] md:h-[304px] w-full px-4 md:px-0 rounded-t-md"
+            class="md:w-[456px] md:h-[304px] w-full rounded-t-md"
           />
         </div>
         <div
-          class="md:w-[456px] md:h-[206px] flex gap-3 p-5 xl:p-[30px] w-full flex-col bg-white rounded-b-md"
+          class="md:w-[456px] md:h-[206px] flex gap-3 p-2 xl:p-[30px] w-full flex-col bg-white rounded-b-md"
         >
           <h5 class="text-[#555a64] text-[16px]">{{ item.date }}</h5>
           <a
@@ -22,7 +22,7 @@
             class="text-[#212529] md:text-[24px] text-[20px] underline"
             >{{ item.link }}</a
           >
-          <p class="text-[#555a64] md:text-[18px] text-[12px]">
+          <p class="text-[#555a64] md:text-[18px] text-[16px]">
             {{ item.description }}
           </p>
         </div>

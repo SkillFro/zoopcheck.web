@@ -11,7 +11,7 @@
       ></div>
     </div>
     <div class="flex flex-col items-center justify-center gap-2">
-      <Card />
+      <TechBlog />
 
       <!-- <div class="flex flex-wrap items-center justify-around gap-10 mt-10">
         <div v-for="item in items" :key="item">
@@ -41,6 +41,8 @@
   </div>
 </template>
 <script>
+import TechBlog from "~/components/TechBlog.vue";
+
 export default {
   data() {
     return {};

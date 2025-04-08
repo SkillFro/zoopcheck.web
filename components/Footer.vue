@@ -61,7 +61,7 @@
       </div>
     </div>
     <div class="flex flex-col items-center justify-center mt-16">
-      <div class="w-[1600px] h-0.5 bg-[#131313]"></div>
+      <div class="w-full h-0.5 bg-[#131313]"></div>
       <div class="mt-10 mb-10">
         <p class="text-[#888888] text-[18px]">
           All Rights Reserved © 2023 by ZoopCheck.

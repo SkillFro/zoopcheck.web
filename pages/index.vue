@@ -2,16 +2,20 @@
   <div class="bg-[#f8f9fa]">
     <!-- Hero Section -->
     <div
-      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay bg-cover bg-no-repeat w-full min-h-[750px] flex flex-col justify-center items-center text-white gap-[47px]"
+      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay h-screen bg-cover bg-no-repeat w-full md:min-h-[750px] flex flex-col justify-center items-center text-white gap-[47px] box-border"
     >
-      <div class="max-w-[1047px]">
-        <h2 class="text-[55px] font-light leading-[60px] text-center">
+      <div class="md:max-w-[1047px] max-w-[288px]">
+        <h2
+          class="md:text-[55px] text-[33px] font-light md:leading-[60px] leading-[42px] text-center"
+        >
           Unlocking your career potential <br />
           with ZoopCheck
         </h2>
       </div>
-      <div class="max-w-[1047px]">
-        <p class="text-[20px] leading-[25px] text-[#dddddd] text-center">
+      <div class="md:max-w-[1047px] max-w-[288px]">
+        <p
+          class="md:text-[20px] text-[17px] leading-[25px] text-[#dddddd] text-center"
+        >
           ZoopCheck Placement is a company that helps individuals realize their
           full potential <br />
           by providing them with career placement services.
@@ -21,18 +25,24 @@
 
     <!-- Top Companies -->
     <section>
-      <div class="flex flex-col items-center gap-[50px] py-[70px]">
+      <div
+        class="flex flex-col items-center gap-[50px] md:py-[70px] py-[50px] bg-white"
+      >
         <div class="flex flex-col items-center justify-center gap-1.5">
-          <h1 class="text-[#2c3038] text-[35px] leading-[40px] font-medium">
+          <h1
+            class="text-[#2c3038] md:text-[35px] text-[30px] leading-[45px] md:leading-[40px] font-medium text-center"
+          >
             Top Companies Currently Hiring
           </h1>
           <div class="w-[30%] h-[2px] bg-[#2966f4]"></div>
         </div>
-        <div class="max-w-[1080px] flex flex-wrap justify-center gap-[20px]">
+        <div
+          class="md:max-w-[1080px] w-full flex flex-wrap justify-center gap-[20px]"
+        >
           <div
             v-for="job in currentOpenings"
             :key="job.title"
-            class="w-[208px] h-[144px] rounded-[4px] px-[15px] py-[20px] bg-[#eeeeee] border border-transparent hover:bg-white hover:border-2 hover:border-[#eeeeee] relative overflow-hidden hover:shadow"
+            class="md:w-[208px] md:h-[144px] w-[139px] h-[165px] rounded-[4px] px-[15px] py-[20px] bg-[#eeeeee] border border-transparent hover:bg-white hover:border-2 hover:border-[#eeeeee] relative overflow-hidden hover:shadow"
           >
             <p
               class="text-[#111111] text-[18px] leading-[27px] font-semibold underline"
@@ -61,11 +71,15 @@
     <!-- CTA Banner -->
     <section class="mt-[20px]">
       <div
-        class="bg-[url('/images/banner1.jpg')] bg-fixed bg-no-repeat bg-cover h-[363px] bg-blend-overlay bg-black/60 z-7"
+        class="bg-[url('/images/banner1.jpg')] bg-fixed bg-no-repeat bg-cover h-[298px] md:h-[363px] bg-blend-overlay bg-black/60 z-7"
       >
-        <div class="max-w-[75%] h-full flex items-center mx-[190px]">
-          <div class="max-w-[555px]">
-            <h1 class="text-[40px] leading-[45px] font-light text-white">
+        <div
+          class="md:max-w-[75%] max-w-full h-full flex items-center md:mx-[190px] px-2"
+        >
+          <div class="md:max-w-[555px] max-w-full">
+            <h1
+              class="md:text-[40px] text-[27px] leading-[35px] md:leading-[45px] font-light text-white"
+            >
               Get your Dream Job Now!
             </h1>
             <p
@@ -96,8 +110,7 @@
         <h2 class="mb-2 text-3xl font-bold text-gray-800">Featured Jobs</h2>
         <div class="w-20 h-[2px] bg-[#2966f4] mx-auto mb-6"></div>
 
-        <!-- Tab Buttons -->
-        <div class="flex justify-center gap-4 mb-8">
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
           <button
             v-for="tab in tabs"
             :key="tab.key"
@@ -113,7 +126,6 @@
           </button>
         </div>
 
-        <!-- Job Cards -->
         <div class="flex flex-col items-center gap-6">
           <template
             v-if="filteredJobs[selectedTab] && filteredJobs[selectedTab].length"
@@ -157,7 +169,6 @@
             </div>
           </template>
 
-          <!-- Empty State -->
           <div
             v-else
             class="w-full max-w-4xl p-6 text-left text-gray-700 bg-white border border-red-200 rounded"
@@ -172,14 +183,57 @@
 
     <!-- Why choose us -->
     <section>
-      <div
-        class="bg-[#ffffff] max-w-[1494px] border flex justify-center items-center"
-      >
-        <div class="flex items-start justify-center gap-[50px] py-[70px]">
+      <div class="hidden md:block">
+        <div
+          class="bg-[#ffffff] max-w-[1494px] border flex justify-center items-center"
+        >
           <div
-            class="max-w-[535px] max-h-[444px] flex flex-col justify-between gap-[30px]"
+            class="md:flex md:flex-row md:items-start md:justify-center gap-[50px] py-[70px]"
           >
-            <h3 class="text-[40px] leading-[45px] text-[#2c3038] font-light">
+            <div
+              class="max-w-[535px] max-h-[444px] flex flex-col justify-between gap-[30px]"
+            >
+              <h3 class="text-[40px] leading-[45px] text-[#2c3038] font-light">
+                Why Choose our ZoopCheck Placement Service?
+              </h3>
+              <p class="text-[#555a64] text-[16px] leading-[25px] font-normal">
+                ZoopCheck Placement offers expertise, personalized approach, an
+                extensive network, a supportive environment, and efficiency in
+                its career placement services. With years of experience in the
+                industry, ZoopCheck Placement provides personalized services
+                tailored to individual needs, connecting candidates with
+                opportunities that align with their career goals. The company
+                offers ongoing support and guidance throughout the job search
+                process, from resume preparation to salary negotiations.
+                ZoopCheck Placement's goal is to help candidates achieve their
+                career aspirations and unlock their full potential
+              </p>
+
+              <a
+                class="bg-[#2966f4] py-3 text-white rounded max-w-[170px] max-h-[48px] text-center underline"
+                href="#"
+                >Submit Resume</a
+              >
+            </div>
+            <div>
+              <img
+                src="/public/images/blog5.jpg"
+                class="max-w-[500px]"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block md:hidden">
+        <div
+          class="flex flex-col items-center justify-center w-full gap-5 bg-[#ffffff]"
+        >
+          <img src="/public/images/blog5.jpg" width="288px" alt="" />
+          <div class="flex flex-col justify-center gap-5 p-4">
+            <h3
+              class="md:text-[40px] text-[30px] leading-[35px] md:leading-[45px] text-[#2c3038] font-light"
+            >
               Why Choose our ZoopCheck Placement Service?
             </h3>
             <p class="text-[#555a64] text-[16px] leading-[25px] font-normal">
@@ -195,14 +249,13 @@
               aspirations and unlock their full potential
             </p>
 
-            <a
-              class="bg-[#2966f4] py-3 text-white rounded max-w-[170px] max-h-[48px] text-center underline"
-              href="#"
-              >Submit Resume</a
+            <a href="#"
+              ><button
+                class="bg-[#2966f4] py-[12px] px-[30px] text-white rounded text-center underline"
+              >
+                Submit Resume
+              </button></a
             >
-          </div>
-          <div>
-            <img src="/public/images/blog5.jpg" class="max-w-[500px]" alt="" />
           </div>
         </div>
       </div>
@@ -216,8 +269,10 @@
         </h3>
         <div class="w-[120px] h-[2px] bg-[#2966f4]"></div>
       </div>
-      <div class="flex items-center justify-center">
-        <div class="max-w-[1121px] flex justify-center items-center gap-[30px]">
+      <div class="flex flex-row items-center justify-center">
+        <div
+          class="max-w-[1121px] md:flex md:flex-row md:items-center md:justify-center gap-[30px] flex flex-col items-center justify-center"
+        >
           <div
             v-for="item in cards"
             :key="item"

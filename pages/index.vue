@@ -2,7 +2,7 @@
   <div class="bg-[#f8f9fa]">
     <!-- Hero Section -->
     <div
-      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay h-screen bg-center bg-no-repeat w-full xl:h-[750px] flex flex-col justify-center items-center text-white gap-[47px]"
+      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay h-screen bg-center bg-no-repeat bg-cover w-full xl:h-[750px] flex flex-col justify-center items-center text-white gap-[47px]"
     >
       <div class="lg:max-w-[1047px] md:max-w-[576px] max-w-[288px]">
         <h2

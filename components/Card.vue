@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="grid grid-cols-1 gap-4 mt-20 md:grid-cols-3">
+    <div class="grid grid-cols-1 gap-8 mt-20 md:grid-cols-3">
       <div
         v-for="item in cards"
         :key="item"
@@ -22,7 +22,7 @@
             class="text-[#212529] md:text-[24px] text-[20px] underline"
             >{{ item.link }}</a
           >
-          <p class="text-[#555a64] md:text-[18px] text-[16px]">
+          <p class="text-[#555a64] md:text-[18px] text-[12px]">
             {{ item.description }}
           </p>
         </div>

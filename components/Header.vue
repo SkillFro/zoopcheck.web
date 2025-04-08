@@ -1,5 +1,5 @@
 <template>
-  <div class="hidden md:block">
+  <div class="hidden xl:block">
     <div
       class="w-full h-[95px] bg-white fixed top-0 flex justify-center items-center z-10"
     >
@@ -64,9 +64,9 @@
       </div>
     </div>
   </div>
-  <div class="block md:hidden">
+  <div class="block xl:hidden">
     <div
-      class="fixed top-0 z-10 flex items-center justify-between w-full p-5 bg-white"
+      class="fixed top-0 z-10 flex items-center justify-between w-full p-5 bg-white lg:px-10"
     >
       <img src="/public/images/logo.jpg" width="150px" height="35px" alt="" />
       <button

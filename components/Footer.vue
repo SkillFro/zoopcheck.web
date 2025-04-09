@@ -100,7 +100,7 @@
     <div class="hidden md:block">
       <div class="px-14">
         <div
-          class="xl:flex gap-[70px] mt-5 xl:justify-around lg:items-start xl:items-center md:flex-col"
+          class="xl:flex-row gap-[70px] mt-5 xl:justify-around lg:items-start xl:items-center md:flex-col lg:flex"
         >
           <div class="flex gap-5">
             <div class="flex flex-col gap-6">

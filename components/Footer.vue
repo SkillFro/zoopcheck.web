@@ -98,8 +98,10 @@
       </div>
     </div>
     <div class="hidden md:block">
-      <div class="">
-        <div class="flex gap-[70px] mt-5 justify-around items-center">
+      <div class="px-14">
+        <div
+          class="xl:flex gap-[70px] mt-5 xl:justify-around lg:items-start xl:items-center md:flex-col"
+        >
           <div class="flex gap-5">
             <div class="flex flex-col gap-6">
               <h6 class="text-white text-[20px] font-semibold mt-10">
@@ -148,7 +150,7 @@
             </div>
           </div>
 
-          <div class="flex flex-col gap-4 mt-14">
+          <div class="flex flex-col gap-4 xl:mt-14">
             <h6 class="text-white text-[20px] font-semibold">Hot Links</h6>
             <p
               class="text-[#888888] text-[18px] cursor-pointer hover:text-white"

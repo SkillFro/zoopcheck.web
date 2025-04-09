@@ -1,20 +1,22 @@
 <template>
   <div>
-    <div class="grid grid-cols-1 gap-8 p-4 mt-20 md:grid-cols-3">
+    <div
+      class="grid grid-cols-1 gap-8 px-5 mt-5 lg:p-4 md:px-10 lg:mt-20 md:mt-10 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3"
+    >
       <div
         v-for="item in cards"
         :key="item"
-        class="flex flex-col items-center justify-around transition-all duration-1000 hover:scale-105"
+        class="flex flex-col items-center justify-around transition-all duration-1000 shadow-md hover:scale-105"
       >
         <div>
           <img
             :src="item.image"
             alt="image"
-            class="md:w-[456px] md:h-[304px] w-full rounded-t-md"
+            class="lg:w-[456px] lg:h-[304px] w-full rounded-t-md"
           />
         </div>
         <div
-          class="md:w-[456px] md:h-[206px] flex gap-3 p-2 xl:p-[30px] w-full flex-col bg-white rounded-b-md"
+          class="lg:w-[456px] lg:h-[206px] flex gap-3 lg:p-2 xl:p-[30px] w-full flex-col bg-white rounded-b-md md:px-3 md:py-2 px-2"
         >
           <h5 class="text-[#555a64] text-[16px]">{{ item.date }}</h5>
           <a

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <Header /> -->
+    <Header />
     <slot></slot>
     <div class="mt-10">
       <!-- <Footer /> -->

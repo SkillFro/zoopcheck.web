@@ -1,7 +1,11 @@
 <template>
   <div class="bg-[#f8f9fa]">
+    <div @click="arrow()" class="fixed bottom-0 right-0 m-5">
+      <img width="50px" height="50px" src="/public/images/arrow.svg" alt="" />
+    </div>
     <!-- Hero Section -->
     <div
+      id="hero"
       class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay h-screen md:bg-center bg-no-repeat bg-cover w-full xl:h-[750px] flex flex-col justify-center items-center text-white gap-[47px]"
     >
       <div class="lg:max-w-[1047px] md:max-w-[576px] max-w-[288px]">
@@ -42,7 +46,7 @@
           <div
             v-for="job in currentOpenings"
             :key="job.title"
-            class="md:w-[208px] xl:w-[200px] 2xl:w-[368px] md:h-[144px] w-full h-[165px] rounded-[4px] md:px-[15px] py-[20px] bg-[#eeeeee] border border-transparent hover:bg-white hover:border-2 hover:border-[#eeeeee] relative overflow-hidden hover:shadow px-[20px] 2xl:p-[20px]"
+            class="md:w-[208px] xl:w-[200px] 2xl:w-[368px] md:h-[144px] w-full h-[165px] rounded-[4px] md:px-[15px] py-[20px] bg-[#eeeeee] border-2 border-transparent hover:bg-white hover:border-2 hover:border-[#eeeeee] relative overflow-hidden hover:shadow px-[20px] 2xl:p-[20px]"
           >
             <p
               class="text-[#111111] text-[18px] leading-[27px] font-semibold underline"
@@ -113,19 +117,23 @@
         <div class="w-20 h-[2px] xl:w-32 bg-[#2966f4] mx-auto mb-6"></div>
 
         <div class="flex flex-wrap justify-center gap-4 mb-8">
-          <button
-            v-for="tab in tabs"
-            :key="tab.key"
-            @click="selectedTab = tab.key"
-            :class="[
-              'px-6 py-2 xl:px-[30px] xl:py-[14px] xl:font-medium xl:text-[16px] border rounded transition-all duration-300 font-medium',
-              selectedTab === tab.key
-                ? 'bg-black text-white'
-                : 'bg-white text-[#333333] hover:bg-[#333333] hover:text-white',
-            ]"
-          >
-            {{ tab.label }}
-          </button>
+          <div v-for="tab in tabs" :key="tab.key">
+            <button
+              @click="
+                () => {
+                  selectedTab = tab.key;
+                }
+              "
+              class="px-6 py-2 xl:px-[30px] xl:py-[14px] xl:font-medium xl:text-[16px] border rounded transition-all duration-300 font-medium"
+              :class="
+                selectedTab === tab.key
+                  ? 'bg-black text-white'
+                  : 'bg-white text-[#333333] hover:bg-[#333333] hover:text-white'
+              "
+            >
+              {{ tab.label }}
+            </button>
+          </div>
         </div>
 
         <div class="flex flex-col items-center gap-6">
@@ -135,52 +143,98 @@
             <div
               v-for="job in filteredJobs[selectedTab]"
               :key="job.id"
-              class="w-full xl:max-w-[1080px] 2xl:max-w-[1920px] p-6 text-left bg-white border-2 rounded shadow xl:py-[40px] xl:px-[30px] border-l-[#2966f4]"
+              class="w-full xl:max-w-[1009px] 2xl:max-w-[1920px] p-6 text-left bg-white border-2 rounded shadow xl:py-[40px] xl:px-[30px] border-l-[#2966f4] hover:scale-105 transition-all duration-300"
             >
-              <div
-                class="flex flex-col items-start justify-between md:mb-2 md:flex md:flex-row md:items-start md:justify-between"
-              >
-                <div class="flex flex-col items-start justify-between gap-1">
-                  <h3
-                    class="text-lg font-semibold text-blue-600 cursor-pointer hover:underline xl:text-[20px] xl:font-semibold xl:leading-[25px]"
-                  >
-                    {{ job.title }}
-                  </h3>
-                  <p class="text-sm text-gray-700">
-                    No. of Openings: <strong>{{ job.openings }}</strong> &nbsp;
-                    <br />
-                    Experience: <strong>{{ job.experience }}</strong>
-                  </p>
+              <div class="flex items-start justify-between">
+                <div class="flex gap-4">
+                  <div>
+                    <img
+                      class="w-[45px] h-[45px]"
+                      src="/public/images/job1.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex flex-col items-start justify-between gap-4">
+                    <div>
+                      <h3
+                        class="text-[20px] leading-[25px] text-[#2c3038] font-semibold cursor-pointer hover:underline xl:text-[20px] xl:font-semibold xl:leading-[25px] underline"
+                      >
+                        {{ job.title }}
+                      </h3>
+                    </div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-[16px] leading-[25px] text-[#555a64]">
+                        No. of Openings:
+                        <span
+                          class="text-[16px] leading-[25px] font-bold text-gray-700"
+                          >{{ job.openings }}</span
+                        >
+                      </p>
+
+                      <p class="text-[16px] leading-[25px] text-[#555a64]">
+                        Experience:
+                        <span
+                          class="text-[16px] leading-[25px] font-bold text-gray-700"
+                          >{{ job.experience }}</span
+                        >
+                      </p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <div class="flex items-center gap-1">
+                        <img
+                          class="w-[16px] h-[16px]"
+                          src="/public/images/location.svg"
+                          alt=""
+                        />
+                        <p class="text-[#555a64] text-[16px] leading-[16px]">
+                          {{ job.location }}
+                        </p>
+                      </div>
+                      <div class="flex items-center gap-1">
+                        <img
+                          class="w-[16px] h-[16px]"
+                          src="/public/images/work.svg"
+                          alt=""
+                        />
+                        <p class="text-[#555a64] text-[16px] leading-[16px]">
+                          {{ job.type }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div
-                  class="flex flex-col items-start text-sm text-right text-gray-800"
+                  class="flex flex-col items-start gap-4 text-sm text-right text-gray-800"
                 >
-                  <p>
-                    Job ID: <strong>{{ job.id }}</strong>
+                  <p class="text-[16px] leading-[24px] text-[#212529]">
+                    Job ID:
+                    <span
+                      class="text-[16px] leading-[24px] text-[#555a64] font-bold"
+                      >{{ job.id }}</span
+                    >
                   </p>
-                  <p>
-                    Date: <strong>{{ job.date }}</strong>
+                  <p class="text-[16px] leading-[24px] text-[#212529]">
+                    Date:
+                    <span
+                      class="text-[16px] leading-[24px] text-[#555a64] font-bold"
+                      >{{ job.date }}</span
+                    >
                   </p>
                 </div>
-              </div>
-              <div
-                class="flex flex-col items-center justify-between gap-3 mt-4 md:flex md:flex-row md:justify-between md:gap-0"
-              >
-                <p class="flex items-center gap-2 text-sm text-gray-600">
-                  📍 {{ job.location }} &nbsp; 💼 {{ job.type }}
-                </p>
-                <button
-                  class="px-4 py-1 text-[#2966f4] border border-[#2966f4] rounded hover:bg-[#2966f4] hover:text-white"
-                >
-                  Apply Now
-                </button>
+                <div>
+                  <button
+                    class="px-4 py-2 text-[#2966f4] border border-[#2966f4] rounded hover:bg-[#2966f4] hover:text-white text-[16px] leading-[24px] underline"
+                  >
+                    Apply Now
+                  </button>
+                </div>
               </div>
             </div>
           </template>
 
           <div
             v-else
-            class="w-full max-w-4xl p-6 text-left text-gray-700 bg-white border border-red-200 rounded"
+            class="w-full p-6 text-left text-gray-700 bg-white border border-red-200 rounded md:max-w-4xl"
           >
             There are currently no open positions matching
             {{ tabs.find((t) => t.key === selectedTab).label }}. Keep in touch —
@@ -326,7 +380,7 @@ export default {
       ],
       tabs: [
         { key: "all", label: "Recent Jobs" },
-        { key: "fullTime", label: "Intern Jobs" },
+        { key: "intern", label: "Intern Jobs" },
         { key: "partTime", label: "Partime Jobs" },
       ],
 
@@ -334,35 +388,43 @@ export default {
         {
           id: 1,
           title: "Software Engineer",
-          openings: "5 Openings",
+          openings: "5 ",
           experience: "2-3 Years",
           location: "Remote",
-          type: "Full Time",
+          type: "partTime",
           date: "2023-10-01",
         },
         {
           id: 2,
           title: "Data Analyst",
-          openings: "3 Openings",
+          openings: "3 ",
           experience: "1-2 Years",
           location: "Onsite",
-          type: "Part Time",
+          type: "intern",
           date: "2023-10-02",
         },
         {
           id: 3,
           title: "Web Developer",
-          openings: "4 Openings",
+          openings: "4 ",
           experience: "0-1 Year",
           location: "Remote",
-          type: "Full Time",
+          type: "intern",
+          date: "2023-10-03",
+        },
+        {
+          id: 4,
+          title: "Web Designerr",
+          openings: "4",
+          experience: "1-2 Year",
+          location: "Remote",
+          type: "intern",
           date: "2023-10-03",
         },
       ],
 
       filteredJobs: {
         all: [],
-        fullTime: [],
         partTime: [],
         internship: [],
       },
@@ -388,21 +450,27 @@ export default {
           openings: "2 Openings",
           icon: "fa fa-cogs",
         },
-        { title: "UX UI Designer", openings: "10 Openings", icon: "fa fa-car" },
+        {
+          title: "UX UI Designer",
+          openings: "10 Openings",
+          icon: "fa fa-car",
+        },
       ],
     };
   },
+  methods: {
+    arrow() {
+      document.getElementById("hero").scrollIntoView({
+        behavior: "smooth",
+      });
+    },
+  },
   created() {
     this.filteredJobs.all = this.jobs;
-    this.filteredJobs.fullTime = this.jobs.filter(
-      (job) => job.type === "Full Time"
-    );
     this.filteredJobs.partTime = this.jobs.filter(
-      (job) => job.type === "Part Time"
+      (job) => job.type === "partTime"
     );
-    this.filteredJobs.internship = this.jobs.filter(
-      (job) => job.type === "Internship"
-    );
+    this.filteredJobs.intern = this.jobs.filter((job) => job.type === "intern");
   },
 };
 </script>

@@ -22,11 +22,13 @@
             </div>
           </div>
           <div class="flex items-center gap-[16px]">
-            <button
-              class="py-[6px] px-[12px] bg-[#2966f4] text-white text-[16px] rounded-[0.375rem]"
-            >
-              Submit Resume
-            </button>
+            <NuxtLink to="/resume">
+              <button
+                class="py-[6px] px-[12px] bg-[#2966f4] text-white text-[16px] rounded-[0.375rem]"
+              >
+                Submit Resume
+              </button>
+            </NuxtLink>
             <button
               class="py-[6px] px-[12px] bg-[#0a2d52] text-white text-[16px] rounded-[0.375rem]"
             >
@@ -39,7 +41,7 @@
   </div>
 
   <!-- sm device navbar -->
-  <div class="fixed top-0 z-10 block w-full h-[400px] xl:hidden">
+  <div class="fixed top-0 z-10 block w-full xl:hidden">
     <div class="flex items-center justify-between p-5 bg-white lg:px-10">
       <img src="/public/images/logo.jpg" width="150px" height="35px" alt="" />
       <button
@@ -106,7 +108,7 @@ export default {
         },
         {
           name: "Current Openings",
-          path: "/current-openings",
+          path: "/currentopenings",
         },
         {
           name: "Tech Stories",

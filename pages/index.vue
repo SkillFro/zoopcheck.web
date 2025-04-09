@@ -319,7 +319,7 @@
           <div
             v-for="item in cards"
             :key="item"
-            class="flex flex-col items-center justify-around p-3 transition-all duration-300 md:p-0 hover:scale-105"
+            class="flex flex-col items-center justify-around p-3 transition-all duration-1000 md:p-0 hover:scale-105"
           >
             <div>
               <img

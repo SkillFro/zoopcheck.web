@@ -5,7 +5,7 @@
       class="w-full h-[95px] bg-white fixed top-0 flex justify-center items-center z-10"
     >
       <div class="max-w-[1296px] flex items-center justify-center gap-[110px]">
-        <img src="/public/images/logo.jpg" alt="" width="150px" height="53px" />
+        <img src="/public/images/logo.svg" alt="" width="200px" />
         <div class="flex items-center gap-[64px]">
           <div class="flex items-center gap-[16px]">
             <div
@@ -42,8 +42,8 @@
 
   <!-- sm device navbar -->
   <div class="fixed top-0 z-10 block w-full xl:hidden">
-    <div class="flex items-center justify-between p-5 bg-white lg:px-10">
-      <img src="/public/images/logo.jpg" width="150px" height="35px" alt="" />
+    <div class="flex items-center justify-between p-2 bg-white lg:px-10">
+      <img src="/public/images/logo.jpg" alt="logo" class="w-[150px]" />
       <button
         @click="toggleNav()"
         class="px-[12px] rounded-md py-[4px] border border-[#00000026] focus:border-black focus:border-2"

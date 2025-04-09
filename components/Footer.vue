@@ -1,7 +1,7 @@
 <template>
   <div class="bg-[#000000] opacity 0%">
     <div class="block md:hidden">
-      <div class="p-2 px-6">
+      <div class="p-2 px-4">
         <div class="flex-wrap">
           <div class="flex flex-col gap-3">
             <h6 class="text-white text-[18px] font-semibold mt-10">
@@ -15,12 +15,12 @@
               <input
                 type="text"
                 placeholder="Enter Email"
-                class="text-[#1d1d1d] text-[16px] bg-[#1d1d1d] p-2 px-10"
+                class="text-[white] text-[16px] bg-[#1d1d1d] p-2 px-3 w-[250px] md:w-auto"
               />
-              <div class="bg-[#2966f4] w-[60px] h-[50px] rounded-sm relative">
-                <i
-                  class="text-white fa fa-paper-plane text-[14px] absolute p-5"
-                ></i>
+              <div
+                class="bg-[#2966f4] w-[50px] h-[50px] rounded-sm flex justify-center items-center"
+              >
+                <i class="text-white fa fa-paper-plane text-[14px] p-5"></i>
               </div>
             </div>
           </div>
@@ -115,10 +115,10 @@
                   placeholder="Enter Email"
                   class="text-[#1d1d1d] text-[16px] bg-[#1d1d1d] px-20 p-3"
                 />
-                <div class="bg-[#2966f4] w-[60px] h-[50px] rounded-sm relative">
-                  <i
-                    class="text-white fa fa-paper-plane text-[20px] absolute p-4 pl-6"
-                  ></i>
+                <div
+                  class="bg-[#2966f4] w-[50px] h-[50px] rounded-sm flex justify-center items-center"
+                >
+                  <i class="text-white fa fa-paper-plane text-[20px]"></i>
                 </div>
               </div>
             </div>

@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "MagnilTechnology", // default fallback title
+      title: "ZoopCheck", // default fallback title
       htmlAttrs: {
         lang: "en",
       },

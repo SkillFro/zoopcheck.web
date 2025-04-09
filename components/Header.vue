@@ -1,13 +1,15 @@
 <template>
   <!-- xl device navbar -->
-  <div class="hidden xl:block">
+  <div class="hidden lg:block">
     <div
       class="w-full h-[95px] bg-white fixed top-0 flex justify-center items-center z-10"
     >
-      <div class="max-w-[1296px] flex items-center justify-center gap-[110px]">
-        <img src="/public/images/logo.svg" alt="" width="200px" />
-        <div class="flex items-center gap-[64px]">
-          <div class="flex items-center gap-[16px]">
+      <div
+        class="max-w-[1296px] flex items-center justify-center xl:gap-[110px] gap-[40px]"
+      >
+        <img src="/public/images/logo.svg" alt="" width="150px" />
+        <div class="flex items-center xl:gap-[64px] gap-[30px]">
+          <div class="flex items-center xl:gap-[16px] gap-[10px]">
             <div
               v-for="nav in navs"
               class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
@@ -41,9 +43,9 @@
   </div>
 
   <!-- sm device navbar -->
-  <div class="fixed top-0 z-10 block w-full xl:hidden">
-    <div class="flex items-center justify-between p-2 bg-white lg:px-10">
-      <img src="/public/images/logo.jpg" alt="logo" class="w-[150px]" />
+  <div class="fixed top-0 z-10 block w-full lg:hidden">
+    <div class="flex items-center justify-between p-4 bg-white lg:px-10">
+      <img src="/public/images/logo.svg" alt="logo" class="w-[150px]" />
       <button
         @click="toggleNav()"
         class="px-[12px] rounded-md py-[4px] border border-[#00000026] focus:border-black focus:border-2"

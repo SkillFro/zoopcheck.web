@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#f9f9f9] mt-[30px] mb-5">
+  <div class="bg-[#f9f9f9] mt-28 mb-5">
     <div class="relative flex flex-col items-center justify-center">
       <h1
         class="font-semibold md:text-[35px] text-[30px] leading-[24px] text-[#212529] text-center mb-[50px] mt-20"

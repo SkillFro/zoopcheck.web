@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="grid grid-cols-1 gap-8 mt-20 md:grid-cols-3">
+    <div class="grid grid-cols-1 gap-8 p-4 mt-20 md:grid-cols-3">
       <div
         v-for="item in cards"
         :key="item"
-        class="flex flex-col items-center justify-around"
+        class="flex flex-col items-center justify-around transition-all duration-1000 hover:scale-105"
       >
         <div>
           <img

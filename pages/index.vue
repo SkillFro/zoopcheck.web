@@ -143,14 +143,15 @@
         <div class="flex flex-col items-center gap-6">
           <template
             v-if="filteredJobs[selectedTab] && filteredJobs[selectedTab].length"
+            :key="job.id"
           >
             <div
               v-for="job in filteredJobs[selectedTab]"
               :key="job.id"
-              class="w-[300px] h-[364px] lg:w-[768px] md:w-[576px] xl:w-[1009px] 2xl:w-[1920px] md:h-auto lg:p-6 py-[30px] px-[16px] text-left bg-white border-2 rounded shadow xl:py-[40px] border-l-[#2966f4] hover:scale-105 transition-all duration-600"
+              class="w-[300px] h-[364px] lg:w-[768px] md:w-[576px] xl:w-[1009px] 2xl:w-[1920px] md:h-auto lg:p-6 text-left bg-white border-2 rounded shadow xl:py-[40px] border-l-[#2966f4] hover:scale-105 transition-all duration-600"
             >
               <div
-                class="flex flex-col gap-3 p-1 md:flex md:flex-row md:items-start md:justify-between"
+                class="flex flex-col gap-3 p-1 md:flex md:flex-row md:items-start md:justify-between md:px-5"
               >
                 <div class="flex gap-4">
                   <div>

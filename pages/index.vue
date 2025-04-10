@@ -10,7 +10,7 @@
     <!-- Hero Section -->
     <div
       id="hero"
-      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay h-screen md:bg-center bg-no-repeat bg-cover w-full xl:h-[750px] flex flex-col justify-center items-center text-white gap-[47px]"
+      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay h-screen md:bg-center bg-no-repeat bg-cover w-full flex flex-col justify-center items-center text-white gap-[47px]"
     >
       <div class="lg:max-w-[1047px] md:max-w-[576px] max-w-[288px]">
         <h2
@@ -148,7 +148,7 @@
             <div
               v-for="job in filteredJobs[selectedTab]"
               :key="job.id"
-              class="w-[288px] lg:w-[768px] md:w-[600px] xl:w-[1009px] 2xl:w-[1920px] md:h-auto lg:py-[40px] lg:px-[30px] text-left bg-white border-2 rounded shadow xl:py-[40px] border-l-[#2966f4] py-[30px] px-[15px] md:px-[10px]"
+              class="w-[288px] lg:w-[768px] md:w-[600px] xl:w-[1009px] 2xl:max-w-[1920px] md:h-auto lg:py-[40px] lg:px-[30px] text-left bg-white border-2 rounded shadow xl:py-[40px] border-l-[#2966f4] py-[30px] px-[15px] md:px-[10px]"
             >
               <div
                 class="flex flex-col gap-5 md:flex md:flex-row md:items-start md:justify-between md:px-5"
@@ -330,7 +330,7 @@
           class="lg:flex lg:flex-row lg:items-start lg:justify-center gap-[50px] py-[70px] flex flex-col-reverse md:flex md:flex-col md:justify-center md:items-center"
         >
           <div
-            class="md:max-w-[535px] lg:max-w-[364px] xl:max-w-[515px] 2xl:max-w-[935px] lg:max-h-full md:max-h-[444px] max-w-full max-h-full flex flex-col justify-between gap-[30px] lg:gap-[40px] 2xl:gap-[50px]"
+            class="md:max-w-[535px] lg:max-w-[364px] xl:max-w-[515px] 2xl:max-w-[760px] lg:max-h-full md:max-h-[444px] max-w-full max-h-full flex flex-col justify-between gap-[30px] lg:gap-[40px] 2xl:gap-[50px]"
           >
             <h3
               class="md:text-[40px] lg:text-[35px] lg:leading-[40px] text-[30px] leading-[35px] md:leading-[45px] text-[#2c3038] font-light"
@@ -379,7 +379,7 @@
       </div>
       <div class="flex items-center justify-center">
         <div
-          class="lg:max-w-[1121px] 2xl:max-w-[1920px] max-w-full lg:grid lg:grid-cols-2 xl:grid xl:grid-cols-3 lg:gap-[30px] md:grid md:grid-cols-2 md:gap-5 grid grid-cols-1 gap-5 2xl:gap-[40px]"
+          class="lg:max-w-[1121px] 2xl:max-w-[1920px] max-w-full lg:grid lg:grid-cols-2 xl:grid xl:grid-cols-3 lg:gap-[30px] md:grid md:grid-cols-2 md:gap-5 grid grid-cols-1 gap-5 2xl:gap-[20px]"
         >
           <div
             v-for="item in cards"
@@ -390,11 +390,11 @@
               <img
                 :src="item.image"
                 alt="image"
-                class="md:max-w-[300px] 2xl:max-w-[620px] max-w-full rounded-t-md"
+                class="md:max-w-[300px] 2xl:max-w-[364px] max-w-full rounded-t-md"
               />
             </div>
             <div
-              class="flex gap-3 xl:p-[30px] flex-col rounded-b-md bg-white md:w-[300px] 2xl:w-[620px] w-full p-[30px] shadow"
+              class="flex gap-3 xl:p-[30px] flex-col rounded-b-md bg-white md:w-[300px] 2xl:w-[364px] w-full p-[30px] shadow"
             >
               <h5 class="text-[#555a64] text-[16px] leading-[25px]">
                 {{ item.date }}

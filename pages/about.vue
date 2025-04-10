@@ -11,7 +11,7 @@
       ></div>
     </div>
     <div
-      class="flex-wrap items-center justify-center p-5 md:flex md:gap-14 md:mt-28 md:p-0"
+      class="flex items-center justify-center p-5 md:flex-row lg:flex-row xl:flex-row md:gap-14 md:mt-28 md:p-12"
     >
       <div class="">
         <h4

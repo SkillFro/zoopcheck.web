@@ -28,7 +28,7 @@
               <button
                 class="py-[6px] px-[12px] bg-[#2966f4] text-white text-[16px] rounded-[0.375rem]"
               >
-                Submit Resume
+                Start Career
               </button>
             </NuxtLink>
             <button
@@ -72,7 +72,7 @@
           <button
             class="py-[6px] px-[12px] bg-[#2966f4] text-white text-[16px] rounded-[0.375rem]"
           >
-            Submit Resume
+            Start Career
           </button>
           <button
             class="py-[6px] px-[12px] bg-[#0a2d52] text-white text-[16px] rounded-[0.375rem]"

@@ -115,7 +115,7 @@
                 <input
                   type="text"
                   placeholder="Enter Email"
-                  class="text-[#1d1d1d] text-[16px] bg-[#1d1d1d] px-20 p-3"
+                  class="text-white text-[16px] bg-[#1d1d1d] p-3 w-[300px]"
                 />
                 <div
                   class="bg-[#2966f4] w-[50px] h-[50px] rounded-sm flex justify-center items-center"

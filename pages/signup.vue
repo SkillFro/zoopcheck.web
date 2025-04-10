@@ -6,14 +6,14 @@
     <div class="flex items-center justify-center gap-2">
       <button
         @click="toggleRecruiter()"
-        class="px-6 py-2 xl:px-[30px] xl:py-[14px] xl:font-medium xl:text-[16px] border rounded transition-all duration-300 font-medium hover:bg-[#333333] hover:text-white bg-white text-black"
+        class="px-6 py-2 xl:px-[30px] xl:py-[14px] xl:font-medium xl:text-[16px] border rounded transition-all duration-300 font-medium"
         :class="recruiter ? 'bg-[#333333] text-white' : 'bg-white text-black'"
       >
         Recruiter?
       </button>
       <button
         @click="toggleCanditate()"
-        class="px-6 py-2 xl:px-[30px] xl:py-[14px] xl:font-medium xl:text-[16px] border rounded transition-all duration-300 font-medium hover:bg-[#333333] hover:text-white bg-white text-black"
+        class="px-6 py-2 xl:px-[30px] xl:py-[14px] xl:font-medium xl:text-[16px] border rounded transition-all duration-300 font-medium"
         :class="canditate ? 'bg-[#333333] text-white' : 'bg-white text-black'"
       >
         Canditate?

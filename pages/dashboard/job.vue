@@ -36,43 +36,53 @@
       <div
         v-for="job in jobs"
         :key="job"
-        class="w-[400px] border bg-white rounded-2xl shadow-md px-8 py-4 mb-4 relative"
+        class="w-[400px] border border-slate-200 bg-white rounded-2xl px-4 py-6 mb-4 relative"
       >
-        <div class="flex justify-around gap-5 p-4">
-          <div class="flex gap-2">
-            <img src="/public/dash/profile.png" alt="profile" class="w-8 h-8" />
-            <div class="flex flex-col items-start justify-center px-4">
-              <h1 class="text-clamp-2 text-[16px] leading-[20px] font-normal">
+        <div class="flex items-start justify-around gap-5">
+          <div class="flex gap-4">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/4192/4192708.png"
+              alt="profile"
+              class="w-8 h-8"
+            />
+            <div class="flex flex-col items-start justify-center gap-4">
+              <p class="line-clamp-1 text-[16px] leading-[20px] font-normal">
                 {{ job.title }}
-              </h1>
-              <h3
-                class="text-[#666666] min-w-min mt-2 text-[16px] leading-[20px] font-normal line-clamp-2"
+              </p>
+              <p
+                class="text-[#666666] text-[16px] leading-[20px] font-normal line-clamp-2"
               >
                 {{ job.description }}
-              </h3>
+              </p>
+              <div class="flex items-center gap-4">
+                <img
+                  class="w-5 h-5"
+                  src="https://static.vecteezy.com/system/resources/thumbnails/016/079/159/small/2x2-grid-squares-menu-category-icon-in-line-style-design-isolated-on-white-background-editable-stroke-free-vector.jpg"
+                />
+                <div
+                  class="text-[13px] leading-[18px] font-medium text-[#171717]"
+                >
+                  {{ job.category }}
+                </div>
+              </div>
             </div>
           </div>
-          <div>
-            <p
-              @click="toggleJob()"
-              class="text-[16px] pl-10 text-[#666666] cursor-pointer"
-            >
-              ...
-            </p>
-          </div>
+          <!-- <div> -->
+          <p
+            @click="toggleJob()"
+            class="text-[16px] font-bold text-[#666666] text-start cursor-pointer tracking-[2px] rotate-90"
+          >
+            ...
+          </p>
+          <!-- </div> -->
         </div>
 
-        <div
-          class="p-2.5 bg-[#F2F2F2] w-fit rounded-lg text-[13px] leading-[18px] font-medium text-[#171717]"
-        >
-          {{ job.category }}
-        </div>
-
-        <div class="px-12 mt-4 mb-4">
+        <div class="flex items-center justify-between gap-4 px-12 mt-4">
           <p
             class="text-[#666666] mt-2 line-clamp-2 text-[16px] leading-[20px] font-normal"
           >
-            {{ job.applications }}
+            Applications :
+            <span class="text-black">{{ job.applications }}</span>
           </p>
           <p
             class="text-[#666666] line-clamp-2 mt-2 text-[16px] leading-[20px] font-normal"
@@ -80,6 +90,13 @@
             {{ new Date(job.created_at).toLocaleDateString() }}
           </p>
         </div>
+        <!-- <div class="flex items-center justify-end mt-4">
+          <p
+            class="px-3 py-1 text-[14px] rounded-full outline outline-1 w-fit outline-slate-200"
+          >
+            View Details
+          </p>
+        </div> -->
         <div
           v-if="view"
           class="flex flex-col w-[140px] gap-3 px-12 py-4 text-black bg-white border shadow-md absolute top-16 right-0"
@@ -117,7 +134,7 @@ export default {
           description:
             "Use line-clamp-<number>  multi-line text after a specific number of lines:",
           no_of_openings: "4",
-          category: "IT",
+          category: "ghfhfdhfsjfdghhhj",
           created_at: "2025-04-03T07:48:40.047Z",
           work_mode: "remote",
           experience: "2",

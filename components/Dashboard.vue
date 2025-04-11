@@ -2,7 +2,7 @@
   <div>
     <div class="flex">
       <div
-        class="h-screen bg-white shadow-lg max-w-[200px] p-5 flex flex-col gap-12 px-8"
+        class="h-screen bg-white border border-white border-r-slate-100 max-w-[400px] p-5 flex flex-col gap-12 px-8"
       >
         <img
           src="/public/images/logo.svg"

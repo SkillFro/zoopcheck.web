@@ -137,11 +137,13 @@
                   </div>
                 </div>
                 <div class="flex justify-center md:p-0">
-                  <button
-                    class="md:px-[25px] md:py-[12px] px-5 py-3 text-[#2966f4] border border-[#2966f4] rounded hover:bg-[#2966f4] hover:text-white text-[16px] leading-[24px] underline transform transition-all duration-500 ease-in-out"
-                  >
-                    Apply Now
-                  </button>
+                  <NuxtLink to="/jobview">
+                    <button
+                      class="md:px-[25px] md:py-[12px] px-5 py-3 text-[#2966f4] border border-[#2966f4] rounded hover:bg-[#2966f4] hover:text-white text-[16px] leading-[24px] underline transform transition-all duration-500 ease-in-out"
+                    >
+                      Apply Now
+                    </button>
+                  </NuxtLink>
                 </div>
               </div>
             </div>

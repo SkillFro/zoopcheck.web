@@ -3,6 +3,6 @@
     <Header />
     <Arrow />
     <slot></slot>
-    <!-- <Footer /> -->
+    <Footer />
   </div>
 </template>

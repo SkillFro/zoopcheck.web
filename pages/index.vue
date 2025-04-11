@@ -153,7 +153,7 @@
           <div>
             <img
               src="/public/images/blog5.jpg"
-              class="md:w-[515px] 2xl:w-[760px] lg:w-[364px]"
+              class="md:w-[515px] 2xl:w-[760px] lg:w-[364px] xl:w-[515px]"
               alt=""
             />
           </div>

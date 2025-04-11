@@ -1,27 +1,37 @@
 <template>
-  <div class="pt-10 bg-[#f8f9fa] h-[1000vh]">
+  <div class="pt-10 bg-[#f8f9fa]">
     <div
-      class="bg-[url('/images/jobview.jpg')] bg-center bg-cover bg-black/70 bg-blend-overlay w-full h-[348px] flex justify-center items-end py-10"
+      class="bg-[url('/images/jobview.jpg')] bg-center bg-cover bg-black/70 bg-blend-overlay w-full md:h-[348px] h-[408px] flex justify-center items-end md:py-10 p-5"
     >
-      <div class="flex w-[1080px] mx-auto justify-between">
+      <div
+        class="lg:flex lg:flex-row lg:w-[1080px] w-[576px] xl:justify-between lg:justify-center flex flex-col justify-center md:gap-10 gap-5"
+      >
         <div class="flex flex-col gap-3">
           <label
             class="px-[10px] py-[5px] text-[12px] rounded text-[#ddd] bg-[#FFFFFF29] w-fit"
           >
             Job opening
           </label>
-          <h3 class="text-[#eee] text-[25px] leading-[35px] font-bold">
+          <h3
+            class="text-[#eee] md:text-[25px] text-[22px] leading-[35px] font-bold"
+          >
             Web Designer and Developer,Company Name
           </h3>
 
-          <div class="flex items-center gap-3">
+          <div
+            class="flex flex-wrap items-center gap-3 md:flex md:flex-row md:items-center"
+          >
             <div class="flex items-center gap-2">
               <img
                 src="/public/images/locationdot.svg"
                 class="w-[17px] h-[17px]"
                 alt=""
               />
-              <p class="text-[#cccccc] text-[17px] leading-[25px]">London</p>
+              <p
+                class="text-[#cccccc] text-[14px] md:text-[17px] leading-[25px]"
+              >
+                London
+              </p>
             </div>
             <div class="flex items-center gap-2">
               <img
@@ -29,7 +39,11 @@
                 class="w-[17px] h-[17px]"
                 alt=""
               />
-              <p class="text-[#cccccc] text-[17px] leading-[25px]">Full Time</p>
+              <p
+                class="text-[#cccccc] text-[14px] md:text-[17px] leading-[25px]"
+              >
+                Full Time
+              </p>
             </div>
             <div class="flex items-center gap-2">
               <img
@@ -37,7 +51,9 @@
                 class="w-[17px] h-[17px]"
                 alt=""
               />
-              <p class="text-[#cccccc] text-[17px] leading-[25px]">
+              <p
+                class="text-[#cccccc] text-[14px] md:text-[17px] leading-[25px]"
+              >
                 1 year ago
               </p>
             </div>
@@ -47,38 +63,54 @@
                 class="w-[17px] h-[17px]"
                 alt=""
               />
-              <p class="text-[#cccccc] text-[17px] leading-[25px]">
+              <p
+                class="text-[#cccccc] text-[14px] md:text-[17px] leading-[25px]"
+              >
                 $2300-$4500/monthly
               </p>
             </div>
           </div>
         </div>
-        <div class="flex flex-col gap-4">
-          <button class="px-[30px] py-[14px] rounded bg-[#2966f4] text-white">
-            Apply Now
-          </button>
-          <button
-            class="px-[20px] py-[14px] rounded bg-[#2966f4] text-white flex items-center gap-3"
+        <div
+          class="flex flex-col items-center justify-center w-full gap-4 lg:w-fit md:flex md:flex-row md:justify-center lg:flex lg:flex-col lg:justify-start"
+        >
+          <a href="#">
+            <button
+              class="px-[67px] py-[14px] rounded bg-[#2966f4] text-white w-full md:w-fit"
+            >
+              Apply Now
+            </button></a
           >
-            <img
-              src="/public/images/linkedin.svg"
-              class="w-[20px] h-[20px]"
-              alt=""
-            />
-            <span>Apply With Linkedin</span>
-          </button>
+          <a href="#">
+            <button
+              class="px-[20px] py-[14px] rounded bg-[#2966f4] text-white flex items-center gap-3 w-full md:w-fit justify-center"
+            >
+              <img
+                src="/public/images/linkedin.svg"
+                class="w-[20px] h-[20px]"
+                alt=""
+              />
+              <span>Apply With Linkedin</span>
+            </button></a
+          >
         </div>
       </div>
     </div>
 
     <!-- jobinformation -->
-    <div class="max-w-[1080px] mx-auto p-[70px]">
+    <div
+      class="xl:max-w-[1080px] mx-auto py-[70px] xl:flex xl:flex-row flex flex-col xl:items-start gap-5 lg:max-w-[768px] md:max-w-[576px] max-w-full px-3"
+    >
       <div class="flex flex-col gap-[20px]">
-        <div class="w-[757px] bg-white p-[30px] flex flex-col gap-5 shadow-lg">
+        <div
+          class="lg:w-[757px] md:w-[576px] w-full bg-white p-5 md:p-[30px] flex flex-col gap-5 shadow-lg"
+        >
           <h5 class="text-[23px] leading-[30px] font-normal text-[#2c3038]">
             Job Information
           </h5>
-          <div class="grid [grid-template-columns:1fr_1fr_1fr] gap-y-4">
+          <div
+            class="grid md:[grid-template-columns:1fr_1fr_1fr] [grid-template-columns:1fr_1fr] gap-y-4"
+          >
             <div class="flex items-start gap-3">
               <div>
                 <img
@@ -181,7 +213,9 @@
             </div>
           </div>
         </div>
-        <div class="w-[757px] bg-white p-[30px] flex flex-col gap-5 shadow-lg">
+        <div
+          class="lg:w-[757px] md:w-[576px] w-full bg-white p-[30px] flex flex-col gap-5 shadow-lg"
+        >
           <div class="flex flex-col gap-[20px]">
             <h5 class="text-[23px] leading-[30px] font-normal text-[#2c3038]">
               Job description
@@ -277,11 +311,13 @@
             </div>
           </div>
         </div>
-        <div class="w-[757px] bg-white p-[30px] flex flex-col gap-5 shadow-lg">
+        <div
+          class="lg:w-[757px] md:w-[576px] w-full bg-white p-[30px] flex flex-col gap-5 shadow-lg"
+        >
           <h5 class="text-[23px] leading-[30px] font-normal text-[#2c3038]">
             Job Skills
           </h5>
-          <div class="flex items-center gap-1">
+          <div class="flex flex-wrap items-center gap-1">
             <a
               href="#"
               class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] text-[#555a64] border border-[#cccaca]"
@@ -296,6 +332,79 @@
               href="#"
               class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] text-[#555a64] border border-[#cccaca]"
               >Coding</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Aside -->
+      <div
+        class="xl:flex xl:flex-col grid md:grid-cols-(3,1fr) lg:max-w-[768px] xl:max-w-[303px] gap-[20px]"
+      >
+        <div
+          class="flex gap-2 p-[20px] bg-[#00BCD4] rounded w-full relative overflow-hidden"
+        >
+          <img
+            src="/public/images/clock.svg"
+            class="w-[44px] h-[44px]"
+            alt=""
+          />
+          <div class="flex flex-col">
+            <small class="text-[16px] leading-[20px] text-[#fff]"
+              >Deadline</small
+            >
+            <strong class="text-[18px] leading-[24px] font-medium text-[#fff]"
+              >December 31, 2019</strong
+            >
+          </div>
+          <div class="absolute -bottom-3 -right-2 rotate-12 opacity-35">
+            <img
+              src="/public/images/clock.svg"
+              class="w-[44px] h-[44px]"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="p-[20px] bg-[#2966f4] text-[#fff] text-center">
+          <a href="#">Save This Job</a>
+        </div>
+        <div class="p-[20px] bg-[#333] text-[#fff] text-center">
+          <a href="#">Email This Job</a>
+        </div>
+        <div class="bg-[#fff] p-[30px] shadow-lg">
+          <h5 class="text-[23px] leading-[30px] font-normal text-[#2c3038]">
+            Advertisement
+          </h5>
+        </div>
+        <div class="flex flex-col gap-[20px] p-[30px] bg-[#fff] shadow-lg">
+          <h5 class="text-[23px] leading-[30px] font-normal text-[#2c3038]">
+            Job Tags
+          </h5>
+          <div class="flex flex-wrap gap-1">
+            <a
+              href="#"
+              class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] border border-[#cccaca]"
+              >#Designing</a
+            >
+            <a
+              href="#"
+              class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] border border-[#cccaca]"
+              >#Coding</a
+            >
+            <a
+              href="#"
+              class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] border border-[#cccaca]"
+              >#.Net</a
+            >
+            <a
+              href="#"
+              class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] border border-[#cccaca]"
+              >#Management</a
+            >
+            <a
+              href="#"
+              class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] border border-[#cccaca]"
+              >#Java</a
             >
           </div>
         </div>

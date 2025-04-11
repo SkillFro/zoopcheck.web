@@ -132,6 +132,7 @@ export default {
     },
     closeNav() {
       this.nav = false;
+      document.body.style.overflow = "";
     },
   },
   watch: {

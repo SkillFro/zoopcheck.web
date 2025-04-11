@@ -12,11 +12,11 @@
           <img
             :src="item.image"
             alt="image"
-            class="lg:w-[456px] lg:h-[304px] w-full rounded-t-md"
+            class="lg:w-[406px] lg:h-[304px] w-full rounded-t-md"
           />
         </div>
         <div
-          class="lg:w-[456px] lg:h-[206px] flex gap-3 lg:p-2 xl:p-[30px] w-full flex-col bg-white rounded-b-md md:px-3 md:py-2 px-2"
+          class="lg:w-[406px] lg:h-[206px] flex gap-3 lg:p-2 xl:p-[30px] w-full flex-col bg-white rounded-b-md md:px-3 md:py-2 px-2"
         >
           <h5 class="text-[#555a64] text-[16px]">{{ item.date }}</h5>
           <a

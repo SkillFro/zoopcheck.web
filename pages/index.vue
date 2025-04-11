@@ -1,16 +1,8 @@
 <template>
   <div class="bg-[#f8f9fa]">
-    <div @click="arrow()" class="fixed bottom-0 right-0 z-50 m-5">
-      <img
-        class="md:w-[50px] md:h-[50px] w-[40px] h-[40px]"
-        src="/public/images/arrow.svg"
-        alt=""
-      />
-    </div>
     <!-- Hero Section -->
     <div
-      id="hero"
-      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay h-screen md:bg-center bg-no-repeat bg-cover w-full flex flex-col justify-center items-center text-white gap-[47px]"
+      class="bg-[url('/images/hero.jpg')] bg-black/60 mt-24 bg-blend-overlay h-screen md:bg-center bg-no-repeat bg-cover w-full flex flex-col justify-center items-center text-white gap-[45px]"
     >
       <div class="lg:max-w-[1047px] md:max-w-[576px] max-w-[288px]">
         <h2
@@ -28,6 +20,15 @@
           full potential <br />
           by providing them with career placement services.
         </p>
+      </div>
+      <div>
+        <NuxtLink to="/login">
+          <button
+            class="md:px-[25px] md:py-[12px] px-5 py-3 text-white rounded text-[16px] leading-[24px] bg-[#2966f4]"
+          >
+            Get Started
+          </button>
+        </NuxtLink>
       </div>
     </div>
 
@@ -273,13 +274,6 @@ export default {
         },
       ],
     };
-  },
-  methods: {
-    arrow() {
-      document.getElementById("hero").scrollIntoView({
-        behavior: "smooth",
-      });
-    },
   },
 };
 </script>

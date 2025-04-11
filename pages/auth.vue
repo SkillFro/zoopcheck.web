@@ -1,80 +1,19 @@
-<!-- <template>
-  <div
-    class="flex flex-col items-center justify-center py-5 bg-[#f8f9fa] h-screen"
-  >
-    <div
-      class="bg-white flex flex-col p-[30px] gap-5 rounded-xl w-full md:w-[464px] h-auto border shadow-lg"
-    >
-      <div class="flex items-center justify-center">
-        <img src="/public/images/logo.svg" width="250px" alt="" />
-      </div>
-      <div class="flex items-center justify-center">
-        <h4
-          class="py-[10px] px-[35px] bg-white text-[#555a64] leading-[25px] border shadow text-[16px] rounded font-semibold"
-        >
-          Login
-        </h4>
-      </div>
-      <form action="#" method="post" class="flex flex-col gap-5">
-        <div class="flex flex-col gap-5">
-          <div class="flex flex-col gap-1.5">
-            <label for="#" class="text-[16px] text-[#555a64] font-semibold"
-              >Enter Your Email :</label
-            >
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              class="w-full rounded p-[12px] text-[16px] border border-[#ccc] placeholder:text-[#555a64] outline-none"
-            />
-          </div>
-
-          <div class="flex flex-col gap-1.5">
-            <label class="text-[16px] text-[#555a64] font-semibold" for="#"
-              >Enter Your Password</label
-            >
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter your password :"
-              class="w-full rounded p-[12px] text-[16px] border border-[#ccc] placeholder:text-[#555a64] outline-none"
-            />
-          </div>
-        </div>
-        <div class="flex items-center justify-between">
-          <a href="#" class="text-[#2c3038]">forgot password? </a>
-          <button
-            class="py-[10px] px-[35px] bg-[#2966f4] text-white text-[16px] rounded"
-          >
-            Login
-          </button>
-        </div>
-      </form>
-      <div class="mt-5 text-center">
-        <p class="text-[16px] leading-[25px] text-[#2c3038] underline">
-          Don't have an account? <NuxtLink to="/signup">Sign up now</NuxtLink>
-        </p>
-      </div>
-    </div>
-  </div>
-</template> -->
-
 <template>
-  <div
-    class="md:pt-20 bg-[#f8f9fa] lg:h-screen flex justify-center items-center py-14"
-  >
+  <div class="bg-[#f8f9fa] h-screen flex justify-center items-center">
     <!-- Login -->
     <div
       v-if="login"
       class="lg:flex lg:flex-row flex flex-col items-center justify-center w-full md:max-w-[1100px] md:mx-auto px-2"
     >
       <div
-        class="md:w-[400px] md:h-[500px] w-full h-auto bg-white border px-4 md:px-8 py-5 flex flex-col gap-[15px]"
+        class="md:w-[400px] md:h-[500px] w-full h-auto bg-white border px-4 md:px-8 py-5 flex flex-col gap-[15px] shadow-xl"
       >
-        <div>
+        <div
+          class="flex items-center justify-center lg:items-start lg:justify-start lg:flex"
+        >
           <img src="/public/images/logo.svg" class="w-[150px]" alt="" />
         </div>
-        <div>
+        <div class="text-center lg:text-start">
           <h3 class="text-[25px] font-semibold text-[#2c3038]">Welcome Back</h3>
         </div>
         <div class="flex flex-col gap-[16px]">
@@ -102,19 +41,20 @@
           </div>
           <div class="flex items-center gap-3">
             <input
+              @click="togglePasswordVisibility()"
               type="checkbox"
               name="checkbox"
-              id=""
+              id="showpassword"
               class="w-[15px] h-[15px]"
             />
             <p class="">Show Me Password</p>
           </div>
           <div>
-            <button
-              class="p-3 rounded bg-[#2966f4] text-white w-full shadow-lg shadow-[#2966f450]"
-            >
-              Login
-            </button>
+            <NuxtLink to="/dashboard">
+              <button class="p-3 rounded bg-[#2966f4] text-white w-full">
+                Login
+              </button>
+            </NuxtLink>
           </div>
         </div>
         <hr />
@@ -127,7 +67,7 @@
           </p>
         </div>
       </div>
-      <div>
+      <div class="hidden lg:block">
         <img
           src="/public/images/loginimage.png"
           class="md:w-[400px] md:h-[500px] object-contain"
@@ -139,10 +79,10 @@
     <!-- Signup -->
     <div
       v-if="signup"
-      class="lg:flex lg:flex-row-reverse flex flex-col-reverse items-center justify-center w-full md:max-w-[1100px] md:mx-auto px-2"
+      class="lg:flex lg:flex-row-reverse flex flex-col-reverse items-center justify-center w-full lg:max-w-[1100px] lg:mx-auto px-2"
     >
       <div
-        class="md:w-[400px] md:h-[500px] w-full h-auto bg-white border px-8 py-5 flex flex-col gap-[15px]"
+        class="md:w-[400px] md:h-[500px] w-full h-auto bg-white border px-3 md:px-8 md:py-3 py-5 flex flex-col gap-[10px] shadow-xl"
       >
         <div class="text-center">
           <h3 class="text-[25px] font-semibold text-[#2c3038]">Hi Welcome</h3>
@@ -151,6 +91,7 @@
         <!-- Buttons -->
         <div class="flex items-center justify-center gap-2">
           <button
+            id="recruiter"
             @click="toggleRecruiter()"
             class="px-6 py-2 :font-medium :text-[16px] border rounded transition-all duration-300 font-medium hover:bg-[#333333] hover:text-white"
             :class="
@@ -160,6 +101,7 @@
             Recruiter?
           </button>
           <button
+            id="canditate"
             @click="toggleCanditate()"
             class="px-6 py-2 :font-medium :text-[16px] border rounded transition-all duration-300 font-medium hover:bg-[#333333] hover:text-white"
             :class="
@@ -171,7 +113,7 @@
         </div>
 
         <!-- Recruiter -->
-        <div v-if="recruiter" class="flex flex-col gap-[16px]">
+        <div v-if="recruiter" class="flex flex-col gap-[10px]">
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Name </label>
             <input
@@ -208,15 +150,26 @@
           <div>
             <button
               @click="toggleSignup()"
-              class="p-3 rounded bg-[#2966f4] text-white w-full shadow-lg shadow-[#2966f450]"
+              class="p-3 rounded bg-[#2966f4] text-white w-full"
             >
               Register
             </button>
+          </div>
+          <hr />
+          <div class="text-center">
+            <p class="text-[16px] leading-[25px] text-[#2c3038]">
+              Already have an account?
+              <span
+                @click="toggleSignup()"
+                class="text-[#2966f4] cursor-pointer"
+                >Login now</span
+              >
+            </p>
           </div>
         </div>
 
         <!-- Canditate -->
-        <div v-if="canditate" class="flex flex-col gap-[16px]">
+        <div v-if="canditate" class="flex flex-col gap-[10px]">
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Name </label>
             <input
@@ -253,14 +206,25 @@
           <div>
             <button
               @click="toggleSignup()"
-              class="p-3 rounded bg-[#2966f4] text-white w-full shadow-lg shadow-[#2966f450]"
+              class="p-3 rounded bg-[#2966f4] text-white w-full"
             >
               Register
             </button>
           </div>
+          <hr />
+          <div class="text-center">
+            <p class="text-[16px] leading-[25px] text-[#2c3038]">
+              Already have an account?
+              <span
+                @click="toggleSignup()"
+                class="text-[#2966f4] cursor-pointer"
+                >Login now</span
+              >
+            </p>
+          </div>
         </div>
       </div>
-      <div>
+      <div class="hidden lg:block">
         <img
           src="/public/images/signupimage.png"
           class="md:w-[400px] md:h-[500px] object-contain"
@@ -296,6 +260,11 @@ export default {
     toggleCanditate() {
       this.canditate = true;
       this.recruiter = false;
+    },
+    togglePasswordVisibility() {
+      const passwordInput = document.getElementById("password");
+      const checkbox = document.getElementById("showpassword");
+      passwordInput.type = checkbox.checked ? "text" : "password";
     },
   },
   setup() {

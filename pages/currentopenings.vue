@@ -8,23 +8,37 @@
         </h2>
         <div class="w-20 h-[2px] xl:w-32 bg-[#2966f4] mx-auto mb-6"></div>
 
-        <div class="flex flex-wrap justify-center gap-4 mb-8">
-          <div v-for="tab in tabs" :key="tab.key">
-            <button
-              @click="
-                () => {
-                  selectedTab = tab.key;
-                }
-              "
-              class="px-6 py-2 xl:px-[30px] xl:py-[14px] xl:font-medium xl:text-[16px] border rounded transition-all duration-300 font-medium"
-              :class="
-                selectedTab === tab.key
-                  ? 'bg-black text-white'
-                  : 'bg-white text-[#333333] hover:bg-[#333333] hover:text-white'
-              "
+        <!-- Search -->
+        <div
+          class="md:flex md:flex-row flex flex-col items-center justify-center gap-4 mb-8 max-w-[1100px] mx-auto"
+        >
+          <div class="relative md:w-[400px] w-auto">
+            <span
+              class="absolute text-gray-400 transform -translate-y-1/2 left-3 top-1/2"
             >
-              {{ tab.label }}
-            </button>
+              <img src="/public/dash/search.png" alt="search" class="w-5 h-5" />
+            </span>
+            <input
+              type="text"
+              v-model="search"
+              placeholder="Search..."
+              class="w-full py-2 pl-10 pr-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <select
+              v-model="category"
+              class="px-2 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="Select Category" disabled selected class="">
+                Select Category
+              </option>
+              <option>Developer</option>
+              <option>Designer</option>
+              <option>Graphic Designer</option>
+              <option>Full Stack Developers</option>
+            </select>
           </div>
         </div>
 
@@ -150,6 +164,7 @@
 export default {
   data() {
     return {
+      category: "Select Category",
       selectedTab: "all",
 
       cards: [

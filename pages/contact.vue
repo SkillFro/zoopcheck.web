@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-28">
+  <div class="pt-14">
     <div class="relative flex flex-col items-center justify-center">
       <h1
         class="font-semibold md:text-[35px] text-[30px] leading-[24px] text-[#212529] text-center mb-[50px] md:mt-20 mt-10"

@@ -22,7 +22,7 @@
         </p>
       </div>
       <div>
-        <NuxtLink to="/login">
+        <NuxtLink to="/auth">
           <button
             class="md:px-[25px] md:py-[12px] px-5 py-3 text-white rounded text-[16px] leading-[24px] bg-[#2966f4]"
           >

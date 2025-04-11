@@ -70,7 +70,7 @@
             {{ nav.name }}
           </NuxtLink>
         </div>
-        <div class="flex flex-col items-center gap-[16px]">
+        <div class="flex flex-col gap-[16px]">
           <button
             class="py-[6px] px-[12px] bg-[#2966f4] text-white text-[16px] rounded-[0.375rem]"
           >
@@ -128,6 +128,7 @@ export default {
   methods: {
     toggleNav() {
       this.nav = !this.nav;
+      document.body.style.overflow = this.nav ? "hidden" : "";
     },
     closeNav() {
       this.nav = false;

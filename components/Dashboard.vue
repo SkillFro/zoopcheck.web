@@ -19,7 +19,7 @@
                 class="w-[20px] h-[20px]"
               />
 
-              <h1 class="text-[16px] text-slate-400 font-medium">Home</h1>
+              <h1 class="text-[16px] text-slate-400 font-medium">Dashboard</h1>
             </div>
           </NuxtLink>
           <nuxt-link to="/dashboard/job">

@@ -12,6 +12,7 @@
           <div class="flex items-center xl:gap-[16px] gap-[10px]">
             <div
               v-for="nav in navs"
+              :key="nav"
               class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
               :class="{
                 '  text-[#2966f4] underline underline-offset-[12px] decoration-[#2966f4] decoration-2':
@@ -59,6 +60,7 @@
       <div class="flex flex-col items-start justify-center gap-[40px]">
         <div
           v-for="nav in navs"
+          :key="nav"
           class="flex flex-col items-start justify-center hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
           :class="{
             '  text-[#2966f4]': $route.path === nav.path,

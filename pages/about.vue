@@ -46,7 +46,7 @@
       </div>
       <div class="mt-3 md:mt-0">
         <img
-          src="/public/tech/about1.jfif"
+          src="/public/tech/about1.png"
           alt="image"
           class="md:w-[699px] md:h-[466px]"
         />

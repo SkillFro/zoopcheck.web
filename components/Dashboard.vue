@@ -2,7 +2,7 @@
   <div>
     <div class="hidden lg:block">
       <div
-        class="h-full bg-white border border-white border-r-slate-100 max-w-[400px] p-5 flex flex-col gap-4 px-8"
+        class="h-screen bg-white border border-white border-r-slate-100 max-w-[400px] p-5 flex flex-col gap-4 px-8"
       >
         <img
           src="/public/images/logo.svg"

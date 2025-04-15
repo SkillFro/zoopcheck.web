@@ -76,18 +76,18 @@
         >
           <a href="#">
             <button
-              class="px-[67px] py-[14px] rounded bg-[#2966f4] text-white w-full md:w-fit"
+              class="md:px-[67px] md:py-[14px] px-10 py-2 rounded bg-[#2966f4] text-white w-full md:w-fit"
             >
               Apply Now
             </button></a
           >
           <a href="#">
             <button
-              class="px-[20px] py-[14px] rounded bg-[#2966f4] text-white flex items-center gap-3 w-full md:w-fit justify-center"
+              class="md:px-[20px] md:py-[14px] p-3 rounded bg-[#2966f4] text-white flex items-center gap-3 w-full md:w-fit justify-center"
             >
               <img
                 src="/public/images/linkedin.svg"
-                class="w-[20px] h-[20px]"
+                class="md:w-[20px] md:h-[20px] h-[15px] w-[15px]"
                 alt=""
               />
               <span>Apply With Linkedin</span>

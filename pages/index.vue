@@ -224,21 +224,21 @@ export default {
     return {
       cards: [
         {
-          image: "/tech/blog1.jfif",
+          image: "/tech/blog1.png",
           date: "April 1, 2023.",
           link: "What to wear to a job interview",
           description:
             "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
         },
         {
-          image: "/tech/blog2.jfif",
+          image: "/tech/blog2.png",
           date: "April 1, 2023.",
           link: "Resume Writing Do's and Don'ts",
           description:
             "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
         },
         {
-          image: "/tech/blog3.jfif",
+          image: "/tech/blog3.png",
           date: "April 1, 2023.",
           link: "What to wear to a job interview",
           description:

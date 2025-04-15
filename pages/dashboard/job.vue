@@ -160,7 +160,7 @@
       </div>
 
       <div
-        class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 max-w-[1360px] mx-auto mt-6 md:mt-6 md:gap-4 lg:gap-6 xl:gap-14"
+        class="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 max-w-[1360px] mx-auto mt-6 md:mt-6 md:gap-4 lg:gap-6 xl:gap-14 2xl:grid-cols-3"
       >
         <div
           v-for="job in jobs"

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="w-full px-10 py-4 bg-white">
-      <h1 class="text-3xl font-semibold">Overview</h1>
+    <div class="w-full px-10 py-4 bg-white xl:py-4">
+      <h1 class="xl:text-3xl text-[20px] font-semibold">Overview</h1>
     </div>
   </div>
 </template>

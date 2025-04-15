@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#000000] opacity 0% mt-6">
+  <div class="bg-[#000000] opacity 0%">
     <div class="block md:hidden">
       <div class="p-2 px-4">
         <div class="flex-wrap">

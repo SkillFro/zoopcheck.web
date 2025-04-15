@@ -1,5 +1,5 @@
 <template>
-  <div @click="arrow()" class="fixed bottom-0 right-0 m-8 z-999">
+  <div @click="arrow()" class="fixed bottom-0 right-0 z-50 m-8">
     <img
       class="md:w-[50px] md:h-[50px] w-[40px] h-[40px]"
       src="/public/images/arrow.svg"

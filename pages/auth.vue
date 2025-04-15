@@ -6,7 +6,7 @@
       class="lg:flex lg:flex-row flex flex-col items-center justify-center w-full md:max-w-[1100px] md:mx-auto px-2"
     >
       <div
-        class="md:w-[400px] md:h-[500px] w-full h-auto bg-white border px-4 md:px-8 py-5 flex flex-col gap-[12px] shadow-xl"
+        class="md:w-[400px] h-[550px] w-full bg-white border px-4 md:px-8 py-5 flex flex-col gap-[12px] shadow-xl"
       >
         <div
           class="flex items-center justify-center lg:items-start lg:justify-start lg:flex"
@@ -67,9 +67,6 @@
               <span v-else>Login</span>
             </button>
           </div>
-          <div v-if="loginError" class="text-sm text-center text-red-500">
-            {{ loginError }}
-          </div>
         </div>
         <hr />
         <div class="text-center">
@@ -84,7 +81,7 @@
       <div class="hidden lg:block">
         <img
           src="/public/images/loginimage.png"
-          class="md:w-[400px] md:h-[500px] object-contain"
+          class="w-[440px] h-[550px] object-contain"
           alt=""
         />
       </div>
@@ -96,7 +93,7 @@
       class="lg:flex lg:flex-row-reverse flex flex-col-reverse items-center justify-center w-full lg:max-w-[1100px] lg:mx-auto px-2"
     >
       <div
-        class="md:w-[400px] md:h-[500px] w-full h-auto bg-white border px-3 md:px-8 md:py-3 py-5 flex flex-col gap-[10px] shadow-xl"
+        class="md:w-[400px] h-[550px] w-full bg-white border px-3 md:px-8 md:py-3 py-5 flex flex-col gap-[10px] shadow-xl"
       >
         <div class="text-center">
           <h3 class="text-[25px] font-semibold text-[#2c3038]">Hi Welcome</h3>
@@ -127,7 +124,7 @@
         </div>
 
         <!-- Recruiter -->
-        <div v-if="recruiter" class="flex flex-col gap-[10px]">
+        <div v-if="recruiter" class="flex flex-col gap-[8px]">
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Name </label>
             <input
@@ -138,6 +135,9 @@
               placeholder="Enter your Name"
               class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
             />
+            <p v-if="signupErrors.name" class="mt-1 text-sm text-red-600">
+              {{ signupErrors.name }}
+            </p>
           </div>
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Email </label>
@@ -149,6 +149,9 @@
               placeholder="Enter your email"
               class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
             />
+            <p v-if="signupErrors.email" class="mt-1 text-sm text-red-600">
+              {{ signupErrors.email }}
+            </p>
           </div>
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#"
@@ -162,6 +165,19 @@
               placeholder="Enter your password"
               class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
             />
+            <p v-if="signupErrors.password" class="mt-1 text-sm text-red-600">
+              {{ signupErrors.password }}
+            </p>
+            <div class="flex items-center gap-3">
+              <input
+                @click="togglePasswordVisibility()"
+                type="checkbox"
+                name="checkbox"
+                id="showpassword"
+                class="w-[15px] h-[15px]"
+              />
+              <p class="">Show Me Password</p>
+            </div>
           </div>
 
           <div>
@@ -191,7 +207,7 @@
         </div>
 
         <!-- Candidate -->
-        <div v-if="canditate" class="flex flex-col gap-[10px]">
+        <div v-if="canditate" class="flex flex-col gap-[8px]">
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Name </label>
             <input
@@ -226,6 +242,16 @@
               placeholder="Enter your password"
               class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
             />
+            <div class="flex items-center gap-3">
+              <input
+                @click="togglePasswordVisibility()"
+                type="checkbox"
+                name="checkbox"
+                id="showpassword"
+                class="w-[15px] h-[15px]"
+              />
+              <p class="">Show Me Password</p>
+            </div>
           </div>
 
           <div>
@@ -257,7 +283,7 @@
       <div class="hidden lg:block">
         <img
           src="/public/images/signupimage.png"
-          class="md:w-[400px] md:h-[500px] object-contain"
+          class="w-[440px] h-[550px] object-contain"
           alt=""
         />
       </div>
@@ -292,6 +318,11 @@ export default {
         email: null,
         password: null,
       },
+      signupErrors: {
+        name: null,
+        email: null,
+        password: null,
+      },
     };
   },
   methods: {
@@ -321,13 +352,18 @@ export default {
       passwordInput.type = checkbox.checked ? "text" : "password";
     },
     async handleLogin() {
-      if (!this.loginForm.email || !this.loginForm.password) {
-        this.loginError = "Please fill in all fields";
-        return;
+      if (this.loginForm.email === "") {
+        this.errors.email = "Email is Required";
+      } else {
+        this.errors.email = "";
+      }
+      if (this.loginForm.password === "") {
+        this.errors.password = "Password is Required";
+      } else {
+        this.errors.password = "";
       }
 
       this.loading = true;
-      this.loginError = "";
 
       try {
         const response = await axios.post(
@@ -348,8 +384,6 @@ export default {
         this.$router.push("/dashboard");
       } catch (error) {
         console.error("Login error:", error);
-        this.loginError =
-          error.response?.data?.message || "Login failed. Please try again.";
       } finally {
         this.loading = false;
       }

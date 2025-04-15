@@ -38,63 +38,63 @@ export default {
     return {
       cards: [
         {
-          image: "/tech/blog1.jfif",
+          image: "/tech/blog1.png",
           date: "April 1, 2023.",
           link: "What to wear to a job interview",
           description:
             "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
         },
         {
-          image: "/tech/blog2.jfif",
+          image: "/tech/blog2.png",
           date: "April 1, 2023.",
           link: "Resume Writing Do's and Don'ts",
           description:
             "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
         },
         {
-          image: "/tech/blog3.jfif",
+          image: "/tech/blog3.png",
           date: "April 1, 2023.",
           link: "What to wear to a job interview",
           description:
             "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
         },
         {
-          image: "/tech/blog4.jpg",
+          image: "/tech/blog4.png",
           date: "April 1, 2023.",
           link: "What to wear to a job interview",
           description:
             "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
         },
         {
-          image: "/tech/blog5.jpg",
+          image: "/tech/blog5.png",
           date: "April 1, 2023.",
           link: "Resume Writing Do's and Don'ts",
           description:
             "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
         },
         {
-          image: "/tech/blog6.jpg",
+          image: "/tech/blog6.png",
           date: "April 1, 2023.",
           link: "What to wear to a job interview",
           description:
             "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
         },
         {
-          image: "/tech/blog7.jpg",
+          image: "/tech/blog7.png",
           date: "April 1, 2023.",
           link: "What to wear to a job interview",
           description:
             "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
         },
         {
-          image: "/tech/blog8.jpg",
+          image: "/tech/blog8.png",
           date: "April 1, 2023.",
           link: "Resume Writing Do's and Don'ts",
           description:
             "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
         },
         {
-          image: "/tech/blog9.jpg",
+          image: "/tech/blog9.png",
           date: "April 1, 2023.",
           link: "What to wear to a job interview",
           description:

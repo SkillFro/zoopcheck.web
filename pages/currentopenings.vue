@@ -43,8 +43,20 @@
         </div>
 
         <div class="flex flex-col items-center gap-6">
+          <template v-if="loading">
+            <div class="flex items-center justify-center w-full py-10">
+              <div
+                class="w-10 h-10 border-t-4 border-blue-500 border-solid rounded-full animate-spin"
+              ></div>
+              <span class="ml-3 font-medium text-blue-600"
+                >Loading jobs...</span
+              >
+            </div>
+          </template>
           <template
-            v-if="filteredJobs[selectedTab] && filteredJobs[selectedTab].length"
+            v-else-if="
+              filteredJobs[selectedTab] && filteredJobs[selectedTab].length
+            "
           >
             <div
               v-for="job in filteredJobs[selectedTab]"
@@ -157,6 +169,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      loading: false,
       category: "Select Category",
       selectedTab: "all",
       search: "",
@@ -187,6 +200,7 @@ export default {
 
   methods: {
     async fetchJobs() {
+      this.loading = true;
       try {
         const response = await axios.get(
           "https://zoopcheck-api.vercel.app/api/posts"
@@ -198,7 +212,7 @@ export default {
             openings: post.no_of_openings,
             experience: `${post.experience} Years`,
             location: post.work_mode === "remote" ? "Remote" : "Onsite",
-            type: "intern", // You can map a real type here if available
+            type: "intern", // placeholder
             date: new Date(post.created_at).toISOString().split("T")[0],
           }));
 
@@ -206,6 +220,8 @@ export default {
         }
       } catch (error) {
         console.error("Failed to fetch jobs:", error);
+      } finally {
+        this.loading = false;
       }
     },
 

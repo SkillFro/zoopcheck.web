@@ -6,7 +6,7 @@
       class="lg:flex lg:flex-row flex flex-col items-center justify-center w-full md:max-w-[1100px] md:mx-auto px-2"
     >
       <div
-        class="md:w-[400px] md:h-[500px] w-full h-auto bg-white border px-4 md:px-8 py-5 flex flex-col gap-[15px] shadow-xl"
+        class="md:w-[400px] md:h-[500px] w-full h-auto bg-white border px-4 md:px-8 py-5 flex flex-col gap-[12px] shadow-xl"
       >
         <div
           class="flex items-center justify-center lg:items-start lg:justify-start lg:flex"
@@ -27,6 +27,9 @@
               placeholder="Enter your email"
               class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
             />
+            <p v-if="errors.email" class="mt-1 text-sm text-red-600">
+              {{ errors.email }}
+            </p>
           </div>
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#"
@@ -40,6 +43,9 @@
               placeholder="Enter your password"
               class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
             />
+            <p v-if="errors.password" class="mt-1 text-sm text-red-600">
+              {{ errors.password }}
+            </p>
           </div>
           <div class="flex items-center gap-3">
             <input
@@ -281,6 +287,10 @@ export default {
         email: "",
         password: "",
         role: "recruiter",
+      },
+      errors: {
+        email: null,
+        password: null,
       },
     };
   },

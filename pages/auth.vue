@@ -20,6 +20,7 @@
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Email </label>
             <input
+              v-model="loginForm.email"
               type="email"
               name="email"
               id="email"
@@ -32,6 +33,7 @@
               >Password
             </label>
             <input
+              v-model="loginForm.password"
               type="password"
               name="password"
               id="password"
@@ -50,11 +52,17 @@
             <p class="">Show Me Password</p>
           </div>
           <div>
-            <NuxtLink to="/dashboard">
-              <button class="p-3 rounded bg-[#2966f4] text-white w-full">
-                Login
-              </button>
-            </NuxtLink>
+            <button
+              @click="handleLogin"
+              class="p-3 rounded bg-[#2966f4] text-white w-full"
+              :disabled="loading"
+            >
+              <span v-if="loading">Logging in...</span>
+              <span v-else>Login</span>
+            </button>
+          </div>
+          <div v-if="loginError" class="text-sm text-center text-red-500">
+            {{ loginError }}
           </div>
         </div>
         <hr />
@@ -108,7 +116,7 @@
               canditate ? 'bg-[#333333] text-white' : 'bg-white text-black'
             "
           >
-            Canditate?
+            Candidate?
           </button>
         </div>
 
@@ -117,6 +125,7 @@
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Name </label>
             <input
+              v-model="signupForm.name"
               type="text"
               name="name"
               id="name"
@@ -127,6 +136,7 @@
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Email </label>
             <input
+              v-model="signupForm.email"
               type="email"
               name="email"
               id="email"
@@ -139,6 +149,7 @@
               >Password
             </label>
             <input
+              v-model="signupForm.password"
               type="password"
               name="password"
               id="password"
@@ -149,11 +160,16 @@
 
           <div>
             <button
-              @click="toggleSignup()"
+              @click="handleSignup"
               class="p-3 rounded bg-[#2966f4] text-white w-full"
+              :disabled="loading"
             >
-              Register
+              <span v-if="loading">Registering...</span>
+              <span v-else>Register</span>
             </button>
+          </div>
+          <div v-if="signupError" class="text-sm text-center text-red-500">
+            {{ signupError }}
           </div>
           <hr />
           <div class="text-center">
@@ -168,11 +184,12 @@
           </div>
         </div>
 
-        <!-- Canditate -->
+        <!-- Candidate -->
         <div v-if="canditate" class="flex flex-col gap-[10px]">
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Name </label>
             <input
+              v-model="signupForm.name"
               type="text"
               name="name"
               id="name"
@@ -183,6 +200,7 @@
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Email </label>
             <input
+              v-model="signupForm.email"
               type="email"
               name="email"
               id="email"
@@ -195,6 +213,7 @@
               >Password
             </label>
             <input
+              v-model="signupForm.password"
               type="password"
               name="password"
               id="password"
@@ -205,11 +224,16 @@
 
           <div>
             <button
-              @click="toggleSignup()"
+              @click="handleSignup"
               class="p-3 rounded bg-[#2966f4] text-white w-full"
+              :disabled="loading"
             >
-              Register
+              <span v-if="loading">Registering...</span>
+              <span v-else>Register</span>
             </button>
+          </div>
+          <div v-if="signupError" class="text-sm text-center text-red-500">
+            {{ signupError }}
           </div>
           <hr />
           <div class="text-center">
@@ -234,7 +258,10 @@
     </div>
   </div>
 </template>
+
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -242,29 +269,127 @@ export default {
       signup: false,
       recruiter: true,
       canditate: false,
+      loading: false,
+      loginError: "",
+      signupError: "",
+      loginForm: {
+        email: "",
+        password: "",
+      },
+      signupForm: {
+        name: "",
+        email: "",
+        password: "",
+        role: "recruiter",
+      },
     };
   },
   methods: {
     toggleLogin() {
       this.login = false;
       this.signup = true;
+      this.loginError = "";
     },
     toggleSignup() {
       this.login = true;
       this.signup = false;
+      this.signupError = "";
     },
     toggleRecruiter() {
       this.recruiter = true;
       this.canditate = false;
+      this.signupForm.role = "recruiter";
     },
     toggleCanditate() {
       this.canditate = true;
       this.recruiter = false;
+      this.signupForm.role = "candidate";
     },
     togglePasswordVisibility() {
       const passwordInput = document.getElementById("password");
       const checkbox = document.getElementById("showpassword");
       passwordInput.type = checkbox.checked ? "text" : "password";
+    },
+    async handleLogin() {
+      if (!this.loginForm.email || !this.loginForm.password) {
+        this.loginError = "Please fill in all fields";
+        return;
+      }
+
+      this.loading = true;
+      this.loginError = "";
+
+      try {
+        const response = await axios.post(
+          "https://zoopcheck-api.vercel.app/api/auth/login",
+          {
+            email: this.loginForm.email,
+            password: this.loginForm.password,
+          }
+        );
+
+        // Handle successful login
+        console.log("Login successful:", response.data);
+
+        // Store the token (you might want to use cookies or localStorage)
+        localStorage.setItem("authToken", response.data.token);
+
+        // Redirect to dashboard
+        this.$router.push("/dashboard");
+      } catch (error) {
+        console.error("Login error:", error);
+        this.loginError =
+          error.response?.data?.message || "Login failed. Please try again.";
+      } finally {
+        this.loading = false;
+      }
+    },
+    async handleSignup() {
+      if (
+        !this.signupForm.name ||
+        !this.signupForm.email ||
+        !this.signupForm.password
+      ) {
+        this.signupError = "Please fill in all fields";
+        return;
+      }
+
+      this.loading = true;
+      this.signupError = "";
+
+      try {
+        const response = await axios.post(
+          "https://zoopcheck-api.vercel.app/api/auth/register",
+          {
+            name: this.signupForm.name,
+            email: this.signupForm.email,
+            password: this.signupForm.password,
+            role: this.signupForm.role,
+          }
+        );
+
+        // Handle successful registration
+        console.log("Registration successful:", response.data);
+
+        // Optionally auto-login the user after registration
+        // Or show a success message and switch to login form
+        this.toggleSignup();
+
+        // Clear form
+        this.signupForm = {
+          name: "",
+          email: "",
+          password: "",
+          role: "recruiter",
+        };
+      } catch (error) {
+        console.error("Registration error:", error);
+        this.signupError =
+          error.response?.data?.message ||
+          "Registration failed. Please try again.";
+      } finally {
+        this.loading = false;
+      }
     },
   },
   setup() {

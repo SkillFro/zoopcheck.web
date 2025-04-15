@@ -1,5 +1,6 @@
 <template>
   <div class="pt-10 bg-[#f8f9fa]">
+    <!-- hero section -->
     <div
       class="bg-[url('/images/jobview.jpg')] bg-center bg-cover bg-black/70 bg-blend-overlay w-full md:h-[348px] h-[408px] flex justify-center items-end md:py-10 p-5"
     >
@@ -293,21 +294,24 @@
               Share this job
             </h5>
             <div class="flex items-center gap-2">
-              <img
-                src="/public/images/facebook.svg"
-                class="w-[35px] h-[35px]"
-                alt=""
-              />
-              <img
-                src="/public/images/twitter.svg"
-                class="w-[35px] h-[35px]"
-                alt=""
-              />
-              <img
-                src="/public/images/linkedin2.svg"
-                class="w-[35px] h-[35px]"
-                alt=""
-              />
+              <a href="#">
+                <img
+                  src="/public/images/facebook.svg"
+                  class="w-[35px] h-[35px]"
+                  alt=""
+              /></a>
+              <a href="#">
+                <img
+                  src="/public/images/twitter.svg"
+                  class="w-[35px] h-[35px]"
+                  alt=""
+              /></a>
+              <a href="#">
+                <img
+                  src="/public/images/linkedin2.svg"
+                  class="w-[35px] h-[35px]"
+                  alt=""
+              /></a>
             </div>
           </div>
         </div>

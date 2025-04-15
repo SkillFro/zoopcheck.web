@@ -422,11 +422,3 @@ useHead({
   ],
 });
 </script>
-
-<script></script>
-<!-- --main-bg-color: #f8f9fa;
---main-heading-color: #212129d6;
---heading-color: #2c3038;
---para-color: #555a64;
---theme-color: #ff4848;
---theme-hover-color: #f83333; -->

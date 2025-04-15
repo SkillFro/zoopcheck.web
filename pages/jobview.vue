@@ -383,27 +383,27 @@
           <div class="flex flex-wrap gap-1">
             <a
               href="#"
-              class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] border border-[#cccaca]"
+              class="bg-[#f2f2f275] px-[10px] py-[8px] rounded-full text-[15px] border border-[#cccaca] text-black/75"
               >#Designing</a
             >
             <a
               href="#"
-              class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] border border-[#cccaca]"
+              class="bg-[#f2f2f275] px-[10px] py-[8px] rounded-full text-[15px] border border-[#cccaca] text-black/75"
               >#Coding</a
             >
             <a
               href="#"
-              class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] border border-[#cccaca]"
+              class="bg-[#f2f2f275] px-[10px] py-[8px] rounded-full text-[15px] border border-[#cccaca] text-black/75"
               >#.Net</a
             >
             <a
               href="#"
-              class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] border border-[#cccaca]"
+              class="bg-[#f2f2f275] px-[10px] py-[8px] rounded-full text-[15px] border border-[#cccaca] text-black/75"
               >#Management</a
             >
             <a
               href="#"
-              class="bg-[#f2f2f2] px-[10px] py-[8px] rounded text-[15px] border border-[#cccaca]"
+              class="bg-[#f2f2f275] px-[10px] py-[8px] rounded-full text-[15px] border border-[#cccaca] text-black/75"
               >#Java</a
             >
           </div>

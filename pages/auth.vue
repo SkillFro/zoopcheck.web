@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#f8f9fa] h-screen flex justify-center items-center">
+  <div class="bg-[#f8f9fa] h-[100vh] flex justify-center items-center">
     <!-- Login -->
     <div
       v-if="login"

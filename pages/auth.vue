@@ -378,10 +378,12 @@ export default {
         console.log("Login successful:", response.data);
 
         // Store the token (you might want to use cookies or localStorage)
-        localStorage.setItem("authToken", response.data.token);
+        localStorage.setItem("accessToken", response.data.accessToken);
+        localStorage.setItem("refreshToken", response.data.refreshToken);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
 
         // Redirect to dashboard
-        this.$router.push("/dashboard");
+        this.$router.push("/dashboard/recruiter/profile");
       } catch (error) {
         console.error("Login error:", error);
       } finally {

@@ -92,11 +92,28 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   setup() {
     definePageMeta({
       layout: "secondary",
     });
+  },
+  mounted() {
+    this.getUserProfile();
+  },
+  methods: {
+    async getUserProfile() {
+      const user = localStorage.getItem("user");
+      const parsedUser = JSON.parse(user);
+      const response = await axios.get(
+        `https://zoopcheck-api.vercel.app/api/recruiter/profile/${parsedUser.id}`
+      );
+
+      // Handle successful login
+      console.log("Login successful:", response.data);
+    },
   },
 };
 </script>

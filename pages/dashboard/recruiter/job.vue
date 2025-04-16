@@ -333,9 +333,7 @@ export default {
     openform(isEdit = false, index = null) {
       this.recruiter = !this.recruiter;
       this.isEditMode = isEdit;
-      this.isEdit = isEdit;
-      this.isDelete = false;
-
+      this.activeIndex = null;
       if (!isEdit) {
         // Clear form for Add Mode
         this.formData = {

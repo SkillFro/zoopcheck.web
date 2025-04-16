@@ -1,19 +1,13 @@
 <template>
   <div>
-    <div class="hidden w-full px-10 py-4 bg-white md:block">
+    <div class="fixed top-0 z-10 hidden w-full px-10 py-4 bg-white md:block">
       <h1 class="text-3xl font-semibold">Jobs</h1>
     </div>
-    <div class="px-8 pt-8 mt-14 xl:mt-0">
+    <div class="px-8 pt-8 mt-14">
       <div class="flex-wrap justify-center xl:p-4 xl:gap-5 xl:flex">
         <div class="relative w-full max-w-5xl">
-          <span
-            class="absolute text-gray-400 transform -translate-y-1/2 left-3 top-1/2"
-          >
-            <img
-              src="/public/dash/search.png"
-              alt="search"
-              class="w-5 h-5 xl:-mt-4"
-            />
+          <span class="absolute px-2 text-gray-400 top-2.5">
+            <img src="/public/dash/search.png" alt="search" class="w-5 h-5" />
           </span>
           <input
             type="text"
@@ -30,8 +24,7 @@
             v-model="category"
             class="p-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="Category">Category</option>
-            <option>Select Category</option>
+            <option value="Category">Select Category</option>
             <option>Developer</option>
             <option>Designer</option>
             <option>Graphic Designer</option>
@@ -163,8 +156,8 @@
         class="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 2xl:max-w-[1360px] max-w-[1000px] mx-auto mt-6 md:mt-6 md:gap-4 lg:gap-6 2xl:grid-cols-3"
       >
         <div
-          v-for="job in jobs"
-          :key="job"
+          v-for="(job, index) in jobs"
+          :key="index"
           class="xl:w-[400px] border border-slate-200 bg-white rounded-2xl xl:px-4 xl:py-6 px-2 py-3 mb-4 relative"
         >
           <div class="flex items-start justify-around gap-5">
@@ -198,7 +191,7 @@
             </div>
 
             <p
-              @click="toggleJob()"
+              @click="toggleJob(index)"
               class="text-[16px] font-bold text-[#666666] text-start cursor-pointer tracking-[2px] rotate-90"
             >
               ...
@@ -217,17 +210,21 @@
             <p
               class="text-[#666666] line-clamp-2 mt-2 text-[16px] leading-[20px] font-normal"
             >
-              {{ new Date(job.created_at).toLocaleDateString() }}
+              {{ new Date(job.created_at).toDateString() }}
             </p>
           </div>
 
           <div
-            v-if="view"
+            v-if="activeIndex === index"
             class="flex flex-col w-[140px] gap-3 px-12 py-4 text-black bg-white border shadow-md absolute top-16 right-0"
           >
-            <button class="text-[12px] font-medium hover:bg-[#F2F2F2]">
-              Edit
-            </button>
+            <!-- In your template where you click Edit -->
+            <div @click="openform(true, index)">
+              <button class="text-[12px] font-medium hover:bg-[#F2F2F2]">
+                Edit
+              </button>
+            </div>
+
             <button class="text-[12px] font-medium hover:bg-[#F2F2F2]">
               Delete
             </button>
@@ -250,6 +247,7 @@ export default {
       category: "Category",
       recruiter: false,
       signform: false,
+      search: "",
       formData: {
         title: "",
         description: "",
@@ -257,6 +255,10 @@ export default {
         applications: "",
         experience: "",
       },
+      isEditMode: false,
+      isEdit: false,
+      isDelete: false,
+      activeIndex: null,
       jobs: [
         {
           id: "7947eb66-9fe8-4f5b-aa1c-7c2243b893e3",
@@ -328,16 +330,45 @@ export default {
     };
   },
   methods: {
-    toggleJob() {
-      this.view = !this.view;
-    },
-    openform() {
+    openform(isEdit = false, index = null) {
       this.recruiter = !this.recruiter;
+      this.isEditMode = isEdit;
+      this.isEdit = isEdit;
+      this.isDelete = false;
+
+      if (!isEdit) {
+        // Clear form for Add Mode
+        this.formData = {
+          title: "",
+          description: "",
+          category: "",
+          applications: "",
+          experience: "",
+        };
+      }
+
       if (this.recruiter) {
         document.body.classList.add("no-scroll");
       } else {
         document.body.classList.remove("no-scroll");
       }
+
+      if (isEdit && index !== null) {
+        this.update(index);
+      }
+    },
+
+    toggleJob(index) {
+      console.log(index);
+      this.activeIndex = this.activeIndex === index ? null : index;
+    },
+    update(index) {
+      const job = this.jobs[index];
+      this.formData.title = job.title;
+      this.formData.description = job.description;
+      this.formData.category = job.category;
+      this.formData.applications = job.applications;
+      this.formData.experience = job.experience;
     },
   },
 };

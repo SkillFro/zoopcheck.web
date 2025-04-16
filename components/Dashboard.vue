@@ -116,17 +116,17 @@ export default {
       navs: [
         {
           name: "Dashboard",
-          path: "/dashboard",
+          path: "/dashboard/recruiter",
           icon: "/dash/home.png",
         },
         {
           name: "Jobposts",
-          path: "/dashboard/job",
+          path: "/dashboard/recruiter/job",
           icon: "/dash/job-offer.png",
         },
         {
           name: "Profile",
-          path: "/dashboard/profile",
+          path: "/dashboard/recruiter/profile",
           icon: "/dash/profile.png",
         },
       ],
@@ -148,7 +148,4 @@ export default {
     },
   },
 };
-definePageMeta({
-  layout: "primary",
-});
 </script>

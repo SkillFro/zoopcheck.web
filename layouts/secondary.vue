@@ -3,7 +3,7 @@
     <Dashboard />
 
     <div class="w-full h-screen bg-stone-100">
-      <div class="">
+      <div class="h-screen overflow-y-auto">
         <slot></slot>
       </div>
     </div>

@@ -7,13 +7,13 @@
       <div
         class="max-w-xl p-8 mx-auto mt-20 bg-white shadow md:max-w-5xl rounded-xl"
       >
-        <div class="relative flex items-center mb-6 space-x-6">
+        <div class="flex items-center mb-6 space-x-6">
           <img
             src="/public/dash/user.png"
             alt="Profile Picture"
-            class="object-cover w-20 h-20 p-2 rounded-full bg-slate-400"
+            class="object-cover w-20 h-20 p-2 rounded-full bg-stone-100"
           />
-          <div
+          <!-- <div
             class="bg-blue-500 w-[30px] h-[30px] flex justify-center items-center absolute left-6 -bottom-1 rounded-full"
           >
             <img
@@ -21,7 +21,7 @@
               alt="edit"
               class="w-[13px] h-[13px]"
             />
-          </div>
+          </div> -->
         </div>
 
         <form class="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -36,11 +36,17 @@
 
           <div>
             <label class="block mb-1 text-sm">Description</label>
-            <input
+            <textarea
+              name="text"
+              id=""
+              placeholder=" Enter Your Description"
+              class="input-style"
+            ></textarea>
+            <!-- <input
               type="text"
               placeholder=" Enter Your Description"
               class="input-style"
-            />
+            /> -->
           </div>
 
           <div>
@@ -65,10 +71,10 @@
           <div>
             <label class="block mb-1 text-sm">Website</label>
             <input
-              type="file"
+              type="text"
               value=""
               class="input-style"
-              placeholder="Enter Your Website"
+              placeholder="Enter Your Website URL"
             />
           </div>
 

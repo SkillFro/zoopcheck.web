@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="flex items-center gap-[16px]">
-            <NuxtLink to="/resume">
+            <NuxtLink>
               <button
                 class="py-[6px] px-[12px] bg-[#2966f4] text-white text-[16px] rounded-[0.375rem]"
               >

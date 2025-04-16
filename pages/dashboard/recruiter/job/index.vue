@@ -152,85 +152,89 @@
         </div>
       </div>
 
-      <div
-        class="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 2xl:max-w-[1360px] max-w-[1000px] mx-auto mt-6 md:mt-6 md:gap-4 lg:gap-6 2xl:grid-cols-3"
-      >
+      <nuxt-link to="/dashboard/recruiter/job/[id]">
         <div
-          v-for="(job, index) in jobs"
-          :key="index"
-          class="xl:w-[400px] border border-slate-200 bg-white rounded-2xl xl:px-4 xl:py-6 px-2 py-3 mb-4 relative"
+          class="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 2xl:max-w-[1360px] max-w-[1000px] mx-auto mt-6 md:mt-6 md:gap-4 lg:gap-6 2xl:grid-cols-3"
         >
-          <div class="flex items-start justify-around gap-5">
-            <div class="flex gap-4">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/4192/4192708.png"
-                alt="profile"
-                class="w-8 h-8"
-              />
-              <div class="flex flex-col items-start justify-center gap-4">
-                <p class="line-clamp-1 text-[16px] leading-[20px] font-normal">
-                  {{ job.title }}
-                </p>
-                <p
-                  class="text-[#666666] text-[16px] leading-[20px] font-normal line-clamp-2"
-                >
-                  {{ job.description }}
-                </p>
-                <div class="flex items-center gap-2 md:gap-4">
-                  <img
-                    class="w-5 h-5"
-                    src="https://static.vecteezy.com/system/resources/thumbnails/016/079/159/small/2x2-grid-squares-menu-category-icon-in-line-style-design-isolated-on-white-background-editable-stroke-free-vector.jpg"
-                  />
-                  <div
-                    class="text-[13px] leading-[18px] font-medium text-[#171717]"
+          <div
+            v-for="(job, index) in jobs"
+            :key="index"
+            class="xl:w-[400px] border border-slate-200 bg-white rounded-2xl xl:px-4 xl:py-6 px-2 py-3 mb-4 relative"
+          >
+            <div class="flex items-start justify-around gap-5">
+              <div class="flex gap-4">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/4192/4192708.png"
+                  alt="profile"
+                  class="w-8 h-8"
+                />
+                <div class="flex flex-col items-start justify-center gap-4">
+                  <p
+                    class="line-clamp-1 text-[16px] leading-[20px] font-normal"
                   >
-                    {{ job.category }}
+                    {{ job.title }}
+                  </p>
+                  <p
+                    class="text-[#666666] text-[16px] leading-[20px] font-normal line-clamp-2"
+                  >
+                    {{ job.description }}
+                  </p>
+                  <div class="flex items-center gap-2 md:gap-4">
+                    <img
+                      class="w-5 h-5"
+                      src="https://static.vecteezy.com/system/resources/thumbnails/016/079/159/small/2x2-grid-squares-menu-category-icon-in-line-style-design-isolated-on-white-background-editable-stroke-free-vector.jpg"
+                    />
+                    <div
+                      class="text-[13px] leading-[18px] font-medium text-[#171717]"
+                    >
+                      {{ job.category }}
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <p
+                @click="toggleJob(index)"
+                class="text-[16px] font-bold text-[#666666] text-start cursor-pointer tracking-[2px] rotate-90"
+              >
+                ...
+              </p>
             </div>
 
-            <p
-              @click="toggleJob(index)"
-              class="text-[16px] font-bold text-[#666666] text-start cursor-pointer tracking-[2px] rotate-90"
+            <div
+              class="flex flex-wrap items-center justify-between px-12 mt-4 md:gap-4"
             >
-              ...
-            </p>
-          </div>
+              <p
+                class="text-[#666666] mt-2 line-clamp-2 text-[16px] leading-[20px] font-normal"
+              >
+                Applications :
+                <span class="text-black">{{ job.applications }}</span>
+              </p>
+              <p
+                class="text-[#666666] line-clamp-2 mt-2 text-[16px] leading-[20px] font-normal"
+              >
+                {{ new Date(job.created_at).toDateString() }}
+              </p>
+            </div>
 
-          <div
-            class="flex flex-wrap items-center justify-between px-12 mt-4 md:gap-4"
-          >
-            <p
-              class="text-[#666666] mt-2 line-clamp-2 text-[16px] leading-[20px] font-normal"
+            <div
+              v-if="activeIndex === index"
+              class="flex flex-col w-[140px] gap-3 px-12 py-4 text-black bg-white border shadow-md absolute top-16 right-0"
             >
-              Applications :
-              <span class="text-black">{{ job.applications }}</span>
-            </p>
-            <p
-              class="text-[#666666] line-clamp-2 mt-2 text-[16px] leading-[20px] font-normal"
-            >
-              {{ new Date(job.created_at).toDateString() }}
-            </p>
-          </div>
+              <!-- In your template where you click Edit -->
+              <div @click="openform(true, index)">
+                <button class="text-[12px] font-medium hover:bg-[#F2F2F2]">
+                  Edit
+                </button>
+              </div>
 
-          <div
-            v-if="activeIndex === index"
-            class="flex flex-col w-[140px] gap-3 px-12 py-4 text-black bg-white border shadow-md absolute top-16 right-0"
-          >
-            <!-- In your template where you click Edit -->
-            <div @click="openform(true, index)">
               <button class="text-[12px] font-medium hover:bg-[#F2F2F2]">
-                Edit
+                Delete
               </button>
             </div>
-
-            <button class="text-[12px] font-medium hover:bg-[#F2F2F2]">
-              Delete
-            </button>
           </div>
         </div>
-      </div>
+      </nuxt-link>
     </div>
   </div>
 </template>

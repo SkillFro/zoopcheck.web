@@ -123,11 +123,7 @@
                 <div
                   class="flex justify-center gap-8 text-sm text-gray-800 md:items-start"
                 >
-                  <div class="flex flex-col gap-5">
-                    <p class="max-w-[130px] xl:max-w-full">
-                      Job ID:
-                      <span class="text-[#555a64] font-bold">{{ job.id }}</span>
-                    </p>
+                  <div>
                     <p>
                       Date:
                       <span class="text-[#555a64] font-bold">{{

@@ -60,10 +60,13 @@
           <div>
             <button
               @click="handleLogin"
-              class="p-3 rounded bg-[#2966f4] text-white w-full"
+              class="p-3 rounded bg-[#2966f4] text-white w-full flex justify-center"
               :disabled="loading"
             >
-              <span v-if="loading">Logging in...</span>
+              <span
+                v-if="loading"
+                class="w-6 h-6 border-t-2 border-white rounded-full animate-spin"
+              ></span>
               <span v-else>Login</span>
             </button>
           </div>
@@ -183,10 +186,13 @@
           <div>
             <button
               @click="handleSignup"
-              class="p-3 rounded bg-[#2966f4] text-white w-full"
+              class="p-3 rounded bg-[#2966f4] text-white w-full flex justify-center"
               :disabled="loading"
             >
-              <span v-if="loading">Registering...</span>
+              <span
+                v-if="loading"
+                class="w-6 h-6 border-t-2 border-white rounded-full animate-spin"
+              ></span>
               <span v-else>Register</span>
             </button>
           </div>
@@ -257,10 +263,13 @@
           <div>
             <button
               @click="handleSignup"
-              class="p-3 rounded bg-[#2966f4] text-white w-full"
+              class="p-3 rounded bg-[#2966f4] text-white w-full flex justify-center"
               :disabled="loading"
             >
-              <span v-if="loading">Registering...</span>
+              <span
+                v-if="loading"
+                class="w-6 h-6 border-t-2 border-white rounded-full animate-spin"
+              ></span>
               <span v-else>Register</span>
             </button>
           </div>

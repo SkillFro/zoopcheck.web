@@ -55,130 +55,131 @@
       </div>
 
       <!-- Job Form Modal -->
+
       <div
         v-if="recruiter"
-        class="fixed inset-0 z-50 flex items-center justify-center"
+        class="bg-[#00000095] w-full fixed top-0 z-40 left-0 flex flex-col justify-center items-center"
       >
-        <div class="fixed inset-0 bg-black opacity-50"></div>
-        <div class="relative">
-          <div>
-            <button
-              @click="openform()"
-              class="absolute right-0 w-10 h-10 text-xl md:w-20 md:h-20 md:text-3xl md:-top-6 md:-right-5"
-            >
-              x
-            </button>
+        <div
+          v-if="recruiter"
+          class="relative p-4 bg-[#ffffff] rounded-lg md:p-8 md:w-[700px] w-full m-2 flex items-center flex-col gap-10"
+        >
+          <div class="absolute top-2 right-3">
+            <button @click="openform()" class="text-2xl font-bold">x</button>
           </div>
-
-          <div
-            class="z-10 max-h-full p-4 mx-auto overflow-auto bg-white rounded-lg md:max-w-6xl md:p-8 maxw-4xl"
-          >
-            <div class="flex flex-col items-center justify-center gap-3">
-              <div>
-                <img
-                  src="/public/images/logo.svg"
-                  alt="logo"
-                  class="w-[150px]"
+          <div class="flex items-center justify-center">
+            <img src="/public/images/logo.svg" alt="logo" class="w-[200px]" />
+          </div>
+          <div class="flex flex-col gap-3 p-2">
+            <div
+              class="flex flex-wrap items-start justify-between w-full gap-5"
+            >
+              <div
+                class="flex items-start flex-col gap-[10px] w-full md:w-auto"
+              >
+                <label class="font-semibold text-[#2c3038]" for="#"
+                  >Tittle</label
+                >
+                <input
+                  v-model="formData.title"
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Enter Title"
+                  class="rounded-md border-[#c0c0c0] border text-[16px] placeholder:text-[#555a64] outline-none p-3 md:w-[300px] w-full"
                 />
               </div>
-              <div class="md:max-w-[500px] mx-auto p-4 mt-4 max-w-[280px]">
-                <div v-if="recruiter" class="flex flex-col gap-[10px]">
-                  <div class="flex flex-col gap-[10px]">
-                    <label class="font-semibold text-[#2c3038]" for="#"
-                      >Title</label
-                    >
-                    <input
-                      v-model="formData.title"
-                      type="text"
-                      name="name"
-                      id="name"
-                      placeholder="Enter Title"
-                      class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
-                    />
-                  </div>
-                  <div class="flex flex-col gap-[10px]">
-                    <label class="font-semibold text-[#2c3038]" for="#"
-                      >Description</label
-                    >
-                    <textarea
-                      v-model="formData.description"
-                      name="description"
-                      id=""
-                      cols=""
-                      rows=""
-                      placeholder="Enter Your Description"
-                      class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
-                    ></textarea>
-                  </div>
-                  <div class="flex flex-col gap-[10px]">
-                    <label class="font-semibold text-[#2c3038]" for="#"
-                      >Category</label
-                    >
-                    <select
-                      v-model="formData.category"
-                      class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
-                    >
-                      <option value="">Select Category</option>
-                      <option>Developer</option>
-                      <option>Designer</option>
-                      <option>Graphic Designer</option>
-                    </select>
-                  </div>
-                  <div class="flex flex-col gap-[10px]">
-                    <label class="font-semibold text-[#2c3038]" for="#"
-                      >Work Mode</label
-                    >
-                    <select
-                      v-model="formData.mode"
-                      class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
-                    >
-                      <option value="">Select Work Mode</option>
-                      <option value="remote">Remote</option>
-                      <option value="full-time">Full Time</option>
-                      <option value="part-time">Part Time</option>
-                      <option value="hybrid">Hybrid</option>
-                    </select>
-                  </div>
-                  <div class="flex flex-col gap-[10px]">
-                    <label class="font-semibold text-[#2c3038]" for="#"
-                      >Openings</label
-                    >
-                    <input
-                      v-model="formData.openings"
-                      type="number"
-                      name="openings"
-                      id="openings"
-                      placeholder="Enter number of openings"
-                      class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
-                    />
-                  </div>
-                  <div class="flex flex-col gap-[10px]">
-                    <label class="font-semibold text-[#2c3038]" for="#"
-                      >Experience</label
-                    >
-                    <input
-                      v-model="formData.experience"
-                      type="text"
-                      name="experience"
-                      id="experience"
-                      placeholder="Enter required experience"
-                      class="w-full rounded-md bg-[#F3F4F6] px-[20px] py-[12px] text-[16px] placeholder:text-[#555a64] outline-none"
-                    />
-                  </div>
+              <div
+                class="flex items-start flex-col gap-[10px] w-full md:w-auto"
+              >
+                <label class="font-semibold text-[#2c3038]" for="#"
+                  >Experience</label
+                >
+                <input
+                  v-model="formData.experience"
+                  type="number"
+                  name="experience"
+                  id="experience"
+                  placeholder="Enter required experience"
+                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none md:w-[300px] w-full"
+                />
+              </div>
 
-                  <div class="mt-3 xl:px-32 xl:py-8">
-                    <button
-                      @click="submitJob()"
-                      class="p-3 px-6 rounded bg-[#2966f4] text-white w-full"
-                      :disabled="loading"
-                    >
-                      <span v-if="loading">Processing...</span>
-                      <span v-else>Submit</span>
-                    </button>
-                  </div>
-                </div>
+              <div
+                class="flex items-start flex-col gap-[10px] w-full md:w-auto"
+              >
+                <label class="font-semibold text-[#2c3038]" for="#"
+                  >Category</label
+                >
+                <select
+                  v-model="formData.category"
+                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none md:w-[300px] w-full"
+                >
+                  <option value="">Select Category</option>
+                  <option>Developer</option>
+                  <option>Designer</option>
+                  <option>Graphic Designer</option>
+                </select>
+              </div>
+              <div
+                class="flex items-start flex-col gap-[10px] w-full md:w-auto"
+              >
+                <label class="font-semibold text-[#2c3038]" for="#"
+                  >Work Mode</label
+                >
+                <select
+                  v-model="formData.mode"
+                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none md:w-[300px] w-full"
+                >
+                  <option value="">Select Work Mode</option>
+                  <option value="remote">Remote</option>
+                  <option value="full-time">Full Time</option>
+                  <option value="part-time">Part Time</option>
+                  <option value="hybrid">Hybrid</option>
+                </select>
+              </div>
+              <div
+                class="flex flex-col items-start gap-[10px] w-full md:w-auto"
+              >
+                <label class="font-semibold text-[#2c3038]" for="#"
+                  >Openings</label
+                >
+                <input
+                  v-model="formData.openings"
+                  type="number"
+                  name="openings"
+                  id="openings"
+                  placeholder="Enter number of openings"
+                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none md:w-[300px] w-full"
+                />
+              </div>
+              <div
+                class="flex items-start flex-col gap-[10px] w-full md:w-auto"
+              >
+                <label class="font-semibold text-[#2c3038]" for="#"
+                  >Description</label
+                >
+                <textarea
+                  v-model="formData.description"
+                  name="description"
+                  id=""
+                  cols=""
+                  rows=""
+                  placeholder="Enter Your Description"
+                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none md:w-[300px] w-full h-[100px]"
+                ></textarea>
               </div>
             </div>
+          </div>
+          <div class="flex items-center justify-center w-full">
+            <button
+              @click="submitJob()"
+              class="p-3 px-6 rounded bg-[#2966f4] text-white w-fit"
+              :disabled="loading"
+            >
+              <span v-if="loading">Processing...</span>
+              <span v-else>Submit</span>
+            </button>
           </div>
         </div>
       </div>
@@ -463,6 +464,7 @@ export default {
             }
           );
         }
+        this.openform(); // Close the form
 
         if (response.data && response.data.success) {
           this.successMessage = this.isEditMode
@@ -470,11 +472,10 @@ export default {
             : "Job created successfully!";
 
           await this.fetchJobs();
-          this.openform(); // Close the form
 
           setTimeout(() => {
             this.successMessage = "";
-          }, 3000);
+          }, 5000);
         } else {
           throw new Error(response.data.message || "Operation failed");
         }

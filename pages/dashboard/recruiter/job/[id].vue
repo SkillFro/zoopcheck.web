@@ -12,68 +12,73 @@
         </p>
       </div>
     </nuxt-link> -->
-    <nav aria-label="Breadcrumb">
-      <div class="pl-4 mt-24">
-        <ol class="flex items-center gap-1 text-lg">
-          <li>
-            <NuxtLink
-              to="/dashboard/recruiter/"
-              :class="[
-                'block transition-colors',
-                $route.path === '/dashboard/recruiter/'
-                  ? 'text-[#2966f4] font-semibold'
-                  : 'text-stone-500 hover:text-gray-900 dark:hover:text-white',
-              ]"
-            >
-              Home
-            </NuxtLink>
-          </li>
+    <div class="pl-4 mt-24">
+      <nav aria-label="Breadcrumb">
+        <div class="pl-4 mt-24">
+          <ol class="flex items-center gap-1 text-lg">
+            <li>
+              <NuxtLink
+                to="/dashboard/recruiter/"
+                :class="[
+                  'block transition-colors',
+                  $route.path === '/dashboard/recruiter/'
+                    ? 'text-[#2966f4] font-semibold'
+                    : 'text-green-300',
+                ]"
+              >
+                Home
+              </NuxtLink>
+            </li>
 
-          <li class="rtl:rotate-180">
-            <ChevronIcon />
-          </li>
-          <img src="/public/dash/arrrow.svg" alt="arrow" />
-          <li>
-            <NuxtLink
-              to="/dashboard/recruiter/job"
-              :class="[
-                'block transition-colors',
-                $route.path === '/dashboard/recruiter/job'
-                  ? 'text-[#2966f4] font-semibold'
-                  : 'text-stone-500 hover:text-gray-900 dark:hover:text-white',
-              ]"
-            >
-              Job
-            </NuxtLink>
-          </li>
+            <li class="rtl:rotate-180">
+              <ChevronIcon />
+            </li>
+            <img src="/public/dash/arrrow.svg" alt="arrow" />
+            <li>
+              <NuxtLink
+                to="/dashboard/recruiter/job"
+                :class="[
+                  'block transition-colors',
+                  $route.path === '/dashboard/recruiter/job'
+                    ? 'text-[#2966f4] font-semibold'
+                    : 'text-stone-500 ',
+                ]"
+              >
+                Job
+              </NuxtLink>
+            </li>
 
-          <li class="rtl:rotate-180">
-            <ChevronIcon />
-          </li>
-          <img src="/public/dash/arrrow.svg" alt="arrow" />
-          <li>
-            <NuxtLink
-              to="/dashboard/recruiter/profile"
-              :class="[
-                'block transition-colors',
-                $route.path === '/dashboard/recruiter/profile'
-                  ? 'text-[#2966f4] font-semibold'
-                  : 'text-stone-500 hover:text-gray-900 dark:hover:text-white',
-              ]"
-            >
-              Profile
-            </NuxtLink>
-          </li>
-        </ol>
-      </div>
-    </nav>
+            <li class="rtl:rotate-180">
+              <ChevronIcon />
+            </li>
+            <img src="/public/dash/arrrow.svg" alt="arrow" />
+            <li>
+              <NuxtLink
+                to="/dashboard/recruiter/profile"
+                :class="[
+                  'block transition-colors',
+                  $route.path === '/dashboard/recruiter/profile'
+                    ? 'text-[#2966f4] font-semibold'
+                    : 'text-stone-500 ',
+                ]"
+              >
+                Profile
+              </NuxtLink>
+            </li>
+          </ol>
+        </div>
+      </nav>
+    </div>
+
     <div class="">
       <div
         v-for="(applicationList, date) in applications"
         :key="date"
         class="px-10"
       >
-        <p class="mt-10 text-lg font-bold">{{ date }}</p>
+        <p class="mt-10 text-lg font-bold">
+          {{ new Date(date).toDateString() }}
+        </p>
 
         <div
           v-for="(application, index) in applicationList"

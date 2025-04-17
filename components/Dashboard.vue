@@ -2,26 +2,42 @@
   <div>
     <div class="hidden lg:block">
       <div
-        class="h-screen bg-white border border-white border-r-slate-100 max-w-[400px] p-5 flex flex-col gap-4 px-8"
+        class="h-screen bg-white border border-white border-r-slate-100 w-[230px] p-5 flex flex-col gap-4 px-4"
       >
         <img
           src="/public/images/logo.svg"
           alt="logo"
           class="w-[183px] h-[36px]"
         />
-        <div
-          v-for="nav in navs"
-          :key="nav"
-          :class="{
-            '  text-[#2966f4]': $route.path === nav.path,
-          }"
-        >
-          <nuxt-link :to="nav.path" class="flex gap-4 mt-5">
-            <img :src="nav.icon" alt="home" class="w-[20px] h-[20px]" />
-            <h1 class="text-[16px] font-medium hover:text-black">
-              {{ nav.name }}
-            </h1>
-          </nuxt-link>
+        <div class="flex flex-col gap-3 mt-5">
+          <div
+            v-for="nav in navs"
+            class="mt-3"
+            :key="nav"
+            :class="{
+              'border bg-[#2966f4] rounded-xl ': $route.path === nav.path,
+            }"
+          >
+            <nuxt-link
+              :to="nav.path"
+              class="flex items-center justify-start gap-4 p-2 px-5"
+            >
+              <img
+                :src="$route.path === nav.path ? nav.activeIcon : nav.icon"
+                alt="icon"
+                class="w-[20px] h-[20px]"
+              />
+              <h1
+                class="text-[16px] font-[500]"
+                :class="{
+                  'text-white': $route.path === nav.path,
+                  'text-slate-800': $route.path !== nav.path,
+                }"
+              >
+                {{ nav.name }}
+              </h1>
+            </nuxt-link>
+          </div>
         </div>
 
         <!-- <div class="flex flex-col gap-5">
@@ -94,13 +110,27 @@
           <div
             v-for="nav in navs"
             :key="nav"
-            class="flex flex-col items-start justify-center hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
+            class="flex flex-col items-start justify-center text-[16px]"
             :class="{
-              '  text-[#2966f4]': $route.path === nav.path,
+              'bg-[#2966f4] rounded-xl ': $route.path === nav.path,
             }"
           >
-            <NuxtLink :to="nav.path">
-              {{ nav.name }}
+            <NuxtLink :to="nav.path" class="flex items-center gap-4 p-2 mt-2">
+              <img
+                :src="$route.path === nav.path ? nav.activeIcon : nav.icon"
+                alt="icon"
+                class="w-[20px] h-[20px] inline-block mr-2"
+              />
+
+              <h1
+                class="text-[16px] font-medium hover:text-[#2966f4]"
+                :class="{
+                  'text-white': $route.path === nav.path,
+                  'text-slate-900': $route.path !== nav.path,
+                }"
+              >
+                {{ nav.name }}
+              </h1>
             </NuxtLink>
           </div>
         </div>
@@ -117,17 +147,20 @@ export default {
         {
           name: "Dashboard",
           path: "/dashboard/recruiter",
-          icon: "/dash/home.png",
+          icon: "/dash/home.svg",
+          activeIcon: "/dash/homeactive.svg",
         },
         {
-          name: "Jobposts",
+          name: "Job Posts",
           path: "/dashboard/recruiter/job",
-          icon: "/dash/job-offer.png",
+          icon: "/dash/job.svg",
+          activeIcon: "/dash/jobactive.svg",
         },
         {
           name: "Profile",
           path: "/dashboard/recruiter/profile",
-          icon: "/dash/profile.png",
+          icon: "/dash/profile.svg",
+          activeIcon: "/dash/profileactive.svg",
         },
       ],
     };

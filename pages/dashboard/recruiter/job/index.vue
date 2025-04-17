@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="fixed top-0 z-10 hidden w-full px-10 py-4 bg-white md:block">
+    <div class="fixed top-0 hidden w-full px-10 py-4 bg-white z- md:block">
       <h1 class="text-3xl font-semibold">Jobs</h1>
     </div>
     <div class="px-8 pt-8 mt-14">
@@ -209,9 +209,13 @@
                 class="w-8 h-8"
               />
               <div class="flex flex-col items-start justify-center gap-4">
-                <p class="line-clamp-1 text-[16px] leading-[20px] font-normal">
-                  {{ job.title }}
-                </p>
+                <nuxt-link :to="`/dashboard/recruiter/job/${job.id}`">
+                  <p
+                    class="line-clamp-1 text-[16px] leading-[20px] font-normal underline"
+                  >
+                    {{ job.title }}
+                  </p>
+                </nuxt-link>
                 <p
                   class="text-[#666666] text-[16px] leading-[20px] font-normal line-clamp-2"
                 >
@@ -303,6 +307,8 @@ export default {
         experience: "",
         mode: "",
       },
+      istitle: false,
+      isDescription: false,
       isEditMode: false,
       isEdit: false,
       isDelete: false,

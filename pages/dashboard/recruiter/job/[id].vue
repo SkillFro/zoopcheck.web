@@ -3,7 +3,7 @@
     <div class="fixed top-0 z-10 hidden w-full px-10 py-4 bg-white md:block">
       <h1 class="text-3xl font-semibold">Application</h1>
     </div>
-    <nuxt-link to="/dashboard/recruiter/job">
+    <!-- <nuxt-link to="/dashboard/recruiter/job">
       <div class="pl-4 mt-24">
         <p
           class="p-2 px-6 font-medium text-white underline bg-blue-600 border rounded-lg cursor-pointer w-28 text-md"
@@ -11,8 +11,62 @@
           Go Back
         </p>
       </div>
-    </nuxt-link>
-    <!-- Outer loop for each date group -->
+    </nuxt-link> -->
+    <nav aria-label="Breadcrumb">
+      <div class="pl-4 mt-24">
+        <ol class="flex items-center gap-1 text-lg">
+          <li>
+            <NuxtLink
+              to="/dashboard/recruiter/"
+              :class="[
+                'block transition-colors',
+                $route.path === '/dashboard/recruiter/'
+                  ? 'text-[#2966f4] font-semibold'
+                  : 'text-stone-500 hover:text-gray-900 dark:hover:text-white',
+              ]"
+            >
+              Home
+            </NuxtLink>
+          </li>
+
+          <li class="rtl:rotate-180">
+            <ChevronIcon />
+          </li>
+          <img src="/public/dash/arrrow.svg" alt="arrow" />
+          <li>
+            <NuxtLink
+              to="/dashboard/recruiter/job"
+              :class="[
+                'block transition-colors',
+                $route.path === '/dashboard/recruiter/job'
+                  ? 'text-[#2966f4] font-semibold'
+                  : 'text-stone-500 hover:text-gray-900 dark:hover:text-white',
+              ]"
+            >
+              Job
+            </NuxtLink>
+          </li>
+
+          <li class="rtl:rotate-180">
+            <ChevronIcon />
+          </li>
+          <img src="/public/dash/arrrow.svg" alt="arrow" />
+          <li>
+            <NuxtLink
+              to="/dashboard/recruiter/profile"
+              :class="[
+                'block transition-colors',
+                $route.path === '/dashboard/recruiter/profile'
+                  ? 'text-[#2966f4] font-semibold'
+                  : 'text-stone-500 hover:text-gray-900 dark:hover:text-white',
+              ]"
+            >
+              Profile
+            </NuxtLink>
+          </li>
+        </ol>
+      </div>
+    </nav>
     <div class="">
       <div
         v-for="(applicationList, date) in applications"
@@ -21,7 +75,6 @@
       >
         <p class="mt-10 text-lg font-bold">{{ date }}</p>
 
-        <!-- Inner loop for each application under the date -->
         <div
           v-for="(application, index) in applicationList"
           :key="index"
@@ -36,12 +89,18 @@
               />
               <div class="">
                 <p class="font-medium text-md">{{ application.name }}</p>
-                <p class="mt-2 font-medium text-md">{{ application.title }}</p>
+                <p class="mt-2 font-medium text-md text-[#666666]">
+                  {{ application.title }}
+                </p>
               </div>
             </div>
             <div class="">
-              <p class="font-medium text-md">{{ application.remote }}</p>
-              <p class="mt-2 font-medium text-md">{{ application.online }}</p>
+              <p class="font-medium text-md text-[#666666]">
+                {{ application.remote }}
+              </p>
+              <p class="mt-2 font-medium text-md text-[#666666]">
+                {{ application.online }}
+              </p>
             </div>
           </div>
           <button class="px-6 py-2 text-white bg-blue-600 rounded-lg">

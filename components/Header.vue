@@ -29,13 +29,13 @@
               <button
                 class="py-[6px] px-[12px] bg-[#2966f4] text-white text-[16px] rounded-[0.375rem]"
               >
-                Start Career
+                Login
               </button>
             </NuxtLink>
             <button
               class="py-[6px] px-[12px] bg-[#0a2d52] text-white text-[16px] rounded-[0.375rem]"
             >
-              Hire Canditates
+              Sign Up
             </button>
           </div>
         </div>
@@ -74,12 +74,12 @@
           <button
             class="py-[6px] px-[12px] bg-[#2966f4] text-white text-[16px] rounded-[0.375rem]"
           >
-            Start Career
+            Login
           </button>
           <button
             class="py-[6px] px-[12px] bg-[#0a2d52] text-white text-[16px] rounded-[0.375rem]"
           >
-            Hire Canditates
+            Sign Up
           </button>
         </div>
       </div>

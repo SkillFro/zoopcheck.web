@@ -51,7 +51,7 @@
           <div
             v-for="job in currentOpenings"
             :key="job.title"
-            class="md:w-[208px] xl:w-[200px] 2xl:w-[368px] md:h-[144px] w-full h-[165px] rounded-[4px] md:px-[15px] py-[20px] bg-[#eeeeee] border-2 border-transparent hover:bg-white hover:border-2 hover:border-[#eeeeee] relative overflow-hidden hover:shadow px-[20px] 2xl:p-[20px]"
+            class="md:w-[208px] xl:w-[200px] 2xl:w-[368px] md:h-[144px] w-full h-[165px] rounded-[4px] md:px-[15px] py-[20px] bg-[#eeeeee] border-2 border-transparent hover:bg-white hover:border-2 hover:border-[#eeeeee] relative overflow-hidden hover:shadow px-[20px] 2xl:p-[20px] 2xl:h-[160px]"
           >
             <p
               class="text-[#111111] text-[18px] leading-[27px] font-semibold underline"

@@ -24,7 +24,7 @@
           <img
             src="/public/dash/user.png"
             alt="Profile Picture"
-            class="object-cover w-20 h-20 p-2 rounded-full bg-stone-100"
+            class="object-cover w-20 h-20 p-2"
           />
         </div>
 

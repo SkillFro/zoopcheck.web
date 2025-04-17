@@ -395,6 +395,7 @@ export default {
         this.$router.push("/dashboard/recruiter/profile");
       } catch (error) {
         console.error("Login error:", error);
+        this.errors.password = error.response?.data?.message;
       } finally {
         this.loading = false;
       }

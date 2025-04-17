@@ -11,7 +11,7 @@
           <div>
             <p class="text-sm font-medium text-gray-500">Total Jobs Posted</p>
             <p class="mt-1 text-2xl font-semibold text-gray-900">
-              {{ totalJobs }}
+              {{ recentJobs.length }}
             </p>
           </div>
           <div class="p-3 rounded-full bg-blue-50">
@@ -142,6 +142,7 @@
                 </th>
               </tr>
             </thead>
+
             <tbody class="bg-white divide-y divide-gray-200">
               <tr v-for="job in recentJobs" :key="job.id">
                 <td class="px-6 py-4 whitespace-nowrap">
@@ -164,7 +165,7 @@
                   </span>
                 </td>
                 <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                  {{ formatDate(job.postedDate) }}
+                  {{ new Date(job.created_at).toDateString() }}
                 </td>
               </tr>
             </tbody>
@@ -177,6 +178,7 @@
 
 <script>
 import { Chart, registerables } from "chart.js";
+import axios from "axios";
 
 export default {
   setup() {
@@ -189,47 +191,12 @@ export default {
       totalJobs: 24,
       totalApplicants: 186,
       activeJobs: 8,
-      recentJobs: [
-        {
-          id: 1,
-          title: "Frontend Developer",
-          applicants: 24,
-          status: "Active",
-          postedDate: "2023-05-15",
-        },
-        {
-          id: 2,
-          title: "UX Designer",
-          applicants: 18,
-          status: "Active",
-          postedDate: "2023-05-10",
-        },
-        {
-          id: 3,
-          title: "Backend Engineer",
-          applicants: 32,
-          status: "Closed",
-          postedDate: "2023-04-28",
-        },
-        {
-          id: 4,
-          title: "Product Manager",
-          applicants: 12,
-          status: "Active",
-          postedDate: "2023-05-01",
-        },
-        {
-          id: 5,
-          title: "DevOps Specialist",
-          applicants: 8,
-          status: "Active",
-          postedDate: "2023-05-05",
-        },
-      ],
+      recentJobs: [],
     };
   },
   mounted() {
     this.initCharts();
+    this.fetchJobs();
   },
   methods: {
     initCharts() {
@@ -306,6 +273,29 @@ export default {
     formatDate(dateString) {
       const options = { year: "numeric", month: "short", day: "numeric" };
       return new Date(dateString).toLocaleDateString(undefined, options);
+    },
+    async fetchJobs() {
+      try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const token = localStorage.getItem("accessToken");
+
+        this.loading = true;
+
+        const response = await axios.get(
+          `https://zoopcheck-api.vercel.app/api/recruiter/${user.id}/posts`
+        );
+
+        if (response.data && Array.isArray(response.data.posts)) {
+          this.recentJobs = response.data.posts.map((post) => ({
+            ...post,
+            applications: post.applications ? post.applications.length : 0,
+          }));
+        }
+      } catch (error) {
+        console.error("Failed to fetch jobs:", error);
+        this.error = "Failed to load jobs. Please try again later.";
+      }
+      this.loading = false;
     },
   },
 };

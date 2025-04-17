@@ -58,22 +58,24 @@
 
       <div
         v-if="recruiter"
-        class="bg-[#00000095] w-full fixed top-0 z-40 left-0 flex flex-col justify-center items-center h-[100vh]"
+        class="bg-[#00000095] w-full fixed top-0 z-40 left-0 flex flex-col justify-center items-center h-[100vh] p-2"
       >
         <div
-          v-if="recruiter"
-          class="relative p-4 bg-[#ffffff] md:rounded-lg md:p-8 lg:w-[700px] md:w-[690px] w-full flex items-center flex-col gap-10 overflow-y-auto"
+          class="relative p-4 bg-[#ffffff] md:rounded-lg md:p-8 lg:w-[700px] md:w-[690px] w-full flex flex-col gap-10 overflow-y-auto"
         >
           <div class="absolute top-2 right-3">
-            <button @click="openform()" class="text-2xl font-bold">x</button>
+            <img
+              @click="openform()"
+              src="/public/images/close.png"
+              class="w-[40px] h-[40px] cursor-pointer"
+              alt="closeicon"
+            />
           </div>
           <div class="flex items-center justify-center">
             <img src="/public/images/logo.svg" alt="logo" class="w-[200px]" />
           </div>
           <div class="flex flex-col gap-3 p-2">
-            <div
-              class="flex flex-wrap items-start justify-between w-full gap-2 lg:gap-5"
-            >
+            <div class="flex flex-col w-full gap-2 lg:gap-5">
               <div
                 class="flex items-start flex-col gap-[10px] w-full md:w-auto"
               >
@@ -86,7 +88,7 @@
                   name="name"
                   id="name"
                   placeholder="Enter Title"
-                  class="rounded-md border-[#c0c0c0] border text-[16px] placeholder:text-[#555a64] outline-none p-3 md:w-[300px] w-full"
+                  class="rounded-md border-[#c0c0c0] border text-[16px] placeholder:text-[#555a64] outline-none p-3 w-full"
                 />
               </div>
               <div
@@ -101,7 +103,7 @@
                   name="experience"
                   id="experience"
                   placeholder="Enter required experience"
-                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none md:w-[300px] w-full"
+                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full"
                 />
               </div>
 
@@ -113,7 +115,7 @@
                 >
                 <select
                   v-model="formData.category"
-                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none md:w-[300px] w-full"
+                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full"
                 >
                   <option value="">Select Category</option>
                   <option>Developer</option>
@@ -129,13 +131,13 @@
                 >
                 <select
                   v-model="formData.mode"
-                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none md:w-[300px] w-full"
+                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full"
                 >
                   <option value="">Select Work Mode</option>
-                  <option value="remote">Remote</option>
-                  <option value="full-time">Full Time</option>
-                  <option value="part-time">Part Time</option>
-                  <option value="hybrid">Hybrid</option>
+                  <option>Remote</option>
+                  <option>Full Time</option>
+                  <option>Part Time</option>
+                  <option>Hybrid</option>
                 </select>
               </div>
               <div
@@ -150,7 +152,7 @@
                   name="openings"
                   id="openings"
                   placeholder="Enter number of openings"
-                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none md:w-[300px] w-full"
+                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full"
                 />
               </div>
               <div
@@ -166,7 +168,7 @@
                   cols=""
                   rows=""
                   placeholder="Enter Your Description"
-                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none md:w-[300px] w-full h-[100px]"
+                  class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full h-[100px]"
                 ></textarea>
               </div>
             </div>
@@ -182,6 +184,12 @@
             </button>
           </div>
         </div>
+      </div>
+      <div v-if="loading" class="flex items-center justify-center w-full py-10">
+        <div
+          class="w-10 h-10 border-t-4 border-blue-500 border-solid rounded-full animate-spin"
+        ></div>
+        <span class="ml-3 font-medium text-blue-600">Loading jobs...</span>
       </div>
 
       <!-- Jobs List -->
@@ -281,6 +289,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       view: false,
       category: "Category",
       recruiter: false,
@@ -340,6 +349,7 @@ export default {
         if (!user || !token) {
           throw new Error("Authentication required");
         }
+        this.loading = true;
 
         const response = await axios.get(
           `https://zoopcheck-api.vercel.app/api/recruiter/${user.id}/posts`,
@@ -360,6 +370,7 @@ export default {
         console.error("Failed to fetch jobs:", error);
         this.error = "Failed to load jobs. Please try again later.";
       }
+      this.loading = false;
     },
 
     openform(isEdit = false, index = null) {

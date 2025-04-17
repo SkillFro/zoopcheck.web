@@ -58,11 +58,11 @@
 
       <div
         v-if="recruiter"
-        class="bg-[#00000095] w-full fixed top-0 z-40 left-0 flex flex-col justify-center items-center"
+        class="bg-[#00000095] w-full fixed top-0 z-40 left-0 flex flex-col justify-center items-center h-[100vh]"
       >
         <div
           v-if="recruiter"
-          class="relative p-4 bg-[#ffffff] rounded-lg md:p-8 md:w-[700px] w-full m-2 flex items-center flex-col gap-10"
+          class="relative p-4 bg-[#ffffff] md:rounded-lg md:p-8 lg:w-[700px] md:w-[690px] w-full flex items-center flex-col gap-10 overflow-y-auto"
         >
           <div class="absolute top-2 right-3">
             <button @click="openform()" class="text-2xl font-bold">x</button>
@@ -72,7 +72,7 @@
           </div>
           <div class="flex flex-col gap-3 p-2">
             <div
-              class="flex flex-wrap items-start justify-between w-full gap-5"
+              class="flex flex-wrap items-start justify-between w-full gap-2 lg:gap-5"
             >
               <div
                 class="flex items-start flex-col gap-[10px] w-full md:w-auto"
@@ -174,7 +174,7 @@
           <div class="flex items-center justify-center w-full">
             <button
               @click="submitJob()"
-              class="p-3 px-6 rounded bg-[#2966f4] text-white w-fit"
+              class="py-3 px-6 rounded bg-[#2966f4] text-white w-fit"
               :disabled="loading"
             >
               <span v-if="loading">Processing...</span>

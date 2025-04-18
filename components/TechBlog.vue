@@ -1,9 +1,48 @@
 <template>
   <div>
-    <div
-      class="grid grid-cols-1 gap-8 px-5 mt-5 lg:p-4 md:px-10 lg:mt-20 md:mt-10 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3"
-    >
+    <nuxt-link to="/blog">
       <div
+        class="grid grid-cols-1 gap-8 px-5 mt-5 lg:p-4 md:px-10 lg:mt-20 md:mt-10 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3"
+      >
+        <div
+          v-for="item in cards"
+          :key="item"
+          class="h-full max-w-sm p-4 bg-white border border-slate-200 bg-stone rounded-xl"
+        >
+          <div class="max-w-sm overflow-hidden">
+            <div class="relative">
+              <img
+                :src="item.image"
+                alt="image"
+                class="object-cover w-full h-48 rounded-lg"
+              />
+            </div>
+            <div class="mt-4">
+              <p class="mb-1 text-sm text-gray-500">{{ item.subtitle }}</p>
+              <h2 class="mb-2 text-xl font-bold leading-tight">
+                {{ item.title }}
+              </h2>
+              <p class="mb-4 text-gray-500 text-md line-clamp-3">
+                {{ item.description }}
+              </p>
+              <div class="flex items-center space-x-3">
+                <img
+                  :src="item.anotherimage"
+                  alt="image"
+                  class="w-8 h-8 rounded-full"
+                />
+                <div>
+                  <p class="text-sm font-semibold">{{ item.name }}</p>
+
+                  <p class="text-xs text-gray-500">
+                    {{ item.date }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div
         v-for="item in cards"
         :key="item"
         class="flex flex-col items-center justify-around transition-all duration-1000 shadow-md hover:scale-105"
@@ -28,8 +67,9 @@
             {{ item.description }}
           </p>
         </div>
+      </div> -->
       </div>
-    </div>
+    </nuxt-link>
   </div>
 </template>
 <script>
@@ -39,66 +79,63 @@ export default {
       cards: [
         {
           image: "/tech/blog1.png",
-          date: "April 1, 2023.",
-          link: "What to wear to a job interview",
+          subtitle: "daily.dev",
+          title: "2023 is finally over, let’s wrap it up!",
           description:
-            "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
+            "Discover how daily.dev revolutionized the developer experience in 2023 with the",
+          anotherimage: "/dash/user.png",
+          name: "Nimrod Kramer",
+          date: "2023-12-31",
         },
         {
-          image: "/tech/blog2.png",
-          date: "April 1, 2023.",
-          link: "Resume Writing Do's and Don'ts",
+          image: "/tech/blog1.png",
+          subtitle: "daily.dev",
+          title: "2023 is finally over, let’s wrap it up!",
           description:
-            "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
+            "Discover how daily.dev revolutionized the developer experience in 2023 with the",
+          anotherimage: "/dash/user.png",
+          name: "Nimrod Kramer",
+          date: "2023-12-31",
         },
         {
-          image: "/tech/blog3.png",
-          date: "April 1, 2023.",
-          link: "What to wear to a job interview",
+          image: "/tech/blog1.png",
+          subtitle: "daily.dev",
+          title: "2023 is finally over, let’s wrap it up!",
           description:
-            "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
+            "Discover how daily.dev revolutionized the developer experience in 2023 with the",
+          anotherimage: "/dash/user.png",
+          name: "Nimrod Kramer",
+          date: "2023-12-31",
         },
         {
-          image: "/tech/blog4.png",
-          date: "April 1, 2023.",
-          link: "What to wear to a job interview",
+          image: "/tech/blog1.png",
+          subtitle: "daily.dev",
+          title: "2023 is finally over, let’s wrap it up!",
           description:
-            "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
+            "Discover how daily.dev revolutionized the developer experience in 2023 with the",
+          anotherimage: "/dash/user.png",
+          name: "Nimrod Kramer",
+          date: "2023-12-31",
         },
         {
-          image: "/tech/blog5.png",
-          date: "April 1, 2023.",
-          link: "Resume Writing Do's and Don'ts",
+          image: "/tech/blog1.png",
+          subtitle: "daily.dev",
+          title: "2023 is finally over, let’s wrap it up!",
           description:
-            "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
+            "Discover how daily.dev revolutionized the developer experience in 2023 with the",
+          anotherimage: "/dash/user.png",
+          name: "Nimrod Kramer",
+          date: "2023-12-31",
         },
         {
-          image: "/tech/blog6.png",
-          date: "April 1, 2023.",
-          link: "What to wear to a job interview",
+          image: "/tech/blog1.png",
+          subtitle: "daily.dev",
+          title: "2023 is finally over, let’s wrap it up!",
           description:
-            "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
-        },
-        {
-          image: "/tech/blog7.png",
-          date: "April 1, 2023.",
-          link: "What to wear to a job interview",
-          description:
-            "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
-        },
-        {
-          image: "/tech/blog8.png",
-          date: "April 1, 2023.",
-          link: "Resume Writing Do's and Don'ts",
-          description:
-            "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
-        },
-        {
-          image: "/tech/blog9.png",
-          date: "April 1, 2023.",
-          link: "What to wear to a job interview",
-          description:
-            "Donec sed tempus enim, a congue risus. Pellentesque euismod massa a quam viverra interdum",
+            "Discover how daily.dev revolutionized the developer experience in 2023 with the",
+          anotherimage: "/dash/user.png",
+          name: "Nimrod Kramer",
+          date: "2023-12-31",
         },
       ],
     };

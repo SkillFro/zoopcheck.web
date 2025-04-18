@@ -41,7 +41,7 @@
             </div>
           </div>
           <div
-            @click="logout()"
+            @click="openLogout()"
             class="flex items-center gap-4 px-4 py-2 cursor-pointer"
           >
             <img
@@ -150,7 +150,7 @@
           </div>
           <div class="flex flex-col justify-center flex-1">
             <div
-              @click="logout()"
+              @click="openLogout()"
               class="flex items-center gap-4 px-4 py-2 cursor-pointer"
             >
               <img
@@ -164,6 +164,31 @@
         </div>
       </div>
     </div>
+    <div
+      v-if="logout"
+      class="fixed top-0 z-50 flex items-center justify-center w-full h-screen bg-black/70 bg-blend-overlay"
+    >
+      <div
+        class="bg-white w-[300px] h-[190px] rounded-xl flex flex-col items-center p-5 gap-5"
+      >
+        <h1 class="text-[20px] font-bold">Logout Confirmation</h1>
+        <h5 class="">Are You Sure Want to do logout</h5>
+        <div class="flex items-center gap-4">
+          <button
+            @click="confirmLogout()"
+            class="text-[14px] border-red-500 border px-4 py-2 bg-red-500 text-white hover:border-transparent rounded-lg"
+          >
+            Confirm
+          </button>
+          <button
+            @click="closeLogout()"
+            class="text-gray-900 text-[14px] border-gray-500 border px-4 py-2 rounded-lg"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -171,6 +196,7 @@ export default {
   data() {
     return {
       nav: false,
+      logout: false,
       navs: [
         {
           name: "Dashboard",
@@ -202,8 +228,20 @@ export default {
       this.nav = false;
       document.body.style.overflow = "";
     },
-    logout() {
-      prompt("You want to logout");
+    openLogout() {
+      this.logout = true;
+      this.nav = false;
+      document.body.style.overflow = "hidden";
+    },
+    closeLogout() {
+      this.logout = false;
+      document.body.style.overflow = "";
+    },
+    confirmLogout() {
+      localStorage.clear();
+      this.logout = false;
+      document.body.style.overflow = "";
+      this.$router.push("/");
     },
   },
   watch: {
@@ -211,6 +249,5 @@ export default {
       this.closeNav();
     },
   },
-  mounted() {},
 };
 </script>

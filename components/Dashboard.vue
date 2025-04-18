@@ -9,34 +9,47 @@
           alt="logo"
           class="w-[183px] h-[36px]"
         />
-        <div class="flex flex-col gap-3 mt-5">
-          <div
-            v-for="nav in navs"
-            class="mt-3"
-            :key="nav"
-            :class="{
-              'border bg-[#2966f4] rounded-xl ': $route.path === nav.path,
-            }"
-          >
-            <nuxt-link
-              :to="nav.path"
-              class="flex items-center justify-start gap-4 p-2 px-5"
+        <div class="flex flex-col justify-between h-full gap-3 my-5">
+          <div>
+            <div
+              v-for="nav in navs"
+              class="mt-3"
+              :key="nav"
+              :class="{
+                'border bg-[#2966f4] rounded-xl ': $route.path === nav.path,
+              }"
             >
-              <img
-                :src="$route.path === nav.path ? nav.activeIcon : nav.icon"
-                alt="icon"
-                class="w-[20px] h-[20px]"
-              />
-              <h1
-                class="text-[16px] font-[500]"
-                :class="{
-                  'text-white': $route.path === nav.path,
-                  'text-slate-800': $route.path !== nav.path,
-                }"
+              <nuxt-link
+                :to="nav.path"
+                class="flex items-center justify-start gap-4 p-2 px-5"
               >
-                {{ nav.name }}
-              </h1>
-            </nuxt-link>
+                <img
+                  :src="$route.path === nav.path ? nav.activeIcon : nav.icon"
+                  alt="icon"
+                  class="w-[20px] h-[20px]"
+                />
+                <h1
+                  class="text-[16px] font-[500]"
+                  :class="{
+                    'text-white': $route.path === nav.path,
+                    'text-slate-800': $route.path !== nav.path,
+                  }"
+                >
+                  {{ nav.name }}
+                </h1>
+              </nuxt-link>
+            </div>
+          </div>
+          <div
+            @click="logout()"
+            class="flex items-center gap-4 px-4 py-2 cursor-pointer"
+          >
+            <img
+              src="/public/dash/logout.svg"
+              class="w-[20px] h-[20px]"
+              alt="icon"
+            />
+            <h1 class="text-red-500 text-[14px]">Logout</h1>
           </div>
         </div>
 
@@ -89,7 +102,7 @@
         </div> -->
       </div>
     </div>
-    <div class="fixed top-0 z-10 block w-full lg:hidden">
+    <div class="fixed top-0 z-10 block w-full h- lg:hidden">
       <div class="flex items-center justify-between p-4 bg-white lg:px-10">
         <img src="/public/images/logo.svg" alt="logo" class="w-[150px]" />
         <button
@@ -105,33 +118,48 @@
           /></span>
         </button>
       </div>
-      <div v-if="nav" class="fixed left-0 h-screen bg-white p-7 top-15">
-        <div class="flex flex-col items-start justify-center gap-[40px]">
-          <div
-            v-for="nav in navs"
-            :key="nav"
-            class="flex flex-col items-start justify-center text-[16px]"
-            :class="{
-              'bg-[#2966f4] rounded-xl ': $route.path === nav.path,
-            }"
-          >
-            <NuxtLink :to="nav.path" class="flex items-center gap-4 p-2 mt-2">
-              <img
-                :src="$route.path === nav.path ? nav.activeIcon : nav.icon"
-                alt="icon"
-                class="w-[20px] h-[20px] inline-block mr-2"
-              />
+      <div v-if="nav" class="w-3/4 h-screen bg-white px-7">
+        <div class="flex flex-col justify-between h-full gap-3">
+          <div class="flex-1">
+            <div
+              v-for="nav in navs"
+              :key="nav"
+              class="text-[16px] mb-4 px-4 py-2"
+              :class="{
+                'bg-[#2966f4] rounded-xl ': $route.path === nav.path,
+              }"
+            >
+              <NuxtLink :to="nav.path" class="flex items-center gap-2">
+                <img
+                  :src="$route.path === nav.path ? nav.activeIcon : nav.icon"
+                  alt="icon"
+                  class="w-[20px] h-[20px] inline-block mr-2"
+                />
 
-              <h1
-                class="text-[16px] font-medium hover:text-[#2966f4]"
-                :class="{
-                  'text-white': $route.path === nav.path,
-                  'text-slate-900': $route.path !== nav.path,
-                }"
-              >
-                {{ nav.name }}
-              </h1>
-            </NuxtLink>
+                <h1
+                  class="text-[16px] font-medium hover:text-[#2966f4]"
+                  :class="{
+                    'text-white': $route.path === nav.path,
+                    'text-slate-900': $route.path !== nav.path,
+                  }"
+                >
+                  {{ nav.name }}
+                </h1>
+              </NuxtLink>
+            </div>
+          </div>
+          <div class="flex flex-col justify-center flex-1">
+            <div
+              @click="logout()"
+              class="flex items-center gap-4 px-4 py-2 cursor-pointer"
+            >
+              <img
+                src="/public/dash/logout.svg"
+                class="w-[20px] h-[20px]"
+                alt="icon"
+              />
+              <h1 class="text-red-500 text-[14px] font-">Logout</h1>
+            </div>
           </div>
         </div>
       </div>
@@ -174,11 +202,15 @@ export default {
       this.nav = false;
       document.body.style.overflow = "";
     },
+    logout() {
+      prompt("You want to logout");
+    },
   },
   watch: {
     $route() {
       this.closeNav();
     },
   },
+  mounted() {},
 };
 </script>

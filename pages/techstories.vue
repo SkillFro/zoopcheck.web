@@ -12,31 +12,6 @@
     </div>
     <div class="flex flex-col items-center justify-center gap-2">
       <TechBlog />
-
-      <!-- <div class="flex flex-wrap items-center justify-around gap-10 mt-10">
-        <div v-for="item in items" :key="item">
-          <Card
-            class="shadow"
-            :image="item.image"
-            :date="item.date"
-            :link="item.link"
-            :description="item.description"
-          >
-          </Card>
-        </div>
-      </div>
-      <div class="flex flex-wrap items-center justify-around gap-10 mt-10">
-        <div v-for="item in indexs" :key="item">
-          <Card
-            class="shadow"
-            :image="item.image"
-            :date="item.date"
-            :link="item.link"
-            :description="item.description"
-          >
-          </Card>
-        </div>
-      </div> -->
     </div>
   </div>
 </template>

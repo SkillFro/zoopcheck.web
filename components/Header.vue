@@ -2,10 +2,10 @@
   <!-- xl device navbar -->
   <div class="hidden lg:block">
     <div
-      class="w-full h-[95px] bg-white fixed top-0 flex justify-center items-center z-10"
+      class="w-full px-4 py-6 bg-white/50 shadow-xs backdrop-blur-md fixed top-0 flex justify-center items-center z-10"
     >
       <div
-        class="max-w-[1296px] flex items-center justify-center xl:gap-[110px] gap-[40px]"
+        class="xl:max-w-[1120px] w-full mx-auto flex items-center justify-between "
       >
         <img src="/public/images/logo.svg" alt="" width="150px" />
         <div class="flex items-center xl:gap-[64px] gap-[30px]">
@@ -13,11 +13,10 @@
             <div
               v-for="nav in navs"
               :key="nav"
-              class="hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-              :class="{
-                '  text-[#2966f4] underline underline-offset-[12px] decoration-[#2966f4] decoration-2':
-                  $route.path === nav.path,
-              }"
+              class="hover:text-[#086BD8] font-semibold  text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#086BD8] hover:decoration-2 leading-[24px] px-2"
+              :class="
+                $route.path === nav.path?'  text-[#086BD8] underline underline-offset-[12px] decoration-[#086BD8] decoration-2':'text-gray-800'
+              "
             >
               <NuxtLink :to="nav.path">
                 {{ nav.name }}
@@ -27,13 +26,13 @@
           <div class="flex items-center gap-[16px]">
             <NuxtLink>
               <button
-                class="py-[6px] px-[12px] bg-[#2966f4] text-white text-[16px] rounded-[0.375rem]"
+                class="py-[6px] px-[12px] bg-[#086BD8] text-white text-[16px] rounded-[0.375rem]"
               >
                 Login
               </button>
             </NuxtLink>
             <button
-              class="py-[6px] px-[12px] bg-[#0a2d52] text-white text-[16px] rounded-[0.375rem]"
+              class="py-[6px] px-[12px] border border-[#086BD8] text-[#086BD8] text-[16px] rounded-[0.375rem]"
             >
               Sign Up
             </button>
@@ -44,8 +43,8 @@
   </div>
 
   <!-- sm device navbar -->
-  <div class="fixed top-0 z-10 block w-full lg:hidden">
-    <div class="flex items-center justify-between p-4 bg-white lg:px-10">
+  <div class="fixed top-0 z-10 shadow-xs backdrop-blur-md bg-white/50 block w-full lg:hidden">
+    <div class="flex items-center justify-between p-4 bg- lg:px-10">
       <img src="/public/images/logo.svg" alt="logo" class="w-[150px]" />
       <button
         @click="toggleNav()"
@@ -57,22 +56,22 @@
       </button>
     </div>
     <div v-if="nav" class="w-full p-10 bg-white">
-      <div class="flex flex-col items-start justify-center gap-[40px]">
+      <div class="flex flex-col items-end justify-center gap-[40px]">
         <div
-          v-for="nav in navs"
-          :key="nav"
-          class="flex flex-col items-start justify-center hover:text-[#2966f4] text-[#212529] text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#2966f4] hover:decoration-2 leading-[24px] px-2"
-          :class="{
-            '  text-[#2966f4]': $route.path === nav.path,
-          }"
-        >
-          <NuxtLink :to="nav.path">
-            {{ nav.name }}
-          </NuxtLink>
-        </div>
+              v-for="nav in navs"
+              :key="nav"
+              class="hover:text-[#086BD8] font-semibold  text-[16px] hover:underline hover:underline-offset-[12px] hover:decoration-[#086BD8] hover:decoration-2 leading-[24px] px-2"
+              :class="
+                $route.path === nav.path?'  text-[#086BD8] underline underline-offset-[12px] decoration-[#086BD8] decoration-2':'text-gray-800'
+              "
+            >
+              <NuxtLink :to="nav.path">
+                {{ nav.name }}
+              </NuxtLink>
+            </div>
         <div class="flex flex-col gap-[16px]">
           <button
-            class="py-[6px] px-[12px] bg-[#2966f4] text-white text-[16px] rounded-[0.375rem]"
+            class="py-[6px] px-[12px] bg-[#086BD8] text-white text-[16px] rounded-[0.375rem]"
           >
             Login
           </button>
@@ -107,17 +106,19 @@ export default {
           path: "/",
         },
         {
+          name: "Jobs",
+          path: "/job",
+        },
+
+        {
+          name: "Case Studies",
+          path: "/blogs",
+        },
+        {
           name: "About",
           path: "/about",
         },
-        {
-          name: "Current Openings",
-          path: "/currentopenings",
-        },
-        {
-          name: "Tech Stories",
-          path: "/techstories",
-        },
+        
         {
           name: "Contact",
           path: "/contact",

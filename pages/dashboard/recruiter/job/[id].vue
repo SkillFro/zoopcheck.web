@@ -3,15 +3,7 @@
     <div class="fixed top-0 z-10 hidden w-full px-10 py-4 bg-white md:block">
       <h1 class="text-3xl font-semibold">Application</h1>
     </div>
-    <!-- <nuxt-link to="/dashboard/recruiter/job">
-      <div class="pl-4 mt-24">
-        <p
-          class="p-2 px-6 font-medium text-white underline bg-blue-600 border rounded-lg cursor-pointer w-28 text-md"
-        >
-          Go Back
-        </p>
-      </div>
-    </nuxt-link> -->
+
     <div class="pl-4 mt-24">
       <nav aria-label="Breadcrumb">
         <div class="pl-4 mt-24">
@@ -108,7 +100,7 @@
               </p>
             </div>
           </div>
-          <button class="px-6 py-2 text-white bg-blue-600 rounded-lg">
+          <button class="px-6 py-2 text-white bg-[#086BD8] rounded-lg">
             View profile
           </button>
         </div>

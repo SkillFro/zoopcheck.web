@@ -87,7 +87,7 @@
           <div class="text-right md:col-span-2">
             <button
               type="submit"
-              class="px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:bg-blue-300"
+              class="px-6 py-2 text-white bg-[#086BD8] rounded-lg hover:bg-[#086BD8] disabled:bg-blue-300"
               :disabled="isLoading"
             >
               <span v-if="!isLoading">Save</span>
@@ -239,6 +239,6 @@ export default {
 
 <style scoped>
 .input-style {
-  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
+  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#086BD8];
 }
 </style>

@@ -5,7 +5,7 @@
     </div>
 
     <div class="grid grid-cols-1 gap-6 p-4 md:p-6 lg:grid-cols-3">
-      <!-- Stats Cards -->
+      
       <div class="p-6 bg-white rounded-lg shadow-sm">
         <div class="flex items-center justify-between">
           <div>
@@ -16,7 +16,7 @@
           </div>
           <div class="p-3 rounded-full bg-blue-50">
             <svg
-              class="w-6 h-6 text-blue-600"
+              class="w-6 h-6 text-[#086BD8]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -85,9 +85,9 @@
       </div>
     </div>
 
-    <!-- Charts Section -->
+    
     <div class="grid grid-cols-1 gap-6 p-4 md:p-6 lg:grid-cols-2">
-      <!-- Jobs Chart -->
+      
       <div class="p-6 bg-white rounded-lg shadow-sm">
         <h2 class="mb-4 text-lg font-semibold text-gray-800">Jobs Overview</h2>
         <div class="h-64">
@@ -95,7 +95,7 @@
         </div>
       </div>
 
-      <!-- Applicants Chart -->
+      
       <div class="p-6 bg-white rounded-lg shadow-sm">
         <h2 class="mb-4 text-lg font-semibold text-gray-800">
           Applicants Trend
@@ -106,7 +106,7 @@
       </div>
     </div>
 
-    <!-- Recent Activity -->
+    
     <div class="p-4 md:p-6">
       <div class="p-6 bg-white rounded-lg shadow-sm">
         <h2 class="mb-4 text-lg font-semibold text-gray-800">

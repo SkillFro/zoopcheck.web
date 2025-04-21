@@ -1,6 +1,6 @@
 <template>
   <div class="bg-[#f8f9fa] h-[100vh] flex justify-center items-center">
-    <!-- Login -->
+    
     <div
       v-if="login"
       class="lg:flex lg:flex-row flex flex-col items-center justify-center w-full md:max-w-[1100px] md:mx-auto px-2"
@@ -90,7 +90,7 @@
       </div>
     </div>
 
-    <!-- Signup -->
+    
     <div
       v-if="signup"
       class="lg:flex lg:flex-row-reverse flex flex-col-reverse items-center justify-center w-full lg:max-w-[1100px] lg:mx-auto px-2"
@@ -102,7 +102,7 @@
           <h3 class="text-[25px] font-semibold text-[#2c3038]">Hi Welcome</h3>
         </div>
 
-        <!-- Buttons -->
+        
         <div class="flex items-center justify-center gap-2">
           <button
             id="recruiter"
@@ -126,7 +126,7 @@
           </button>
         </div>
 
-        <!-- Recruiter -->
+        
         <div v-if="recruiter" class="flex flex-col gap-[8px]">
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Name </label>
@@ -212,7 +212,7 @@
           </div>
         </div>
 
-        <!-- Candidate -->
+        
         <div v-if="canditate" class="flex flex-col gap-[8px]">
           <div class="flex flex-col gap-[10px]">
             <label class="font-semibold text-[#2c3038]" for="#">Name </label>

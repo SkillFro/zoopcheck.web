@@ -4,7 +4,7 @@
       <h1 class="text-3xl font-semibold">Jobs</h1>
     </div>
     <div class="px-8 pt-8 mt-14">
-      <!-- Success Message -->
+      
       <div
         v-if="successMessage"
         class="p-4 mb-4 text-green-700 bg-green-100 rounded-lg"
@@ -12,7 +12,7 @@
         {{ successMessage }}
       </div>
 
-      <!-- Error Message -->
+      
       <div v-if="error" class="p-4 mb-4 text-red-700 bg-red-100 rounded-lg">
         {{ error }}
       </div>
@@ -26,7 +26,7 @@
             type="text"
             v-model="search"
             placeholder="Search..."
-            class="w-full py-2 pl-10 pr-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full py-2 pl-10 pr-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#086BD8]"
           />
         </div>
 
@@ -35,7 +35,7 @@
         >
           <select
             v-model="category"
-            class="p-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="p-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#086BD8]"
           >
             <option value="Category">Select Category</option>
             <option>Developer</option>
@@ -54,7 +54,7 @@
         </div>
       </div>
 
-      <!-- Job Form Modal -->
+      
 
       <div
         v-if="recruiter"
@@ -187,12 +187,12 @@
       </div>
       <div v-if="loading" class="flex items-center justify-center w-full py-10">
         <div
-          class="w-10 h-10 border-t-4 border-blue-500 border-solid rounded-full animate-spin"
+          class="w-10 h-10 border-t-4 border-[#086BD8] border-solid rounded-full animate-spin"
         ></div>
-        <span class="ml-3 font-medium text-blue-600">Loading jobs...</span>
+        <span class="ml-3 font-medium text-[#086BD8]">Loading jobs...</span>
       </div>
 
-      <!-- Jobs List -->
+      
       <div
         class="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 2xl:max-w-[1360px] max-w-[1000px] mx-auto mt-6 md:mt-6 md:gap-4 lg:gap-6 2xl:grid-cols-3"
       >

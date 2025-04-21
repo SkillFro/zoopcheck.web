@@ -1,8 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
+import dotenv from "dotenv";
+dotenv.config();
+
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "ZoopCheck", // default fallback title
+      title: "ZoopCheck",
       htmlAttrs: {
         lang: "en",
       },
@@ -10,15 +14,64 @@ export default defineNuxtConfig({
     },
   },
 
-  devtools: { enabled: true },
-  css: ["~/assets/css/main.css"],
-
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
+  runtimeConfig: {
+    public: {
+      baseURL: process.env.BASE_URL,
     },
   },
 
+  devtools: { enabled: true },
+  css: ["~/assets/css/main.css"],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  auth: {
+    // globalAppMiddleware: true,
+    baseURL: process.env.BASE_URL,
+    provider: {
+      type: "local",
+      endpoints: {
+        signIn: { path: "/auth/login", method: "post" },
+        signOut: false,
+        signUp: { path: "/auth/register", method: "post" },
+        getSession: { path: "/auth/me", method: "get" },
+      },
+      token: {
+        signInResponseTokenPointer: "/accessToken",
+        type: "Bearer",
+        cookieName: "auth.accessToken",
+        headerName: "Authorization",
+        maxAgeInSeconds: 15 * 60,
+        sameSiteAttribute: "lax",
+        secureCookieAttribute: false,
+        httpOnlyCookieAttribute: false,
+      },
+      refresh: {
+        isEnabled: true,
+        endpoint: { path: "/auth/refresh-token", method: "post" },
+        refreshOnlyToken: true,
+        token: {
+          signInResponseRefreshTokenPointer: "/refreshToken",
+          refreshResponseTokenPointer: "",
+          refreshRequestTokenPointer: "/refreshToken",
+          cookieName: "auth.refreshToken",
+          maxAgeInSeconds: 15 * 24 * 60,
+          sameSiteAttribute: "lax",
+          secureCookieAttribute: false,
+          httpOnlyCookieAttribute: false,
+        },
+      },
+      pages: {
+        login: '/auth'
+      }
+    },
+    sessionRefresh: {
+      enablePeriodically: true,
+      enableOnWindowFocus: true,
+    }
+  },
+
   compatibilityDate: "2025-04-08",
+  modules: ["@sidebase/nuxt-auth"],
 });

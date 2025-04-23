@@ -107,7 +107,7 @@ export default {
         },
         {
           name: "Jobs",
-          path: "/job",
+          path: "/jobs",
         },
 
         {

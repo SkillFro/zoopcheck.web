@@ -30,7 +30,7 @@
 
             <div class="mt-2 text-md text-gray-600">{{ job.recruiter.name }}</div>
           </div>
-          <img :src="job.recruiter.profile" alt="Logo" class="object-contain rounded-full w-14 h-14" />
+          <img :src="job.recruiter.profile" alt="Logo" class="object-cover rounded-full w-14 h-14" />
         </div>
         <div class="flex flex-wrap gap-4 mt-2 text-md text-gray-600">
           <div class="flex gap-2 items-center"><img src="/public/icons/experience.svg" class="w-5 h-5" alt=""> {{

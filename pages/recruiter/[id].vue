@@ -4,7 +4,7 @@
       <!-- Header Info -->
       <div class="flex flex- gap-6 md:flex-row items-center justify-">
         <!-- Logo -->
-        <img src="/images/logo.svg" alt="Company Logo" class="w-20 h-20 border object- object-center rounded-xl" />
+        <img src="/public/images/logo.svg" alt="Company Logo" class="w-20 h-20 border border-slate-300 object- object-center rounded-xl" />
         <div>
           <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">
             Skillmine Technology
@@ -91,7 +91,7 @@
     </div>
 
     <!-- Job section -->
-    <div v-if="jobsection" class="flex flex-wrap justify-center w-full gap-5">
+    <div v-if="jobsection" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center w-full gap-5">
       <div v-for="job in jobs" :key="job.title" class="p-4 bg-white shadow-md rounded-xl lg:w-[350px] w-full">
         <div class="flex items-start justify-between">
           <div>
@@ -101,7 +101,7 @@
 
             <div class="mt-2 text-sm text-gray-600">{{ job.role }}</div>
           </div>
-          <img src="/images/logo.svg" alt="TP Logo" class="object-contain rounded-full w-14 h-14" />
+          <img src="/public/images/logo.svg" alt="TP Logo" class="object-contain rounded-full w-14 h-14" />
         </div>
         <div class="flex flex-wrap gap-4 mt-2 text-sm text-gray-600">
           <span>🧑‍💼 {{ job.experience }}</span>

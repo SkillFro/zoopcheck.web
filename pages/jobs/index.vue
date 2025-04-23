@@ -28,9 +28,9 @@
               {{ job.title }}
             </h2>
 
-            <div class="mt-2 text-md text-gray-600">{{ job.recruiter }}</div>
+            <div class="mt-2 text-md text-gray-600">{{ job.recruiter.name }}</div>
           </div>
-          <img src="/images/logo.svg" alt="TP Logo" class="object-contain rounded-full w-14 h-14" />
+          <img :src="job.recruiter.profile" alt="Logo" class="object-contain rounded-full w-14 h-14" />
         </div>
         <div class="flex flex-wrap gap-4 mt-2 text-md text-gray-600">
           <div class="flex gap-2 items-center"><img src="/public/icons/experience.svg" class="w-5 h-5" alt=""> {{
@@ -66,11 +66,107 @@ export default {
     return {
       categorys: "category",
       search: "",
-      jobs: null,
+      jobs: [
+      {
+        "id": "fda740fa-7169-4570-9853-50332e31c8a1",
+        "user_id": "40dc0f09-6afa-49e8-8b23-408158faad26",
+        "title": "Developer",
+        "description": "In general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute",
+        "no_of_openings": "4",
+        "category": "Developer",
+        "created_at": "3 days ago",
+        "work_mode": "remote",
+        "experience": "1",
+        "location": "chennai",
+        "status": "TRUE",
+        "applications": 0,
+        "recruiter": {
+          "name": "Suresh",
+          "id": "40dc0f09-6afa-49e8-8b23-408158faad26",
+          "profile": "https://ik.imagekit.io/zoopcheck/profile/myths.jpg2025-04-18T13_56_15_jWGA-ujWI.428Z"
+        }
+      },
+      {
+        "id": "fda740fa-7169-4570-9853-50332e31c8a1",
+        "user_id": "40dc0f09-6afa-49e8-8b23-408158faad26",
+        "title": "Developer",
+        "description": "In general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute",
+        "no_of_openings": "4",
+        "category": "Developer",
+        "created_at": "3 days ago",
+        "work_mode": "remote",
+        "experience": "1",
+        "location": "chennai",
+        "status": "TRUE",
+        "applications": 0,
+        "recruiter": {
+          "name": "Suresh",
+          "id": "40dc0f09-6afa-49e8-8b23-408158faad26",
+          "profile": "https://ik.imagekit.io/zoopcheck/profile/myths.jpg2025-04-18T13_56_15_jWGA-ujWI.428Z"
+        }
+      },
+      {
+        "id": "fda740fa-7169-4570-9853-50332e31c8a1",
+        "user_id": "40dc0f09-6afa-49e8-8b23-408158faad26",
+        "title": "Developer",
+        "description": "In general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute",
+        "no_of_openings": "4",
+        "category": "Developer",
+        "created_at": "3 days ago",
+        "work_mode": "remote",
+        "experience": "1",
+        "location": "chennai",
+        "status": "TRUE",
+        "applications": 0,
+        "recruiter": {
+          "name": "Suresh",
+          "id": "40dc0f09-6afa-49e8-8b23-408158faad26",
+          "profile": "https://ik.imagekit.io/zoopcheck/profile/myths.jpg2025-04-18T13_56_15_jWGA-ujWI.428Z"
+        }
+      },
+      {
+        "id": "fda740fa-7169-4570-9853-50332e31c8a1",
+        "user_id": "40dc0f09-6afa-49e8-8b23-408158faad26",
+        "title": "Developer",
+        "description": "In general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute",
+        "no_of_openings": "4",
+        "category": "Developer",
+        "created_at": "3 days ago",
+        "work_mode": "remote",
+        "experience": "1",
+        "location": "chennai",
+        "status": "TRUE",
+        "applications": 0,
+        "recruiter": {
+          "name": "Suresh",
+          "id": "40dc0f09-6afa-49e8-8b23-408158faad26",
+          "profile": "https://ik.imagekit.io/zoopcheck/profile/myths.jpg2025-04-18T13_56_15_jWGA-ujWI.428Z"
+        }
+      },
+      {
+        "id": "fda740fa-7169-4570-9853-50332e31c8a1",
+        "user_id": "40dc0f09-6afa-49e8-8b23-408158faad26",
+        "title": "Developer",
+        "description": "In general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute",
+        "no_of_openings": "4",
+        "category": "Developer",
+        "created_at": "3 days ago",
+        "work_mode": "remote",
+        "experience": "1",
+        "location": "chennai",
+        "status": "TRUE",
+        "applications": 0,
+        "recruiter": {
+          "name": "Suresh",
+          "id": "40dc0f09-6afa-49e8-8b23-408158faad26",
+          "profile": "https://ik.imagekit.io/zoopcheck/profile/myths.jpg2025-04-18T13_56_15_jWGA-ujWI.428Z"
+        }
+      }
+      ],
     };
   },
   mounted(){
-    this.getJobs()
+    // this.getJobs()
   },
   methods:{
     async getJobs(){

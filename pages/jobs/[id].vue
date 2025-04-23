@@ -35,6 +35,10 @@
                 <p> {{
                   job.work_mode }}</p>
               </div>
+              <div class="flex gap-2 items-center"><img src="/public/icons/users.svg" class="w-4 h-4" alt="">
+                <p> {{
+                  job.no_of_openings }} Openings</p>
+              </div>
               <div class="flex gap-2 items-center"><img src="/public/icons/location.svg" class="w-4 h-4" alt="">
                 <p>located
                   in {{
@@ -50,9 +54,9 @@
         </div>
         <div class="flex mt-1 flex-col md:flex-row items-center justify-between w-full gap-4 text-sm">
           <div class="flex flex-col sm:flex-row w-full gap-2 text-gray-500">
-            <div class="flex gap-2">Posted: <strong>{{ job.created_at }}</strong></div>
-            <div class="flex gap-2">Openings: <strong>{{ job.no_of_openings }}</strong></div>
-            <div class="flex gap-2">Applicants: <strong>{{ job.applications }}</strong></div>
+            <div class="flex gap-2">Posted: <p class="text-sm font-semibold text-nowrap">{{ job.created_at }}</p></div>
+            <!-- <div class="flex gap-2">Openings: <p class="text-sm font-semibold">{{ job.no_of_openings }}</p></div> -->
+            <div class="flex gap-2">Applicants: <p class="text-sm font-semibold">{{ job.applications }}</p></div>
           </div>
 
           <div class="flex w-full gap-2  md:justify-end">
@@ -165,7 +169,7 @@ export default {
         "id": "fda740fa-7169-4570-9853-50332e31c8a1",
         "user_id": "40dc0f09-6afa-49e8-8b23-408158faad26",
         "title": "Developer",
-        "description": "In general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute",
+        "description": "In general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute \n In general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute \nIn general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute \nIn general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute \n",
         "no_of_openings": "4",
         "category": "Developer",
         "created_at": "3 days ago",

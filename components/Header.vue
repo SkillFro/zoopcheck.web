@@ -28,7 +28,7 @@
               <button
                 class="py-[6px] px-[12px] bg-[#086BD8] text-white text-[16px] rounded-[0.375rem]"
               >
-                Login
+                Sign In
               </button>
             </NuxtLink>
             <button
@@ -73,7 +73,7 @@
           <button
             class="py-[6px] px-[12px] bg-[#086BD8] text-white text-[16px] rounded-[0.375rem]"
           >
-            Login
+            Sign In
           </button>
           <button
             class="py-[6px] px-[12px] bg-[#0a2d52] text-white text-[16px] rounded-[0.375rem]"

@@ -1,5 +1,5 @@
 <template>
-  <section class="px-4 py-8 mx-auto mt-20 max-w-[1120px]">
+  <section class="px-4 py-8 mx-auto mt-20 max-w-[1080px]">
     <div class="py-6">
       <!-- Header Info -->
       <div class="flex flex- gap-6 md:flex-row items-center justify-">
@@ -33,7 +33,7 @@
     </div>
 
     <!-- Overview Section -->
-    <div v-if="overviews" class="flex flex-col md:flex-row max-w-[1120px]">
+    <div v-if="overviews" class="flex flex-col md:flex-row max-w-[1080px]">
       <!-- About Section -->
       <div class="w-full  lg:flex-2 bg  md:max-w-[700px]">
         <h2 class="mb-2 font-semibold text-gray-900 text-lg">

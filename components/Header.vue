@@ -37,12 +37,13 @@
               Sign Up
             </button>
           </div>
-          <NuxtLink v-else>
-              <button
+          <NuxtLink v-else to="/profile">
+              <!-- <button
                 class="py-[6px] px-[12px] bg-[#086BD8] text-white text-[16px] rounded-[0.375rem]"
               >
                 Profile
-              </button>
+              </button> -->
+              <img class="w-10 h-10 rounded-full" :src="authState.data.user.profile" alt="">
             </NuxtLink>
         </div>
       </div>
@@ -97,7 +98,7 @@ export default {
   data() {
     return {
       nav: false,
-      authState:useAuthState(),
+      authState:useAuth(),
       navs: [
         {
           name: "Home",

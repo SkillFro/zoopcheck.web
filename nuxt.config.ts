@@ -63,11 +63,11 @@ export default defineNuxtConfig({
         },
       },
       pages: {
-        login: '/auth'
+        login: '/signin'
       }
     },
     sessionRefresh: {
-      enablePeriodically: true,
+      enablePeriodically: false,
       enableOnWindowFocus: true,
     }
   },

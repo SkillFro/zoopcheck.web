@@ -23,20 +23,27 @@
               </NuxtLink>
             </div>
           </div>
-          <div class="flex items-center gap-[16px]">
-            <NuxtLink>
+          <div v-if="authState.status!=='authenticated'" class="flex items-center gap-[16px]">
+            <NuxtLink to="/signin">
               <button
-                class="py-[6px] px-[12px] bg-[#086BD8] text-white text-[16px] rounded-[0.375rem]"
+                class="py-[6px] px-[12px] cursor-pointer bg-[#086BD8] text-white text-[16px] rounded-[0.375rem]"
               >
                 Sign In
               </button>
             </NuxtLink>
             <button
-              class="py-[6px] px-[12px] border border-[#086BD8] text-[#086BD8] text-[16px] rounded-[0.375rem]"
+              class="py-[6px] px-[12px] border cursor-pointer border-[#086BD8] text-[#086BD8] text-[16px] rounded-[0.375rem]"
             >
               Sign Up
             </button>
           </div>
+          <NuxtLink v-else>
+              <button
+                class="py-[6px] px-[12px] bg-[#086BD8] text-white text-[16px] rounded-[0.375rem]"
+              >
+                Profile
+              </button>
+            </NuxtLink>
         </div>
       </div>
     </div>
@@ -85,21 +92,12 @@
     </div>
   </div>
 </template>
-<script setup>
-useHead({
-  link: [
-    {
-      rel: "stylesheet",
-      href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-    },
-  ],
-});
-</script>
 <script>
 export default {
   data() {
     return {
       nav: false,
+      authState:useAuthState(),
       navs: [
         {
           name: "Home",

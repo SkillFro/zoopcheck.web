@@ -10,7 +10,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     return {
       provide: {
         apiFetch: (url, options = {}) => {
-          console.log(options)
+          // console.log(options)
           return $apiFetch(url, {
             method: options.method || 'GET',
             body: options.body || null,

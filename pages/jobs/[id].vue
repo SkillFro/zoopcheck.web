@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div v-if="job !== null" class="">
     <div
       class="bg-[url('/images/jobview.jpg')] px-4 mt-18 lg:mt-22 bg-center bg-cover bg-black/75 bg-blend-overlay w-full md:h-[348px] flex justify-center items-end py-10">
       <div class="flex w-[1080px] mx-auto justify-between">
@@ -24,12 +24,14 @@
                   </div>
                 </div>
                 <div class="flex flex-col gap-1 mt-2 text-md text-gray-200">
-                  <div class="flex gap-2 items-center"><img src="/public/icons/experience-white.svg" class="w-4 h-4" alt="">
+                  <div class="flex gap-2 items-center"><img src="/public/icons/experience-white.svg" class="w-4 h-4"
+                      alt="">
                     <p>minimum {{
                       job.experience }} experience</p>
                   </div>
 
-                  <div class="flex gap-2 items-center"><img src="/public/icons/work-mode-white.svg" class="w-4 h-4" alt="">
+                  <div class="flex gap-2 items-center"><img src="/public/icons/work-mode-white.svg" class="w-4 h-4"
+                      alt="">
                     <p> {{
                       job.work_mode }}</p>
                   </div>
@@ -37,7 +39,8 @@
                     <p> {{
                       job.no_of_openings }} Openings</p>
                   </div>
-                  <div class="flex gap-2 items-center"><img src="/public/icons/location-white.svg" class="w-4 h-4" alt="">
+                  <div class="flex gap-2 items-center"><img src="/public/icons/location-white.svg" class="w-4 h-4"
+                      alt="">
                     <p>located
                       in {{
                         job.location }}</p>
@@ -58,13 +61,26 @@
                 <div class="flex gap-2">Applicants: <p class="text-sm font-semibold">{{ job.applications }}</p>
                 </div>
               </div>
-              <div class="flex w-full gap-2  md:justify-end">
+              <div v-if="useAuth().status !== 'authenticated'" class="flex w-full gap-2  md:justify-end">
                 <button
-                  class="px-4 py-1.5 border border-[#ffffff] text-[#ffffff] rounded-md hover:bg-blue-50 transition">
+                  class="px-4 py-1.5 border border-[#ffffff] text-[#ffffff] rounded-md cursor-pointer hover:bg-[#086BD8] hover:border-[#086BD8]  transition">
                   Register to apply
                 </button>
-                <button class="px-4 py-1.5 bg-[#086BD8] text-white rounded-md hover:bg-[#086BD8] transition">
+                <button
+                  class="px-4 py-1.5 bg-[#086BD8] text-white rounded-md cursor-pointer hover:bg-[#086BD8] transition">
                   Login to apply
+                </button>
+              </div>
+              <div v-else class="flex w-full gap-2  md:justify-end">
+                <button
+                  class="px-4 py-1.5 bg-[#086BD8] text-white rounded-md cursor-pointer hover:bg-[#086BD8] transition">
+                  apply
+                </button>
+              </div>
+              <div v-if="job.has_applied ?? false" class="flex w-full gap-2  md:justify-end">
+                <button disabled="true"
+                  class="px-4 py-1.5 bg-[#086BD8] text-white rounded-md cursor-pointer hover:bg-[#086BD8] transition">
+                  applied
                 </button>
               </div>
             </div>
@@ -174,6 +190,13 @@
       </div>
     </div>
   </div>
+  <div v-else class="flex h-screen justify-center w-full lg:w-[1080px] mx-auto items-center">
+    <div class="flex flex-col h-1/2 items-center">
+      <div class="w-8 h-8 animate-spin  border-[#086BD8] border-3 rounded-full border-r-gray-400">
+      </div>
+      <p class="text-lg mt-4 text-center">We getting the Job Details for You</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -181,25 +204,7 @@
 export default {
   data() {
     return {
-      job: {
-        "id": "fda740fa-7169-4570-9853-50332e31c8a1",
-        "user_id": "40dc0f09-6afa-49e8-8b23-408158faad26",
-        "title": "Developer",
-        "description": "In general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute \n In general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute \nIn general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute \nIn general, \"data\" refers to a collection of facts and figures, or information, often used for reasoning, discussion, or calculations. It can be anything from numerical data to descriptive information, and it's often organized into tables, graphs, or other structured formats for analysis. In computing, data is information that can be stored and processed by a compute \n",
-        "no_of_openings": "4",
-        "category": "Developer",
-        "created_at": "3 days ago",
-        "work_mode": "remote",
-        "experience": "1",
-        "location": "chennai",
-        "status": "TRUE",
-        "applications": 0,
-        "recruiter": {
-          "name": "Suresh",
-          "id": "40dc0f09-6afa-49e8-8b23-408158faad26",
-          "profile": "https://ik.imagekit.io/zoopcheck/profile/myths.jpg2025-04-18T13_56_15_jWGA-ujWI.428Z"
-        }
-      },
+      job: null,
       suggestedJobs: [
         {
           title: "Firewall Security Engineer",
@@ -230,11 +235,11 @@ export default {
     };
   },
   mounted() {
-    // this.getJobInfo()
+    this.getJobInfo()
   },
   methods: {
     async getJobInfo() {
-      const response = await this.$apiFetch(`/recruiter/post/${useRoute().params.id}`)
+      const response = await this.$apiFetch(`/post/${useRoute().params.id}`)
       this.job = response.post ?? {}
     }
   },

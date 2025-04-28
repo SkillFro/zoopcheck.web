@@ -9,8 +9,8 @@
           engagement with Preline.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a v-for="blog in blogs" class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg focus:outline-hidden focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5 "
-          href="/blog">
+        <a v-for="(blog,index) in blogs" class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg focus:outline-hidden focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5 "
+          :href="`/blogs/${index}`">
           <div class="aspect-w-16 aspect-h-11">
             <img class="w-full object-cover rounded-xl"
               :src="blog.image" alt="Blog Image">

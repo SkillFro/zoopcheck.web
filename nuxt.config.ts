@@ -50,7 +50,7 @@ export default defineNuxtConfig({
       refresh: {
         isEnabled: true,
         endpoint: { path: "/auth/refresh-token", method: "post" },
-        refreshOnlyToken: true,
+        refreshOnlyToken: false,
         token: {
           signInResponseRefreshTokenPointer: "/refreshToken",
           refreshResponseTokenPointer: "",
@@ -67,7 +67,7 @@ export default defineNuxtConfig({
       }
     },
     sessionRefresh: {
-      enablePeriodically: false,
+      enablePeriodically: 10*60*1000,
       enableOnWindowFocus: true,
     }
   },

@@ -61,7 +61,7 @@
                 <div class="flex gap-2">Applicants: <p class="text-sm font-semibold">{{ job.applications }}</p>
                 </div>
               </div>
-              <div v-if="useAuth().status !== 'authenticated'" class="flex w-full gap-2  md:justify-end">
+              <div v-if="useAuthState().status.value !== `authenticated`" class="flex w-full gap-2  md:justify-end">
                 <button
                   class="px-4 py-1.5 border border-[#ffffff] text-[#ffffff] rounded-md cursor-pointer hover:bg-[#086BD8] hover:border-[#086BD8]  transition">
                   Register to apply
@@ -74,7 +74,7 @@
               <div v-else class="flex w-full gap-2  md:justify-end">
                 <button
                   class="px-4 py-1.5 bg-[#086BD8] text-white rounded-md cursor-pointer hover:bg-[#086BD8] transition">
-                  apply
+                  Apply to Job
                 </button>
               </div>
               <div v-if="job.has_applied ?? false" class="flex w-full gap-2  md:justify-end">

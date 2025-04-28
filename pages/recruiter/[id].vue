@@ -1,13 +1,14 @@
 <template>
-  <section class="px-4 py-8 mx-auto mt-20 max-w-[1080px]">
+  <section v-if="recruiter !== null" class="px-4 py-8 mx-auto mt-20 max-w-[1080px]">
     <div class="py-6">
       <!-- Header Info -->
       <div class="flex flex- gap-6 md:flex-row items-center justify-">
         <!-- Logo -->
-        <img src="/public/images/logo.svg" alt="Company Logo" class="w-20 h-20 border border-slate-300 object- object-center rounded-xl" />
+        <img :src="recruiter.profile" alt="Company Logo"
+          class="w-20 h-20 border border-slate-300 object- object-center rounded-xl" />
         <div>
           <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">
-            Skillmine Technology
+            {{ recruiter.name }}
           </h1>
         </div>
       </div>
@@ -37,13 +38,10 @@
       <!-- About Section -->
       <div class="w-full  lg:flex-2 bg  md:max-w-[700px]">
         <h2 class="mb-2 font-semibold text-gray-900 text-lg">
-          About Skillmine Technology
+          About {{ recruiter.name }}
         </h2>
         <p class="text-md leading-relaxed text-gray-700">
-          We are a new generation IT Consulting & Managed Services provider,
-          helping our customers to optimize their IT investments, while
-          preparing them for the best-in-class operating model, for delivering
-          that “competitive edge” in their marketplace.
+          {{ recruiter.description }}
         </p>
       </div>
       <div class="bg-white lg:flex-1 border border-slate-200 p-4 rounded-xl w-full">
@@ -51,7 +49,8 @@
           Company Hiring for
         </h2>
         <div class="flex flex-col gap-5">
-          <div v-for="(job, index) in suggestedJobs" :key="index" class="border-b py-4 border-slate-200 last:border-b-0">
+          <div v-for="(job, index) in suggestedJobs" :key="index"
+            class="border-b py-4 border-slate-200 last:border-b-0">
             <div class="flex items-start gap-5">
               <img :src="job.recruiter.profile" class="rounded-lg w-20 h-20 object-cover" alt="">
 
@@ -91,35 +90,54 @@
     </div>
 
     <!-- Job section -->
-    <div v-if="jobsection" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center w-full gap-5">
-      <div v-for="job in jobs" :key="job.title" class="p-4 bg-white shadow-md rounded-xl lg:w-[350px] w-full">
-        <div class="flex items-start justify-between">
-          <div>
-            <h2 class="font-semibold text-gray-900 text-md w-[220px]">
-              {{ job.title }}
-            </h2>
-
-            <div class="mt-2 text-sm text-gray-600">{{ job.role }}</div>
-          </div>
-          <img src="/public/images/logo.svg" alt="TP Logo" class="object-contain rounded-full w-14 h-14" />
-        </div>
-        <div class="flex flex-wrap gap-4 mt-2 text-sm text-gray-600">
-          <span>🧑‍💼 {{ job.experience }}</span>
-          <span>📍 {{ job.type }}</span>
-          <span>Chennai</span>
-        </div>
-        <p class="mt-2 text-sm text-gray-700">
-          {{ job.dis }}
-        </p>
-        <div class="flex items-center justify-between">
-          <div class="mt-3 text-xs text-gray-400">1 Day Ago</div>
-          <NuxtLink to="/jobview">
-            <div class="mt-3 text-xs text-gray-400 cursor-pointer">
-              View More
+    <div v-if="jobs !== null">
+      <div v-if="jobsection" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-center w-full gap-5">
+        <div v-for="job in jobs" :key="job.title" class="p-4 bg-white border border-slate-200 rounded-xl  w-full">
+          <NuxtLink :to="`/jobs/${job.id}`">
+            <div class="flex items-start justify-between">
+              <div>
+                <h2 class="font-semibold text-gray-900 text-md">
+                  {{ job.title }}
+                </h2>
+                <!-- <div class="mt-2 text-md text-gray-600">{{ job.recruiter.name }}</div> -->
+              </div>
+              <!-- <img :src="job.recruiter.profile" alt="Logo" class="object-cover rounded-full w-14 h-14" /> -->
+            </div>
+            <div class="flex flex-wrap gap-4 mt-2 text-md text-gray-600">
+              <div class="flex gap-2 items-center">
+                <img src="/public/icons/experience.svg" class="w-5 h-5" alt="">
+                {{ job.experience }} yrs
+              </div>
+              <div class="flex gap-2 items-center">
+                <img src="/public/icons/work-mode.svg" class="w-5 h-5" alt="">
+                {{ job.work_mode }}
+              </div>
+              <div class="flex gap-2 items-center">
+                <img src="/public/icons/location.svg" class="w-5 h-5" alt="">
+                {{ job.location }}
+              </div>
+            </div>
+            <p class="mt-2 text-md text-gray-700 line-clamp-1">
+              {{ job.description }}
+            </p>
+            <div class="mt-2 text-sm text-gray-600">
+              {{ job.created_at }}
             </div>
           </NuxtLink>
         </div>
       </div>
+    </div>
+    <div   v-else class="flex h-screen justify-center lg:w-[1080px] items-center">
+    <div class="flex flex-col h-1/2 items-center">
+      <div class="w-8 h-8 animate-spin border-[#086BD8] border-3 rounded-full border-r-gray-400"></div>
+      <!-- <p class="text-sm md:text-lg mt-4 text-center">We're getting the Recruiter details for you</p> -->
+    </div>
+  </div >
+  </section>
+  <section v-else class="flex h-screen justify-center items-center">
+    <div class="flex flex-col h-1/2 items-center">
+      <div class="w-8 h-8 animate-spin border-[#086BD8] border-3 rounded-full border-r-gray-400"></div>
+      <p class="text-sm md:text-lg mt-4 text-center">We're getting the Recruiter details for you</p>
     </div>
   </section>
 </template>
@@ -130,50 +148,8 @@ export default {
     return {
       overviews: true,
       jobsection: false,
-      jobs: [
-        {
-          title: "WFH(Hindi & English) - Customer Support Executive",
-          role: "Teleperformance (TP)",
-          experience: "0-3 Yrs",
-          type: "Remote",
-          dis: " Hiring for work from home Work Mode: Work From Home Roles and Respo...",
-        },
-        {
-          title: "WFH(Hindi & English) - Customer Support Executive",
-          role: "Teleperformance (TP)",
-          experience: "0-3 Yrs",
-          type: "Remote",
-          dis: " Hiring for work from home Work Mode: Work From Home Roles and Respo...",
-        },
-        {
-          title: "WFH(Hindi & English) - Customer Support Executive",
-          role: "Teleperformance (TP)",
-          experience: "0-3 Yrs",
-          type: "Remote",
-          dis: " Hiring for work from home Work Mode: Work From Home Roles and Respo...",
-        },
-        {
-          title: "WFH(Hindi & English) - Customer Support Executive",
-          role: "Teleperformance (TP)",
-          experience: "0-3 Yrs",
-          type: "Remote",
-          dis: " Hiring for work from home Work Mode: Work From Home Roles and Respo...",
-        },
-        {
-          title: "WFH(Hindi & English) - Customer Support Executive",
-          role: "Teleperformance (TP)",
-          experience: "0-3 Yrs",
-          type: "Remote",
-          dis: " Hiring for work from home Work Mode: Work From Home Roles and Respo...",
-        },
-        {
-          title: "WFH(Hindi & English) - Customer Support Executive",
-          role: "Teleperformance (TP)",
-          experience: "0-3 Yrs",
-          type: "Remote",
-          dis: " Hiring for work from home Work Mode: Work From Home Roles and Respo...",
-        },
-      ],
+      recruiter: null,
+      jobs: null,
       suggestedJobs: [
         {
           title: "Firewall Security Engineer",
@@ -203,7 +179,18 @@ export default {
         },]
     };
   },
+  mounted() {
+    this.getRecruiterInfo()
+  },
   methods: {
+    async getRecruiterInfo() {
+      const response = await this.$apiFetch(`/recruiter/profile/${useRoute().params.id}`)
+      this.recruiter = response.user ?? {}
+    },
+    async getJobs() {
+      const response = await this.$apiFetch(`/recruiter/${useRoute().params.id}/posts`)
+      this.jobs = response.posts ?? {}
+    },
     openOverview() {
       this.overviews = true;
       this.jobsection = false;
@@ -211,6 +198,7 @@ export default {
     openJobs() {
       this.overviews = false;
       this.jobsection = true;
+      this.getJobs()
     },
   },
 };

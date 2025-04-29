@@ -2,28 +2,19 @@
   <div class="max-w-[1080px] mx-auto px-4 lg:px-0 mt-32">
     <p class="text-xl font-semibold pb-10">Recruiter Settings</p>
     <div class="flex gap-20 justify-between">
-      <div
-        class="flex flex-col w-[250px] gap-5 overflow-x-auto border-b border-slate-200"
-      >
-        <button
-          v-for="(tab, index) in tabs"
-          :key="index"
-          class="text-left px-5 py-2 rounded-lg cursor-pointer text-lg font-semibold whitespace-nowrap"
-          :class="[
+      <div class="flex flex-col w-[250px] gap-5 overflow-x-auto border-b border-slate-200">
+        <button v-for="(tab, index) in tabs" :key="index"
+          class="text-left px-5 py-2 rounded-lg cursor-pointer text-lg font-semibold whitespace-nowrap" :class="[
             (selectedTab === 0 ? index === 0 : index === 1)
               ? 'bg-[#086BD8] text-white'
               : ' text-gray-800',
             '',
-          ]"
-          @click="toggleTabs(index)"
-        >
+          ]" @click="toggleTabs(index)">
           {{ tab }}
         </button>
       </div>
       <section v-if="selectedTab == 0" class="flex-1">
-        <div
-          class="flex flex-col items-center lg:flex-row gap-6 justify-between"
-        >
+        <div class="flex flex-col items-center lg:flex-row gap-6 justify-between">
           <!-- <div>
           <p class="flex-1 text-lg font-semibold">Personal Information</p>
           <p class="mt-1 text-sm/6 text-gray-600">Use a permanent address where you can receive mail.</p>
@@ -36,81 +27,41 @@
                 you share.
               </p>
 
-              <div
-                class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"
-              >
+              <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="col-span-full">
-                  <label
-                    for="photo"
-                    class="block text-sm/6 font-medium text-gray-900"
-                    >Comapany Logo</label
-                  >
+                  <label for="photo" class="block text-sm/6 font-medium text-gray-900">Comapany Logo</label>
                   <div class="mt-4 w-12 flex items-center gap-x-3">
-                    <img
-                      class="object-cover rounded-full w-12 h-12"
-                      :src="
-                        user.profile === ''
-                          ? '/public/dash/user.png'
-                          : user.profile
-                      "
-                      alt=""
-                    />
-                    <label
-                      for="file-upload"
-                      class="relative cursor-pointer rounded-md bg-white font-semibold text-[#086BD8]"
-                    >
+                    <img class="object-cover rounded-full w-12 h-12" :src="user.profile === ''
+                      ? '/public/dash/user.png'
+                      : user.profile
+                      " alt="" />
+                    <label for="file-upload"
+                      class="relative cursor-pointer rounded-md bg-white font-semibold text-[#086BD8]">
                       <div
-                        class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
-                      >
+                        class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
                         Change
                       </div>
-                      <input
-                        id="file-upload"
-                        name="file-upload"
-                        type="file"
-                        class="sr-only"
-                      />
+                      <input id="file-upload" name="file-upload" type="file" class="sr-only" />
                     </label>
                   </div>
                 </div>
                 <div class="sm:col-span-4">
-                  <label
-                    for="username"
-                    class="block text-sm/6 font-medium text-gray-900"
-                    >Company Name</label
-                  >
+                  <label for="username" class="block text-sm/6 font-medium text-gray-900">Company Name</label>
                   <div class="mt-4">
                     <div
-                      class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-[#086BD8]"
-                    >
-                      <input
-                        disabled
-                        v-model="user.name"
-                        type="text"
-                        name="username"
-                        id="username"
+                      class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-[#086BD8]">
+                      <input disabled v-model="user.name" type="text" name="username" id="username"
                         class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                        placeholder="ZoopCheck Privated Limited"
-                      />
+                        placeholder="ZoopCheck Privated Limited" />
                     </div>
                   </div>
                 </div>
 
                 <div class="sm:col-span-4">
-                  <label
-                    for="about"
-                    class="block text-sm/6 font-medium text-gray-900"
-                    >About</label
-                  >
+                  <label for="about" class="block text-sm/6 font-medium text-gray-900">About</label>
                   <div class="mt-4">
-                    <textarea
-                      disabled
-                      v-model="user.description"
-                      name="about"
-                      id="about"
-                      rows="6"
-                      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#086BD8] sm:text-sm/6"
-                    ></textarea>
+                    <textarea disabled v-model="user.description" name="about" id="about" rows="6"
+                      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#086BD8] sm:text-sm/6"></textarea>
                   </div>
                   <p class="mt-3 text-sm/6 text-gray-600">
                     Write a few sentences about yourself.
@@ -118,60 +69,27 @@
                 </div>
 
                 <div class="sm:col-span-4">
-                  <label
-                    for="email"
-                    class="block text-sm/6 font-medium text-gray-900"
-                    >Email address</label
-                  >
+                  <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
                   <div class="mt-4">
-                    <input
-                      disabled
-                      v-model="user.email"
-                      id="email"
-                      placeholder="hello@zoopcheck.com"
-                      name="email"
-                      type="email"
-                      autocomplete="email"
-                      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#086BD8] sm:text-sm/6"
-                    />
+                    <input disabled v-model="user.email" id="email" placeholder="hello@zoopcheck.com" name="email"
+                      type="email" autocomplete="email"
+                      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#086BD8] sm:text-sm/6" />
                   </div>
                 </div>
                 <div class="sm:col-span-4">
-                  <label
-                    for="email"
-                    class="block text-sm/6 font-medium text-gray-900"
-                    >Mobile Number</label
-                  >
+                  <label for="email" class="block text-sm/6 font-medium text-gray-900">Mobile Number</label>
                   <div class="mt-4">
-                    <input
-                      disabled
-                      v-model="user.number"
-                      id="email"
-                      placeholder="1234567890"
-                      name="email"
-                      type="text"
+                    <input disabled v-model="user.number" id="email" placeholder="1234567890" name="email" type="text"
                       autocomplete="email"
-                      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#086BD8] sm:text-sm/6"
-                    />
+                      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#086BD8] sm:text-sm/6" />
                   </div>
                 </div>
                 <div class="sm:col-span-4">
-                  <label
-                    for="email"
-                    class="block text-sm/6 font-medium text-gray-900"
-                    >company website</label
-                  >
+                  <label for="email" class="block text-sm/6 font-medium text-gray-900">company website</label>
                   <div class="mt-4">
-                    <input
-                      disabled
-                      v-model="user.website"
-                      id="email"
-                      placeholder="https://zoopcheck"
-                      name="email"
-                      type="text"
-                      autocomplete="email"
-                      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#086BD8] sm:text-sm/6"
-                    />
+                    <input disabled v-model="user.website" id="email" placeholder="https://zoopcheck" name="email"
+                      type="text" autocomplete="email"
+                      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#086BD8] sm:text-sm/6" />
                   </div>
                 </div>
                 <!-- <div class="col-span-full">
@@ -199,16 +117,11 @@
               </div>
             </div>
             <div class="mt-6 flex items-center justify-end gap-x-6">
-              <button
-                type="button"
-                class="text-sm/6 font-semibold text-gray-900"
-              >
+              <button type="button" class="text-sm/6 font-semibold text-gray-900">
                 Cancel
               </button>
-              <button
-                type="submit"
-                class="rounded-md bg-[#086BD8] px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-[#086BD8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#086BD8]"
-              >
+              <button type="submit"
+                class="rounded-md bg-[#086BD8] px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-[#086BD8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#086BD8]">
                 Save
               </button>
             </div>
@@ -217,90 +130,63 @@
       </section>
       <section v-if="selectedTab === 1" class="flex-1 pb-10">
         <div class="flex items-center justify-end mb-5">
-          <button
-            @click="openform()"
-            class="p-1.5 px-3 text-white bg-[#086BD8] rounded-md xl:p-2 xl:px-6"
-          >
+          <button @click="openform()" class="p-1.5 px-3 text-white bg-[#086BD8] rounded-md xl:p-2 xl:px-6">
             Add Job
           </button>
         </div>
-        <div
-          v-if="recruiter"
-          class="bg-[#00000095] w-full fixed top-0 z-40 left-0 flex flex-col justify-center items-center h-[100vh] p-2"
-        >
+        <div v-if="openModal"
+          class="bg-[#00000095] w-full fixed top-0 z-40 left-0 flex flex-col justify-center items-center h-[100vh] p-2">
           <div
-            class="relative p-4 bg-[#ffffff] md:rounded-lg md:p-8 lg:w-[700px] md:w-[690px] w-full flex flex-col gap-10 overflow-y-auto"
-          >
-            <div class="absolute top-2 right-3">
-              <img
-                @click="openform()"
-                src="/public/images/close.png"
-                class="w-[40px] h-[40px] cursor-pointer"
-                alt="closeicon"
-              />
-            </div>
-            <div class="flex items-center justify-center">
-              <img src="/public/images/logo.svg" alt="logo" class="w-[200px]" />
-            </div>
+            class="relative p-4 bg-[#ffffff] md:rounded-lg md:p-8 lg:w-[700px] md:w-[690px] w-full flex flex-col gap-10 overflow-y-auto">
             <div class="flex flex-col gap-3 p-2">
               <div class="flex flex-col w-full gap-2 lg:gap-5">
-                <div
-                  class="flex items-start flex-col gap-[10px] w-full md:w-auto"
-                >
-                  <label class="font-semibold text-[#2c3038]" for="#"
-                    >Tittle</label
-                  >
-                  <input
-                    v-model="formData.title"
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Enter Title"
-                    class="rounded-md border-[#c0c0c0] border text-[16px] placeholder:text-[#555a64] outline-none p-3 w-full"
-                  />
+                <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+                  <label class="font-semibold text-[#2c3038]" for="#">Tittle</label>
+                  <input v-model="formData.title" type="text" name="name" id="name" placeholder="Enter Title"
+                    class="rounded-md border-slate-200 border text-[16px] placeholder:text-[#555a64] outline-none p-3 w-full" />
                 </div>
-                <div
-                  class="flex items-start flex-col gap-[10px] w-full md:w-auto"
-                >
-                  <label class="font-semibold text-[#2c3038]" for="#"
-                    >Experience</label
-                  >
-                  <input
-                    v-model="formData.experience"
-                    type="number"
-                    name="experience"
-                    id="experience"
+                <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+                  <label class="font-semibold text-[#2c3038]" for="#">Description</label>
+                  <textarea v-model="formData.description" name="description" id="" cols="" rows=""
+                    placeholder="Enter Your Description"
+                    class="rounded-md border-slate-200 border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full h-[100px]"></textarea>
+                </div>
+                <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+                  <label class="font-semibold text-[#2c3038]" for="#">Experience</label>
+                  <input v-model="formData.experience" type="number" name="experience" id="experience"
                     placeholder="Enter required experience"
-                    class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full"
-                  />
+                    class="rounded-md border-slate-200 border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full" />
                 </div>
 
-                <div
-                  class="flex items-start flex-col gap-[10px] w-full md:w-auto"
-                >
-                  <label class="font-semibold text-[#2c3038]" for="#"
-                    >Category</label
-                  >
-                  <select
-                    v-model="formData.category"
-                    class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full"
-                  >
+                <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+                  <label class="font-semibold text-[#2c3038]" for="#">Category</label>
+                  <select v-model="formData.category"
+                    class="rounded-md border-slate-200 border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full">
                     <option value="">Select Category</option>
-                    <option>Developer</option>
-                    <option>Designer</option>
-                    <option>Graphic Designer</option>
+                    <option class="text-black" v-for="category in categories" :value="category">{{ category }}</option>
                   </select>
                 </div>
-                <div
-                  class="flex items-start flex-col gap-[10px] w-full md:w-auto"
-                >
-                  <label class="font-semibold text-[#2c3038]" for="#"
-                    >Work Mode</label
-                  >
-                  <select
-                    v-model="formData.mode"
-                    class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full"
-                  >
+                <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+                  <label class="font-semibold text-[#2c3038]" for="#">Location</label>
+                  <div class="relative w-full">
+                    <input type="text" v-model="formData.location" placeholder="Search locations..."
+                      class="w-full p-2 pl-8 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#086BD8]"
+                      @input="handleLocationSearch">
+                    <span class="absolute left-2 top-2.5 text-gray-400">
+                      <img src="/public/icons/location.svg" class="w-4 h-4" alt="location">
+                    </span>
+                  </div>
+                  <div v-if="locationSuggestions.length" class="mt-2 max-h-48 w-full overflow-y-auto border rounded-md">
+                    <div v-for="location in locationSuggestions" :key="location.city"
+                      class="p-2 hover:bg-gray-50 cursor-pointer" @click="selectLocation(location)">
+                      {{ location.city + ' , ' + location.state + ', ' + location.country }}
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+                  <label class="font-semibold text-[#2c3038]" for="#">Work Mode</label>
+                  <select v-model="formData.workMode"
+                    class="rounded-md border-slate-200 border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full">
                     <option value="">Select Work Mode</option>
                     <option>Remote</option>
                     <option>Full Time</option>
@@ -308,60 +194,35 @@
                     <option>Hybrid</option>
                   </select>
                 </div>
-                <div
-                  class="flex flex-col items-start gap-[10px] w-full md:w-auto"
-                >
-                  <label class="font-semibold text-[#2c3038]" for="#"
-                    >Openings</label
-                  >
-                  <input
-                    v-model="formData.openings"
-                    type="number"
-                    name="openings"
-                    id="openings"
+                <div class="flex flex-col items-start gap-[10px] w-full md:w-auto">
+                  <label class="font-semibold text-[#2c3038]" for="#">Openings</label>
+                  <input v-model="formData.openings" type="number" name="openings" id="openings"
                     placeholder="Enter number of openings"
-                    class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full"
-                  />
+                    class="rounded-md border-slate-200 border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full" />
                 </div>
-                <div
-                  class="flex items-start flex-col gap-[10px] w-full md:w-auto"
-                >
-                  <label class="font-semibold text-[#2c3038]" for="#"
-                    >Description</label
-                  >
-                  <textarea
-                    v-model="formData.description"
-                    name="description"
-                    id=""
-                    cols=""
-                    rows=""
-                    placeholder="Enter Your Description"
-                    class="rounded-md border-[#c0c0c0] border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full h-[100px]"
-                  ></textarea>
-                </div>
+
               </div>
             </div>
-            <div class="flex items-center justify-center w-full">
-              <button
-                @click="submitJob()"
-                class="py-3 px-6 rounded bg-[#2966f4] text-white w-fit"
-                :disabled="loading"
-              >
+            <div class="flex items-center gap-8 justify-end w-full">
+              <button @click="openform" class="py-2 px-4 rounded bg-gray-200 text-gray-900 w-fit">
+                <span>Cancel</span>
+              </button>
+              <button v-if="!isUpdate" @click="createJob()" class="py-2 px-4 rounded bg-[#086BD8] text-white w-fit"
+                :disabled="loading">
                 <span v-if="loading">Processing...</span>
-                <span v-else>Submit</span>
+                <span v-else>Post a Job</span>
+              </button>
+              <button v-else @click="updateJob()" class="py-2 px-4 rounded bg-[#086BD8] text-white w-fit"
+                :disabled="loading">
+                <span v-if="loading">Processing...</span>
+                <span v-else>Update Job</span>
               </button>
             </div>
           </div>
         </div>
-        <div
-          v-if="jobs !== null"
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-center w- gap-5"
-        >
-          <div
-            v-for="(job, index) in jobs"
-            :key="job.title"
-            class="p-4 bg-white border border-slate-200 rounded-xl w-full relative"
-          >
+        <div v-if="jobs !== null" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-center w- gap-5">
+          <div v-for="(job, index) in jobs" :key="index"
+            class="p-4 bg-white border border-slate-200 rounded-xl w-full relative">
             <NuxtLink>
               <div class="flex items-start justify-between">
                 <div class="flex justify-between items-center w-full">
@@ -371,56 +232,22 @@
                   <p @click="toggle(index)" class="rotate-90 cursor-pointer">
                     ...
                   </p>
-                  <!-- <div class="mt-2 text-md text-gray-600">{{ job.recruiter.name }}</div> -->
                 </div>
-                <!-- <img :src="job.recruiter.profile" alt="Logo" class="object-cover rounded-full w-14 h-14" /> -->
               </div>
-              <div
-                v-if="toggleIndex === index"
-                class="bg-white shadow flex flex-col absolute z-10 right-2 p-2 top-10 gap-2 items-end mt-2"
-              >
-                <p class="cursor-pointer">Edit</p>
-                <button
-                  :disabled="job.applications === 0"
-                  class="disabled:opacity-50 cusror-pointer"
-                  @click="toggleTabs(job.id)"
-                >
+              <div v-if="toggleIndex === index"
+                class="bg-white shadow flex flex-col absolute z-10 right-2 p-2 top-10 gap-2 items-end mt-2">
+                <p @click="openform(index)" class="cursor-pointer">Edit</p>
+                <button :disabled="job.applications === 0" class="disabled:opacity-50 cusror-pointer"
+                  @click="toggleTabs(job.id)">
                   Applications
                 </button>
-                <p class="text-red-500 cursor-pointer">Delete</p>
+                <p @click="openDelete(index)" class="text-red-500 cursor-pointer">Delete</p>
               </div>
-              <!-- <div class="flex flex-wrap gap-4 mt-2 text-md text-gray-600">
-                <div class="flex gap-2 items-center">
-                  <img
-                    src="/public/icons/experience.svg"
-                    class="w-5 h-5"
-                    alt=""
-                  />
-                  {{ job.experience }} yrs
-                </div>
-                <div class="flex gap-2 items-center">
-                  <img
-                    src="/public/icons/work-mode.svg"
-                    class="w-5 h-5"
-                    alt=""
-                  />
-                  {{ job.work_mode }}
-                </div>
-                <div class="flex gap-2 items-center">
-                  <img
-                    src="/public/icons/location.svg"
-                    class="w-5 h-5"
-                    alt=""
-                  />
-                  {{ job.location }}
-                </div>
-              </div> -->
+
               <p class="mt-2 text-md text-gray-700 line-clamp-1">
                 {{ job.description }}
               </p>
-              <div
-                class="mt-2 text-sm text-gray-600 flex justify-between items-center"
-              >
+              <div class="mt-2 text-sm text-gray-600 flex justify-between items-center">
                 <p>{{ job.created_at }}</p>
                 <p>Applications : {{ job.applications }}</p>
               </div>
@@ -428,58 +255,42 @@
           </div>
         </div>
         <div v-else class="flex flex-col h-screen items-center">
-          <div
-            class="w-8 h-8 animate-spin border-[#086BD8] border-3 rounded-full border-r-gray-400"
-          ></div>
+          <div class="w-8 h-8 animate-spin border-[#086BD8] border-3 rounded-full border-r-gray-400"></div>
           <p class="text-lg mt-4 text-center">
             We getting the Job Details for You
           </p>
         </div>
       </section>
-      <section v-else class="flex-1 h-screen">
+      <section v-if="selectedTab !== 1 && selectedTab !== 0" class="flex-1 h-screen">
         <nav aria-label="Breadcrumb">
           <div class="">
             <ol class="flex items-center gap-1 text-sm text-gray-500">
               <li>
                 <p @click="toggleTabs(1)" class="cursor-pointer">Jobs</p>
               </li>
-              <li class="rtl:rotate-180">
-                <ChevronIcon />
-              </li>
               <img src="/public/dash/arrrow.svg" alt="arrow" />
               <li>
                 <p>
-                  {{ jobs.filter((e) => e.id === selectedTab)[0].title }}
+                  {{jobs.filter((e) => e.id === selectedTab)[0].title ?? ''}}
                 </p>
               </li>
             </ol>
           </div>
         </nav>
-        <div
-          v-for="(applicationList, date) in applications"
-          :key="date"
-          class="mt-5"
-        >
+        <div v-for="(applicationList, date) in applications" :key="date" class="mt-5">
           <p class="text-lg font-semibold">
             {{ new Date(date).toDateString() }}
           </p>
 
-          <div
-            v-for="(application, index) in applicationList"
-            :key="index"
-            class="flex items-center justify-between px-10 py-4 mt-4 bg-white rounded-md xl:py-4"
-          >
+          <div v-for="(application, index) in applicationList" :key="index"
+            class="flex items-center justify-between px-10 py-4 mt-4 bg-white rounded-md xl:py-4">
             <div class="flex gap-40">
               <div class="flex gap-10">
-                <img
-                  src="/public/dash/user.png"
-                  alt="profile"
-                  class="w-10 h-10 rounded-full bg-stone-100"
-                />
+                <img :src="application.profile" alt="profile" class="w-10 h-10 rounded-full bg-stone-100" />
                 <div class="">
                   <p class="font-medium text-md">{{ application.name }}</p>
                   <p class="mt-2 font-medium text-md text-[#666666]">
-                    {{ jobs.filter((e) => e.id === selectedTab)[0].title }}
+                    {{jobs.filter((e) => e.id === selectedTab)[0].title}}
                   </p>
                 </div>
               </div>
@@ -499,32 +310,65 @@
         </div>
       </section>
     </div>
+    <div v-if="showDelete" class="fixed inset-0 flex items-center justify-center z-50">
+      <div class="fixed inset-0 bg-black opacity-50"></div>
+      <div class="bg-white rounded-lg shadow-lg p-8 z-10 max-w-lg mx-auto overflow-auto max-h-full">
+        <div class="flex items-center pb-5">
+          <!-- <img class="w-8 h-12" src="/public/icons/cancel.svg" alt="Warn"> -->
+          <p class="text-md font-bold px-4">DELETE</p>
+        </div>
+        <p class="w-full">Are you sure you want to delete <b>{{ title }}</b>? This action cannot be
+          undone.</p>
+        <div class="flex items-center justify-end pt-5">
+          <div class="px-5">
+            <button @click="openDelete()" class="py-2 px-4 bg-gray-200 rounded-lg">Cancel</button>
+          </div>
+          <button @click="deleteJob()" class="py-2 px-4 bg-red-500 text-white rounded-lg">
+            <p v-if="!loading">Delete</p>
+            <p v-else="loading">Processing...</p>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  setup() {
+    definePageMeta({
+      middleware: 'sidebase-auth'
+    })
+  },
   data() {
     return {
       selectedTab: 1,
       user: {},
       toggleIndex: null,
       applications: {},
-      jobs: null,
+      jobs: [],
       tabs: ["Profile", "Jobs"],
-      recruiter: false,
+      openModal: false,
+      locationSuggestions: [],
+      categories: [],
+      locations: [],
+      isUpdate: false,
+      showDelete: false,
+      loading: false,
+      deleteIndex: null,
       formData: {
         title: "",
         description: "",
         category: "",
         openings: "",
         experience: "",
-        mode: "",
+        workMode: "",
+        location: "",
       },
     };
   },
   mounted() {
-    // this.getUSerInfo();
+    this.getUSerInfo();
     this.getJobs();
   },
   methods: {
@@ -532,12 +376,13 @@ export default {
       this.toggleIndex = this.toggleIndex === index ? null : index;
     },
     toggleTabs(index) {
+      this.toggleIndex = null
       this.selectedTab = index;
       this.selectedTab === 1
         ? this.getJobs()
-        : this.selectedTab !== 0 || this.selectedTab !== 1
-        ? this.getApplications()
-        : null;
+        : this.selectedTab !== 0 && this.selectedTab !== 1
+          ? this.getApplications()
+          : null;
     },
     async getUSerInfo() {
       const response = await this.$apiFetch(`/recruiter/me`);
@@ -555,36 +400,214 @@ export default {
       );
       this.applications = response.applications ?? [];
     },
-    openform(isEdit = false, index = null) {
-      this.recruiter = !this.recruiter;
-      this.isEditMode = isEdit;
-      this.activeIndex = null;
-      this.error = null;
+    async getCategories() {
+      const response = await this.$apiFetch(
+        `/categories`
+      );
+      this.categories = response.categories ?? [];
+    },
+    async handleLocationSearch() {
+      if (this.formData.location.length > 1) {
+        try {
+          const response = await this.$apiFetch(`/locations?search=${this.formData.location}`);
+          this.locationSuggestions = response.locations || [];
+        } catch (error) {
+          console.error("Error fetching locations:", error);
+        }
+      } else {
+        this.locationSuggestions = [];
+      }
+    },
+    selectLocation(location) {
+      this.formData.location = location.city
+      this.locationSuggestions = [];
 
-      if (!isEdit) {
-        // Clear form for Add Mode
+    },
+    openform(index) {
+      this.toggleIndex = null
+      this.openModal = !this.openModal;
+      if (this.openModal) {
+        console.log(this.jobs[index])
+        if (index !== undefined) {
+          this.isUpdate = true
+          this.formData = {
+            id: this.jobs[index].id,
+            title: this.jobs[index].title,
+            description: this.jobs[index].description,
+            category: this.jobs[index].category,
+            openings: this.jobs[index].no_of_openings,
+            experience: this.jobs[index].experience,
+            workMode: this.jobs[index].work_mode,
+            location: this.jobs[index].location,
+          }
+        }
+        this.getCategories()
+      }
+      else {
+        this.isUpdate = false
         this.formData = {
           title: "",
           description: "",
           category: "",
           openings: "",
           experience: "",
-          mode: "", // Add this line
-        };
-        this.currentJobId = null;
-      }
-
-      if (this.recruiter) {
-        document.body.classList.add("no-scroll");
-      } else {
-        document.body.classList.remove("no-scroll");
-      }
-
-      if (isEdit && index !== null) {
-        this.prepareEdit(index);
+          workMode: "",
+          location: "",
+        }
       }
     },
+    async createJob() {
+      if (this.formData.title === '') {
+        push.error('Invalid Title')
+        return
+      }
+      if (this.formData.description === '') {
+        push.error('Invalid description')
+        return
+      }
+      if (this.formData.openings === '') {
+        push.error('Invalid openings')
+        return
+      }
+      if (this.formData.experience === '') {
+        push.error('Invalid experience')
+        return
+      }
+      if (this.formData.location === '') {
+        push.error('Invalid location')
+        return
+      }
+      if (this.formData.category === '') {
+        push.error('Invalid category')
+        return
+      }
+      if (this.formData.workMode === '') {
+        push.error('Invalid workMode')
+        return
+      }
+      this.loading = true
+      const response = await this.$apiFetch(
+        `/recruiter/post`,
+        {
+          method: 'POST',
+          body: this.formData
+        }
+      );
+      console.log(response)
+      if (response.success) {
+        push.success(response.message)
+        this.openform()
+        this.getJobs()
+        this.formData = {
+          title: "",
+          description: "",
+          category: "",
+          openings: "",
+          experience: "",
+          workMode: "",
+          location: "",
+        }
+      }
+      else {
+        push.error(response.message)
+      }
+      this.loading = false
+    },
+    async updateJob() {
+      if (this.formData.title === '') {
+        push.error('Invalid Title')
+        return
+      }
+      if (this.formData.description === '') {
+        push.error('Invalid description')
+        return
+      }
+      if (this.formData.openings === '') {
+        push.error('Invalid openings')
+        return
+      }
+      if (this.formData.experience === '') {
+        push.error('Invalid experience')
+        return
+      }
+      if (this.formData.location === '') {
+        push.error('Invalid location')
+        return
+      }
+      if (this.formData.category === '') {
+        push.error('Invalid category')
+        return
+      }
+      if (this.formData.workMode === '') {
+        push.error('Invalid workMode')
+        return
+      }
+      this.loading = true
+      const response = await this.$apiFetch(
+        `/recruiter/post/${this.formData.id}`,
+        {
+          method: 'PUT',
+          body: this.formData
+        }
+      );
+      if (response.success) {
+        push.success(response.message)
+        this.openform()
+        this.getJobs()
+        this.formData = {
+          title: "",
+          description: "",
+          category: "",
+          openings: "",
+          experience: "",
+          workMode: "",
+          location: "",
+        }
+      }
+      else {
+        push.error(response.message)
+      }
+      this.loading = false
+    },
+    openDelete(index) {
+      this.toggleIndex=null
+      this.showDelete = !this.showDelete
+      if (this.showDelete) {
+        this.deleteIndex = index
+      }
+      else {
+        this.deleteIndex = null
+      }
+    },
+    async deleteJob() {
+      this.loading = true
+      const response = await this.$apiFetch(
+        `/recruiter/post/${this.jobs[this.deleteIndex].id}`,
+        {
+          method: 'DELETE',
+        }
+      );
+      if (response.success) {
+        push.success(response.message)
+        this.openDelete()
+        this.getJobs()
+        this.formData = {
+          title: "",
+          description: "",
+          category: "",
+          openings: "",
+          experience: "",
+          workMode: "",
+          location: "",
+        }
+      }
+      else {
+        push.error(response.message)
+      }
+      this.loading = false
+    },
   },
+
 };
 </script>
 

@@ -3,6 +3,9 @@
     <NuxtLayout>
       <NuxtPage></NuxtPage>
     </NuxtLayout>
+    <Notivue v-slot="item">
+    <Notification :item="item" />
+  </Notivue>
   </div>
 </template>
 <style>

@@ -21,7 +21,8 @@ export default defineNuxtConfig({
   },
 
   devtools: { enabled: true },
-  css: ["~/assets/css/main.css"],
+  css: ["~/assets/css/main.css",'notivue/notification.css',
+    'notivue/animations.css'],
 
   vite: {
     plugins: [tailwindcss()],
@@ -73,5 +74,5 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: "2025-04-08",
-  modules: ["@sidebase/nuxt-auth"],
+  modules: ["@sidebase/nuxt-auth",'notivue/nuxt'],
 });

@@ -17,7 +17,7 @@
                 class="object-cover w-20 h-20 rounded-lg cursor-pointer"
               />
             </NuxtLink>
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col gap-2">
               <h2 class="text-lg font-semibold text-white md:text-xl">
                 Suresh
               </h2>

@@ -69,10 +69,13 @@ export default defineNuxtConfig({
     },
     sessionRefresh: {
       enablePeriodically: 10*60*1000,
-      enableOnWindowFocus: true,
+      enableOnWindowFocus: false,
     }
   },
-
+  notivue:{
+    position:'top-right',
+    limit:3
+  },
   compatibilityDate: "2025-04-08",
   modules: ["@sidebase/nuxt-auth",'notivue/nuxt'],
 });

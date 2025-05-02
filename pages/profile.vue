@@ -1,20 +1,20 @@
 <template>
   <div class="max-w-[1080px] mx-auto px-4 lg:px-0 mt-32">
     <p class="text-xl font-semibold pb-10">Recruiter Settings</p>
-    <div class="flex gap-20 justify-between">
+    <div class=" flex gap-20 justify-between">
       <div class="flex flex-col w-[250px] gap-5 overflow-x-auto border-b border-slate-200">
-        <button v-for="(tab, index) in tabs" :key="index"
+        <NuxtLink v-for="(tab, index) in tabs" :key="index" :to="`/profile?tab=${tab.value}`"
           class="text-left px-5 py-2 rounded-lg cursor-pointer text-lg font-semibold whitespace-nowrap" :class="[
-            (selectedTab === 0 ? index === 0 : index === 1)
+            (selectedTab === tab.value || (selectedTab === 'applications' && tab.value === 'jobs'))
               ? 'bg-[#086BD8] text-white'
               : ' text-gray-800',
             '',
-          ]" @click="toggleTabs(index)">
-          {{ tab }}
-        </button>
+          ]">
+          {{ tab.name }}
+        </NuxtLink>
       </div>
-      <section v-if="selectedTab == 0" class="flex-1">
-        <div class="flex flex-col items-center lg:flex-row gap-6 justify-between">
+      <section v-if="selectedTab === 'profile'" class="flex-1">
+        <div v-if="user !== null" class="flex flex-col items-center lg:flex-row gap-6 justify-between">
           <!-- <div>
           <p class="flex-1 text-lg font-semibold">Personal Information</p>
           <p class="mt-1 text-sm/6 text-gray-600">Use a permanent address where you can receive mail.</p>
@@ -127,8 +127,15 @@
             </div>
           </div>
         </div>
+        <div v-else>
+          <div class="flex flex-col h-1/2 items-center">
+            <div class="w-8 h-8 animate-spin  border-[#086BD8] border-3 rounded-full border-r-gray-400">
+            </div>
+            <!-- <p class="text-lg mt-4 text-center">We getting the Job Details for You</p> -->
+          </div>
+        </div>
       </section>
-      <section v-if="selectedTab === 1" class="flex-1 pb-10">
+      <section v-if="selectedTab === 'jobs'" class="flex-1 pb-10">
         <div class="flex items-center justify-end mb-5">
           <button @click="openform()" class="p-1.5 px-3 text-white bg-[#086BD8] rounded-md xl:p-2 xl:px-6">
             Add Job
@@ -238,7 +245,7 @@
                 class="bg-white shadow flex flex-col absolute z-10 right-2 p-2 top-10 gap-2 items-end mt-2">
                 <p @click="openform(index)" class="cursor-pointer">Edit</p>
                 <button :disabled="job.applications === 0" class="disabled:opacity-50 cusror-pointer"
-                  @click="toggleTabs(job.id)">
+                  @click="() => { useRouter().push(`/profile?tab=applications&id=${job.id}`) }">
                   Applications
                 </button>
                 <p @click="openDelete(index)" class="text-red-500 cursor-pointer">Delete</p>
@@ -261,17 +268,18 @@
           </p>
         </div>
       </section>
-      <section v-if="selectedTab !== 1 && selectedTab !== 0" class="flex-1 h-screen">
+      <section v-if="selectedTab === 'applications' && useAuth().data.value.user.role === 'recruiter'"
+        class="flex-1 h-screen">
         <nav aria-label="Breadcrumb">
           <div class="">
             <ol class="flex items-center gap-1 text-sm text-gray-500">
               <li>
-                <p @click="toggleTabs(1)" class="cursor-pointer">Jobs</p>
+                <p class="cursor-pointer">Jobs</p>
               </li>
               <img src="/public/dash/arrrow.svg" alt="arrow" />
               <li>
                 <p>
-                  {{jobs.filter((e) => e.id === selectedTab)[0].title ?? ''}}
+                  <!-- {{jobs.filter((e) => e.id === selectedTab)[0].title ?? ''}} -->
                 </p>
               </li>
             </ol>
@@ -290,7 +298,7 @@
                 <div class="">
                   <p class="font-medium text-md">{{ application.name }}</p>
                   <p class="mt-2 font-medium text-md text-[#666666]">
-                    {{jobs.filter((e) => e.id === selectedTab)[0].title}}
+                    {{ jobTitle }}
                   </p>
                 </div>
               </div>
@@ -303,9 +311,88 @@
                 </p>
               </div>
             </div>
-            <button class="px-6 py-2 text-white bg-[#086BD8] rounded-lg">
-              View profile
+            <button @click="openApplicationDetails(true,application)" class="px-6 py-2 text-[#086BD8]">
+              View
             </button>
+          </div>
+        </div>
+        <div v-if="openModal"
+          class="bg-[#00000095] w-full fixed top-0 z-40 left-0 flex flex-col justify-center items-center h-[100vh] p-2">
+          <div
+            class="relative p-4 bg-[#ffffff] rounded-lg md:p-8 lg:w-[700px] md:w-[690px] w-full flex flex-col gap-10 overflow-y-auto">
+            <div class="flex flex-col gap-3 p-2">
+              <div class="flex gap-2">
+                <img src="/public/icons/experience.svg" class="w-5 h-5" alt="">
+                <p class="font- text-[#2c3038]" for="#">Application for <span class="font-semibold">{{ jobTitle }}</span> </p>
+              </div>
+              <div class="flex flex-col mt-5 w-full gap-2 lg:gap-5">
+                <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+                  <label class="font-semibold text-gray-700" for="#">Are you currently employed? (Yes/No)</label>
+                  <select v-model="applicationDetails.jobStatus"
+                    class="rounded-md border-slate-200 border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full">
+                    <option value="">Select your answer</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </div>
+                <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+                  <label class="font-semibold text-gray-700" for="#">How soon can you join if selected?</label>
+                  <select v-model="applicationDetails.noticePeriod"
+                    class="rounded-md border-slate-200 border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full">
+                    <option value="">Select One</option>
+                    <option>Immediate Joining</option>
+                    <option>15 Days</option>
+                    <option>30 Days</option>
+                    <option>60 Days</option>
+                    <option>90 Days</option>
+                    <option>Negotiable</option>
+                    <option>Serving Notice Period</option>
+                  </select>
+                </div>
+                <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+                  <label class="font-semibold text-gray-700" for="#">What is your expected salary range?</label>
+                  <input v-model="applicationDetails.salary" type="number" name="experience" id="experience"
+                    placeholder="Enter in LPA"
+                    class="rounded-md border-slate-200 border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full" />
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-8 justify-end w-full">
+              <button @click="openApplicationDetails(false)" class="py-2 px-4 rounded bg-gray-200 text-gray-900 w-fit">
+                <span>Close</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section v-if="selectedTab === 'applications' && useAuth().data.value.user.role === 'candidate'"
+        class="flex-1 h-screen">
+        <div v-for="(application, index) in applications" :key="index"
+          class="flex items-center justify-between px-10 py-4 mt-4 bg-white rounded-lg border border-slate-100 xl:py-4">
+          <div class="flex gap-40">
+            <div class="flex gap-10">
+              <img :src="application.recruiter.profile" alt="profile" class="w-10 h-10 rounded-full bg-stone-100" />
+              <div class="">
+                <p class="font-medium text-md">{{ application.recruiter.name }}</p>
+                <p class="mt-2 font-medium text-md text-[#666666]">
+                  {{ application.title }}
+                </p>
+              </div>
+            </div>
+            <!-- <div class="">
+                <p class="font-medium text-md text-[#666666]">
+                  {{ application.joinType }}
+                </p>
+                <p class="mt-2 font-medium text-md text-[#666666]">
+                  {{ application.mode }}
+                </p>
+              </div> -->
+          </div>
+          <div class="flex flex-col gap-2 items-end">
+            <a target="_blank" :href="`jobs/${application.jobId}`" class="text-[#086BD8] text-sm">
+              View Job
+            </a>
+            <p class="text-xs">Recruiter seen : {{ application.viewed ? application.viewedAt : 'Yet' }} </p>
           </div>
         </div>
       </section>
@@ -342,12 +429,20 @@ export default {
   },
   data() {
     return {
-      selectedTab: 1,
-      user: {},
+      route: useRoute(),
+      selectedTab: useRoute().query.tab ?? 'profile',
+      user: null,
       toggleIndex: null,
+      openModel:false,
       applications: {},
       jobs: [],
-      tabs: ["Profile", "Jobs"],
+      tabs: [
+        { name: "Profile", value: 'profile' },
+        {
+          name: useAuth().data.value.user.role === 'recruiter' ? "Jobs" : 'Applications',
+          value: useAuth().data.value.user.role === 'recruiter' ? "jobs" : 'applications'
+        }
+      ],
       openModal: false,
       locationSuggestions: [],
       categories: [],
@@ -356,6 +451,7 @@ export default {
       showDelete: false,
       loading: false,
       deleteIndex: null,
+      jobTitle: '',
       formData: {
         title: "",
         description: "",
@@ -365,28 +461,76 @@ export default {
         workMode: "",
         location: "",
       },
+      applicationDetails: {
+        salary: '',
+        noticePeriod: '',
+        jobStatus: ''
+      }
     };
   },
   mounted() {
-    this.getUSerInfo();
-    this.getJobs();
+    if (useRoute().query.tab === 'profile') {
+      this.getUSerInfo();
+    }
+    if (useRoute().query.tab === 'jobs') {
+      this.getJobs();
+    }
+    if (useRoute().query.tab === 'applications') {
+      this.getApplications();
+    }
+    else {
+      this.getUSerInfo()
+    }
+  },
+  watch: {
+    $route() {
+      this.selectedTab = useRoute().query.tab
+      if (useRoute().query.tab === 'profile') {
+        this.getUSerInfo();
+      }
+      if (useRoute().query.tab === 'jobs') {
+        this.getJobs();
+      }
+      if (useRoute().query.tab === 'applications') {
+        this.getApplications();
+      }
+      else {
+        this.getUSerInfo()
+      }
+    }
   },
   methods: {
     toggle(index) {
       this.toggleIndex = this.toggleIndex === index ? null : index;
     },
-    toggleTabs(index) {
-      this.toggleIndex = null
-      this.selectedTab = index;
-      this.selectedTab === 1
-        ? this.getJobs()
-        : this.selectedTab !== 0 && this.selectedTab !== 1
-          ? this.getApplications()
-          : null;
+    openApplicationDetails(value,data){
+      this.openModal=value
+      console.log(data.jobStatus)
+      if(value){
+      this.applicationDetails={
+        salary: data.salary,
+        noticePeriod: data.noticePeriod,
+        jobStatus: data.jobStatus
+      }
+      if(data.viewedAt===null){
+        this.$apiFetch(`/recruiter/application/${data.id}`,{method:'PUT'});
+      }
+    }
+    else{
+      this.applicationDetails= {
+        salary: '',
+        noticePeriod: '',
+        jobStatus: ''
+      }
+      
+    }
     },
     async getUSerInfo() {
-      const response = await this.$apiFetch(`/recruiter/me`);
+      const response = await this.$apiFetch(`/${useAuth().data.value.user.role}/me`);
       this.user = response.user ?? {};
+      if (!this.user.approved) {
+        push.info({ title: 'Info', message: "Sorry your account not verified yet !", props: {} })
+      }
     },
     async getJobs() {
       const response = await this.$apiFetch(
@@ -395,9 +539,10 @@ export default {
       this.jobs = response.posts ?? {};
     },
     async getApplications() {
-      const response = await this.$apiFetch(
-        `/recruiter/post/${this.selectedTab}/applications`
+      const response = await this.$apiFetch(useAuth().data.value.user.role === 'recruiter' ?
+        `/recruiter/post/${useRoute().query.id}/applications` : `/candidate/applications`
       );
+      this.jobTitle = response.title
       this.applications = response.applications ?? [];
     },
     async getCategories() {
@@ -458,31 +603,31 @@ export default {
     },
     async createJob() {
       if (this.formData.title === '') {
-        push.error('Invalid Title')
+        push.error({ title: 'Error', message: 'Invalid Title' })
         return
       }
       if (this.formData.description === '') {
-        push.error('Invalid description')
+        push.error({ title: 'Error', message: 'Invalid description' })
         return
       }
       if (this.formData.openings === '') {
-        push.error('Invalid openings')
+        push.error({ title: 'Error', message: 'Invalid openings' })
         return
       }
       if (this.formData.experience === '') {
-        push.error('Invalid experience')
+        push.error({ title: 'Error', message: 'Invalid experience' })
         return
       }
       if (this.formData.location === '') {
-        push.error('Invalid location')
+        push.error({ title: 'Error', message: 'Invalid location' })
         return
       }
       if (this.formData.category === '') {
-        push.error('Invalid category')
+        push.error({ title: 'Error', message: 'Invalid category' })
         return
       }
       if (this.formData.workMode === '') {
-        push.error('Invalid workMode')
+        push.error({ title: 'Error', message: 'Invalid workMode' })
         return
       }
       this.loading = true
@@ -495,7 +640,7 @@ export default {
       );
       console.log(response)
       if (response.success) {
-        push.success(response.message)
+        push.success({ title: 'Success', message: response.message })
         this.openform()
         this.getJobs()
         this.formData = {
@@ -509,37 +654,37 @@ export default {
         }
       }
       else {
-        push.error(response.message)
+        push.error({ title: 'Error', message: response.message })
       }
       this.loading = false
     },
     async updateJob() {
       if (this.formData.title === '') {
-        push.error('Invalid Title')
+        push.error({ title: 'Error', message: 'Invalid Title' })
         return
       }
       if (this.formData.description === '') {
-        push.error('Invalid description')
+        push.error({ title: 'Error', message: 'Invalid description' })
         return
       }
       if (this.formData.openings === '') {
-        push.error('Invalid openings')
+        push.error({ title: 'Error', message: 'Invalid openings' })
         return
       }
       if (this.formData.experience === '') {
-        push.error('Invalid experience')
+        push.error({ title: 'Error', message: 'Invalid experience' })
         return
       }
       if (this.formData.location === '') {
-        push.error('Invalid location')
+        push.error({ title: 'Error', message: 'Invalid location' })
         return
       }
       if (this.formData.category === '') {
-        push.error('Invalid category')
+        push.error({ title: 'Error', message: 'Invalid category' })
         return
       }
       if (this.formData.workMode === '') {
-        push.error('Invalid workMode')
+        push.error({ title: 'Error', message: 'Invalid workMode' })
         return
       }
       this.loading = true
@@ -551,7 +696,7 @@ export default {
         }
       );
       if (response.success) {
-        push.success(response.message)
+        push.success({ title: 'Success', message: response.message })
         this.openform()
         this.getJobs()
         this.formData = {
@@ -565,12 +710,12 @@ export default {
         }
       }
       else {
-        push.error(response.message)
+        push.error({ title: 'Error', message: response.message })
       }
       this.loading = false
     },
     openDelete(index) {
-      this.toggleIndex=null
+      this.toggleIndex = null
       this.showDelete = !this.showDelete
       if (this.showDelete) {
         this.deleteIndex = index
@@ -588,7 +733,7 @@ export default {
         }
       );
       if (response.success) {
-        push.success(response.message)
+        push.success({ title: 'Success', message: response.message })
         this.openDelete()
         this.getJobs()
         this.formData = {
@@ -602,7 +747,7 @@ export default {
         }
       }
       else {
-        push.error(response.message)
+        push.error({ title: 'Error', message: response.message })
       }
       this.loading = false
     },

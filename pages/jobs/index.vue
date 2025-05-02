@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-w-5xl mx-auto mt-32 px-4 overflow-y-auto scroll-hide" style="max-height: calc(100vh - 150px)" ref="scrollContainer">
+  <div class="w-full max-w-5xl mx-auto mt-20 lg:mt-32 px-4 overflow-y-auto scroll-hide" style="max-height: calc(100vh - 150px)" ref="scrollContainer">
     <div class="w-full my-5">
       <div class="relative flex items-center w-full">
         <span class="absolute text-gray-400 transform -translate-y-1/2 left-3 top-1/2">

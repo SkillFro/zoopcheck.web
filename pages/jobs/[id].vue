@@ -72,15 +72,15 @@
                 </button>
               </div>
               <div v-else class="flex w-full gap-2  md:justify-end">
-                <button
+                <div v-if="job.applied ?? false" class="flex w-full gap-2  md:justify-end">
+                  <button disabled="true"
+                    class="px-4 py-1.5 bg-gray-200/20 text-gray-200 cursor-not-allowed rounded-md ">
+                    Applied
+                  </button>
+                </div>
+                <button v-else @click="openApplyModal"
                   class="px-4 py-1.5 bg-[#086BD8] text-white rounded-md cursor-pointer hover:bg-[#086BD8] transition">
                   Apply to Job
-                </button>
-              </div>
-              <div v-if="job.has_applied ?? false" class="flex w-full gap-2  md:justify-end">
-                <button disabled="true"
-                  class="px-4 py-1.5 bg-[#086BD8] text-white rounded-md cursor-pointer hover:bg-[#086BD8] transition">
-                  applied
                 </button>
               </div>
             </div>
@@ -197,6 +197,57 @@
       <p class="text-lg mt-4 text-center">We getting the Job Details for You</p>
     </div>
   </div>
+  <div v-if="openModal"
+    class="bg-[#00000095] w-full fixed top-0 z-40 left-0 flex flex-col justify-center items-center h-[100vh] p-2">
+    <div
+      class="relative p-4 bg-[#ffffff] rounded-lg md:p-8 lg:w-[700px] md:w-[690px] w-full flex flex-col gap-10 overflow-y-auto">
+      <div class="flex flex-col gap-3 p-2">
+        <div class="flex gap-2">
+          <img src="/public/icons/experience.svg" class="w-5 h-5" alt="">
+          <p class="font- text-[#2c3038]" for="#">Apply to <span class="font-semibold">{{ job.title }}</span> </p>
+        </div>
+        <div class="flex flex-col mt-5 w-full gap-2 lg:gap-5">
+          <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+            <label class="font-semibold text-gray-700" for="#">Are you currently employed? (Yes/No)</label>
+            <select v-model="formData.jobStatus"
+              class="rounded-md border-slate-200 border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full">
+              <option value="">Select your answer</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+            <label class="font-semibold text-gray-700" for="#">How soon can you join if selected?</label>
+            <select v-model="formData.noticePeriod"
+              class="rounded-md border-slate-200 border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full">
+              <option value="">Select One</option>
+              <option>Immediate Joining</option>
+              <option>15 Days</option>
+              <option>30 Days</option>
+              <option>60 Days</option>
+              <option>90 Days</option>
+              <option>Negotiable</option>
+              <option>Serving Notice Period</option>
+            </select>
+          </div>
+          <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
+            <label class="font-semibold text-gray-700" for="#">What is your expected salary range?</label>
+            <input v-model="formData.salary" type="number" name="experience" id="experience" placeholder="Enter in LPA"
+              class="rounded-md border-slate-200 border p-3 text-[16px] placeholder:text-[#555a64] outline-none w-full" />
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-8 justify-end w-full">
+        <button @click="openApplyModal" class="py-2 px-4 rounded bg-gray-200 text-gray-900 w-fit">
+          <span>Cancel</span>
+        </button>
+        <button @click="apply()" class="py-2 px-4 rounded bg-[#086BD8] text-white w-fit" :disabled="loading">
+          <span v-if="loading">Processing...</span>
+          <span v-else>Apply</span>
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -205,6 +256,13 @@ export default {
   data() {
     return {
       job: null,
+      openModal: false,
+      loading: false,
+      formData: {
+        salary: '',
+        noticePeriod: '',
+        jobStatus: ''
+      },
       suggestedJobs: [
         {
           title: "Firewall Security Engineer",
@@ -241,6 +299,37 @@ export default {
     async getJobInfo() {
       const response = await this.$apiFetch(`/post/${useRoute().params.id}`)
       this.job = response.post ?? {}
+    },
+    openApplyModal() {
+      this.openModal = !this.openModal
+    },
+    async apply() {
+      if (this.formData.jobStatus === "") {
+        push.error({ title: 'Error', message: "Invalid Job Status" })
+        return
+      }
+      if (this.formData.noticePeriod === "") {
+        push.error({ title: 'Error', message: "Invalid Notice Period" })
+        return
+      }
+      if (this.formData.salary === "") {
+        push.error({ title: 'Error', message: "Invalid Salary value" })
+        return
+      }
+      this.loading = true
+      const response = await this.$apiFetch(`/candidate/apply/${useRoute().params.id}`, {
+        method: "POST",
+        body: this.formData
+      })
+      if (response.success) {
+        push.success({ title: 'Success', message: "You successfull Applied !" })
+        this.openApplyModal()
+        this.getJobInfo()
+      }
+      else {
+        push.error({ title: 'Error', message: response.message })
+      }
+      this.loading = false
     }
   },
 };

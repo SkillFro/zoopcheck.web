@@ -117,10 +117,10 @@
     <section class="mt-16">
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <a
-          v-for="(blog, index) in blogs"
-          :key="index"
+          v-for="(blog, title) in blogs"
+          :key="title"
           class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg focus:outline-hidden focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5"
-          :href="`/blogs/${index}`"
+          :href="`/blogs/${blog.title}`"
         >
           <div class="aspect-w-16 aspect-h-11">
             <img
@@ -158,35 +158,31 @@ export default {
     return {
       blogs: [
         {
-          title: "Announcing a free plan for small teams",
+          title:
+            "How a Laid-Off Engineer Turned Rejection into a Dream Job Offer",
           description:
-            "At Wake, our mission has always been focused on bringing openness.",
+            "When Aarav Mehta was laid off from his tech job in 2022, he felt like a failure. But what looked like an ending became the start of a transformative journey—one that landed him a senior role at a Fortune 500 company within a year.",
           image:
-            "https://images.unsplash.com/photo-1633114128174-2f8aa49759b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80",
-
-          author: "Lauren Waller",
-          authorImage:
-            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
+            "https://ik.imagekit.io/owncdn/common/blog1.png?updatedAt=1746432468996",
+          authorImage: "/images/founder.png",
+          author: "Mr.Udayalingam.M,",
         },
         {
-          title: "How Google Assistant now helps you record stories for kids",
+          title:
+            "How a 45-Year-Old Career Switcher Landed a Tech Job with Zero Experience (Salary Revealed)",
           description:
-            "Google is constantly updating its consumer AI, Google Assistant, with new features.",
-          image:
-            "https://images.unsplash.com/photo-1562851529-c370841f6536?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80",
-          author: "Lauren Waller",
-          authorImage:
-            "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
+            "Sanjay Patel (name changed), a former bank manager with 20 years in finance, felt stuck. After his bank automated most processes, he faced a choice: retrain or risk obsolescence.",
+          image: "https://ik.imagekit.io/owncdn/common/blog2.png",
+          author: "Mr.Udayalingam.M,",
+          authorImage: "/images/founder.png",
         },
         {
-          title: "Front accounts - let's work together",
+          title: "Rocking Behavioral Interview Questions",
           description:
-            "Are you an accountant? Are you a company formation advisor?",
-          image:
-            "https://images.unsplash.com/photo-1521321205814-9d673c65c167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80",
-          author: "Lauren Waller",
-          authorImage:
-            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
+            "Say you just landed an interview. Your experience and education are a great fit, but what else will you say or do to stand out to the hiring manager? Well, in most cases, it’s all about preparation for the questions that may be asked.",
+          image: "https://ik.imagekit.io/owncdn/common/blog3.png",
+          author: "Mr.Udayalingam.M,",
+          authorImage: "/images/founder.png",
         },
       ],
     };

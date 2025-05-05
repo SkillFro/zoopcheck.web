@@ -54,7 +54,7 @@
         </h2>
       </div>
 
-      <marquee behavior="" direction="left">
+      <!-- <marquee behavior="" direction="left"> -->
         <div class="grid grid-cols-3 md:grid-cols-6 gap-x-6">
           <svg
             class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 mx-auto text-gray-500"
@@ -168,9 +168,9 @@
             </g>
           </svg>
         </div>
-      </marquee>
+      <!-- </marquee> -->
 
-      <marquee behavior="" direction="right">
+      <!-- <marquee behavior="" direction="right"> -->
         <div class="grid grid-cols-3 md:grid-cols-5 gap-x-6 sm:gap-x-6">
           <svg
             class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 mx-auto text-gray-500"
@@ -278,7 +278,7 @@
             />
           </svg>
         </div>
-      </marquee>
+      <!-- </marquee> -->
     </div>
   </section>
   <section class="mt-10">

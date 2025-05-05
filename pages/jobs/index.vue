@@ -27,7 +27,7 @@
       />
     </div>
 
-    <div class="flex flex-col lg:flex-row gap-6">
+    <div class="flex flex-col lg:items-start lg:flex-row gap-6">
       <!-- Job List with Infinite Scroll -->
       <div class="w-full lg:w-2/3">
         <div v-if="jobs !== null" class="flex flex-col w-full gap-5">
@@ -116,7 +116,7 @@
       </div>
 
       <!-- Filter Sidebar -->
-      <div v-if="jobs !== null" class="hidden lg:block w-full md:w-1/3">
+      <div v-if="jobs !== null" class="hidden sticky top-0 lg:block w-full md:w-1/3">
         <div
           class="p-4 bg-white border border-slate-200 rounded-xl sticky top-28"
         >

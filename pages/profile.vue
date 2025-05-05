@@ -1,8 +1,9 @@
 <template>
   <div class="max-w-[1080px] mx-auto px-4 lg:px-0 mt-32">
-    <p class="text-xl font-semibold pb-10">Recruiter Settings</p>
-    <div class=" flex gap-20 justify-between">
-      <div class="flex flex-col w-[250px] gap-5 overflow-x-auto border-b border-slate-200">
+    <div class="flex gap-20 justify-between">
+     <div class="sticky top-20">
+      <div class="flex sticky top-32  flex-col w-[250px] gap-5 ">
+        <p class="text-xl  font-semibold pb-10">Account Settings</p>
         <NuxtLink v-for="(tab, index) in tabs" :key="index" :to="`/profile?tab=${tab.value}`"
           class="text-left px-5 py-2 rounded-lg cursor-pointer text-lg font-semibold whitespace-nowrap" :class="[
             (selectedTab === tab.value || (selectedTab === 'applications' && tab.value === 'jobs'))
@@ -13,13 +14,17 @@
           {{ tab.name }}
         </NuxtLink>
       </div>
-      <section v-if="selectedTab === 'profile'" class="flex-1">
+     </div>
+      <div class="flex-1">
+        <section v-if="selectedTab === 'profile'" class="flex-1">
+        <!-- <div class="py-2 px-4 mb-4 bg-blue-100 rounded-md text-blue-500 text-sm">Sorry your account not verified yet! Complete your profile that us to verify</div> -->
         <div v-if="user !== null" class="flex flex-col items-center lg:flex-row gap-6 justify-between">
           <!-- <div>
-          <p class="flex-1 text-lg font-semibold">Personal Information</p>
-          <p class="mt-1 text-sm/6 text-gray-600">Use a permanent address where you can receive mail.</p>
-        </div> -->
+            <p class="flex-1 text-lg font-semibold">Personal Information</p>
+            <p class="mt-1 text-sm/6 text-gray-600">Use a permanent address where you can receive mail.</p>
+          </div> -->
           <div class="flex-1 space-y-12">
+            <div v-if="!user.approved" class="py-2 px-4 mb-4 bg-red-100 rounded-md text-red-500 text-sm">Sorry your account not verified yet! Please complete your profile to proccess it ...</div>
             <div class="pb-12">
               <h2 class="text-base/7 font-semibold text-gray-900">Profile</h2>
               <p class="mt-1 text-sm/6 text-gray-600">
@@ -32,7 +37,7 @@
                   <label for="photo" class="block text-sm/6 font-medium text-gray-900">Comapany Logo</label>
                   <div class="mt-4 w-12 flex items-center gap-x-3">
                     <img class="object-cover rounded-full w-12 h-12" :src="user.profile === ''
-                      ? '/public/dash/user.png'
+                      ? 'https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg'
                       : user.profile
                       " alt="" />
                     <label for="file-upload"
@@ -85,7 +90,7 @@
                   </div>
                 </div>
                 <div class="sm:col-span-4">
-                  <label for="email" class="block text-sm/6 font-medium text-gray-900">company website</label>
+                  <label for="email" class="block text-sm/6 font-medium text-gray-900"><span v-if="user.role==='recruiter'">Company website</span><span v-if="user.role==='candidate'">Portfolio website or LinkedIn Profile</span></label>
                   <div class="mt-4">
                     <input disabled v-model="user.website" id="email" placeholder="https://zoopcheck" name="email"
                       type="text" autocomplete="email"
@@ -116,7 +121,7 @@
               </div> -->
               </div>
             </div>
-            <div class="mt-6 flex items-center justify-end gap-x-6">
+            <!-- <div class="mt-6 sticky bottom-0 flex items-center justify-end gap-x-6">
               <button type="button" class="text-sm/6 font-semibold text-gray-900">
                 Cancel
               </button>
@@ -124,7 +129,7 @@
                 class="rounded-md bg-[#086BD8] px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-[#086BD8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#086BD8]">
                 Save
               </button>
-            </div>
+            </div> -->
           </div>
         </div>
         <div v-else>
@@ -228,7 +233,7 @@
           </div>
         </div>
         <div v-if="jobs !== null" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-center w- gap-5">
-          <div v-for="(job, index) in jobs" :key="index"
+          <div v-if="jobs.length > 0" v-for="(job, index) in jobs" :key="index"
             class="p-4 bg-white border border-slate-200 rounded-xl w-full relative">
             <NuxtLink>
               <div class="flex items-start justify-between">
@@ -259,6 +264,11 @@
                 <p>Applications : {{ job.applications }}</p>
               </div>
             </NuxtLink>
+          </div>
+          <div v-else class="col-span-2 w-full">
+            <p class="text-lg mt-4 text-center">
+            No Job Post Found ! 
+          </p>
           </div>
         </div>
         <div v-else class="flex flex-col h-screen items-center">
@@ -311,7 +321,7 @@
                 </p>
               </div>
             </div>
-            <button @click="openApplicationDetails(true,application)" class="px-6 py-2 text-[#086BD8]">
+            <button @click="openApplicationDetails(true, application)" class="px-6 py-2 text-[#086BD8]">
               View
             </button>
           </div>
@@ -323,7 +333,8 @@
             <div class="flex flex-col gap-3 p-2">
               <div class="flex gap-2">
                 <img src="/public/icons/experience.svg" class="w-5 h-5" alt="">
-                <p class="font- text-[#2c3038]" for="#">Application for <span class="font-semibold">{{ jobTitle }}</span> </p>
+                <p class="font- text-[#2c3038]" for="#">Application for <span class="font-semibold">{{ jobTitle
+                }}</span> </p>
               </div>
               <div class="flex flex-col mt-5 w-full gap-2 lg:gap-5">
                 <div class="flex items-start flex-col gap-[10px] w-full md:w-auto">
@@ -396,6 +407,7 @@
           </div>
         </div>
       </section>
+      </div>
     </div>
     <div v-if="showDelete" class="fixed inset-0 flex items-center justify-center z-50">
       <div class="fixed inset-0 bg-black opacity-50"></div>
@@ -424,6 +436,7 @@
 export default {
   setup() {
     definePageMeta({
+      layout:'secondary',
       middleware: 'sidebase-auth'
     })
   },
@@ -433,7 +446,7 @@ export default {
       selectedTab: useRoute().query.tab ?? 'profile',
       user: null,
       toggleIndex: null,
-      openModel:false,
+      openModel: false,
       applications: {},
       jobs: [],
       tabs: [
@@ -472,10 +485,10 @@ export default {
     if (useRoute().query.tab === 'profile') {
       this.getUSerInfo();
     }
-    if (useRoute().query.tab === 'jobs') {
+    else if (useRoute().query.tab === 'jobs') {
       this.getJobs();
     }
-    if (useRoute().query.tab === 'applications') {
+    else if (useRoute().query.tab === 'applications') {
       this.getApplications();
     }
     else {
@@ -488,49 +501,49 @@ export default {
       if (useRoute().query.tab === 'profile') {
         this.getUSerInfo();
       }
-      if (useRoute().query.tab === 'jobs') {
+      else if (useRoute().query.tab === 'jobs') {
         this.getJobs();
       }
-      if (useRoute().query.tab === 'applications') {
+      else if (useRoute().query.tab === 'applications') {
         this.getApplications();
       }
       else {
         this.getUSerInfo()
       }
-    }
+    },
   },
   methods: {
     toggle(index) {
       this.toggleIndex = this.toggleIndex === index ? null : index;
     },
-    openApplicationDetails(value,data){
-      this.openModal=value
+    openApplicationDetails(value, data) {
+      this.openModal = value
       console.log(data.jobStatus)
-      if(value){
-      this.applicationDetails={
-        salary: data.salary,
-        noticePeriod: data.noticePeriod,
-        jobStatus: data.jobStatus
+      if (value) {
+        this.applicationDetails = {
+          salary: data.salary,
+          noticePeriod: data.noticePeriod,
+          jobStatus: data.jobStatus
+        }
+        if (data.viewedAt === null) {
+          this.$apiFetch(`/recruiter/application/${data.id}`, { method: 'PUT' });
+        }
       }
-      if(data.viewedAt===null){
-        this.$apiFetch(`/recruiter/application/${data.id}`,{method:'PUT'});
+      else {
+        this.applicationDetails = {
+          salary: '',
+          noticePeriod: '',
+          jobStatus: ''
+        }
+
       }
-    }
-    else{
-      this.applicationDetails= {
-        salary: '',
-        noticePeriod: '',
-        jobStatus: ''
-      }
-      
-    }
     },
     async getUSerInfo() {
       const response = await this.$apiFetch(`/${useAuth().data.value.user.role}/me`);
       this.user = response.user ?? {};
-      if (!this.user.approved) {
-        push.info({ title: 'Info', message: "Sorry your account not verified yet !", props: {} })
-      }
+      // if (!this.user.approved) {
+      //   push.info({ title: 'Info', message: "Sorry your account not verified yet !", props: {} })
+      // }
     },
     async getJobs() {
       const response = await this.$apiFetch(
@@ -637,8 +650,9 @@ export default {
           method: 'POST',
           body: this.formData
         }
-      );
-      console.log(response)
+      ).catch((err)=>{
+        push.error({ title: 'Error', message: response.message })
+      });
       if (response.success) {
         push.success({ title: 'Success', message: response.message })
         this.openform()

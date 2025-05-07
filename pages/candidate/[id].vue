@@ -33,13 +33,6 @@
             >
           </div>
         </div>
-        <div class="w-full">
-          <button
-            class="bg-green-800 text-xs text-white py-2 rounded px-6 cursor-pointer"
-          >
-            Hire {{ candidate.name }}
-          </button>
-        </div>
       </div>
 
       <div class="bg- w-full mt-10 px-8">

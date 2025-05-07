@@ -740,7 +740,7 @@
     <!-- canditate  form -->
     <div
       v-if="candidateProfile"
-      class="bg-[#00000095] w-full fixed inset-0 z-50 p-2 flex flex-col justify-center items-center h-[100vh]"
+      class="bg-[#00000095] w-full fixed inset-0 z-50 p-2 md:p-5 flex flex-col justify-center items-center h-[100vh]"
     >
       <div
         class="md:w-[600px] bg-white w-full p-5 flex flex-col gap-5 overflow-y-auto rounded-lg"

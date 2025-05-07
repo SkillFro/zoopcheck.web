@@ -1,191 +1,207 @@
 <template>
-  <div class="max-w-[1080px] mx-auto p-4 sm:p-6 lg:p-4 mt-20">
-    <!-- Blog Header -->
-    <section class="py-8">
-      <div class="flex flex-col gap-4 mx-auto max-w-7xl">
-        <h1
-          class="text-2xl font-semibold leading-tight text-black sm:text-3xl md:text-4xl lg:text-4xl"
-        >
-          Adding the daily.dev DevCard to your GitHub profile
-        </h1>
-        <p
-          class="mt-2 text-xs tracking-wide text-gray-700 uppercase sm:text-sm"
-        >
-          Feb 20, 2024
-        </p>
-      </div>
-    </section>
+  <div class="max-w-[1104px] mx-auto py-6 mt-40 flex flex-col gap-6">
+    <h1 class="text-3xl font-bold mb-4">{{ blog.title }}</h1>
+    <p>{{ blog.date }}</p>
+    <img :src="blog.image" class="rounded-xl mb-6 w-full" />
 
-    <!-- Image and Author Section -->
-    <section class="items-start mt-2">
-      <!-- Blog Image -->
-      <div class="col-span-2">
-        <img
-          src="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80"
-          alt="Blog cover"
-          class="object-cover w-full h-[500px] rounded-lg"
-        />
-      </div>
+    <p class="text-lg text-gray-800 whitespace-pre-line">
+      {{ blog.description }}
+    </p>
 
-      <!-- Author Info -->
-      <!-- <div
-        class="sticky top-20 bg-white border border-slate-200 dark:border-gray-700 rounded-xl p-5"
+    <div
+      v-for="(item, index) in blog.contents"
+      :key="index"
+      class="flex flex-col gap-4"
+    >
+      <p v-if="item.title" class="font-bold text-lg mt-4">
+        {{ item.title }}
+      </p>
+      <p
+        v-for="(content, i) in Array.isArray(item.content)
+          ? item.content
+          : [item.content]"
+        :key="i"
+        class="text-lg text-gray-800 whitespace-pre-line"
       >
-        <p class="mb-3 text-sm text-gray-800 dark:text-gray-300">Author</p>
-        <div class="flex items-center gap-4">
-          <img
-            src="/dash/profile.svg"
-            alt="Author avatar"
-            class="w-12 h-12 rounded-full"
-          />
-          <div>
-            <h3 class="text-lg font-bold text-black dark:text-white">
-              Chris Bongers
-            </h3>
-            <p class="text-sm text-gray-900 dark:text-gray-400">
-              @DailyDevTips1
-            </p>
-          </div>
-        </div>
-      </div> -->
-    </section>
+        {{ content }}
+      </p>
+    </div>
 
-    <!-- Blog Content -->
-    <section class="mt-10 space-y-8 text-gray-800">
-      <div>
-        <h2 class="mt-6 text-2xl font-medium">
-          How two young dreamers built a crowd-favourite eatery in Ranchi
-        </h2>
-        <p class="mt-4 text-lg">
-          Brothers Nishant and Vikash Ranjan had a dream—to create a space where
-          people could come together over warm vibes while enjoying
-          unforgettable meals. But bringing this idea to life was no easy feat!
-          <br /><br />
-          It required grit, resourcefulness and a whole lot of faith in their
-          passion for food.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="mt-6 text-2xl font-medium">A dream takes shape</h2>
-        <p class="mt-4 text-lg">
-          After completing high school in Ranchi, Nishant and Vikash moved to
-          Mumbai for further studies. While Nishant pursued Chartered
-          Accountancy, Vikash studied mathematics. It was during this time that
-          they started cooking for themselves. This was out of necessity at
-          first, as they longed for the comfort of home-cooked meals. But what
-          started as a task soon became a passion. <br />
-          <br />
-          While a corporate career seemed like the logical next step, something
-          about food and cooking kept pulling them in a different direction.
-          Vikash says, “Having lived outside as students, we wanted to recreate
-          the sense of comfort that we often missed.”
-        </p>
-      </div>
-
-      <div>
-        <h2 class="mt-6 text-2xl font-medium">Building a standout brand</h2>
-        <p class="mt-4 text-lg">
-          The first few months were tough. Ranchi was already home to
-          established food giants, which attracted a huge crowd of customers.
-          The brothers tackled this head-on by focusing on three key areas:
-          quality, consistency, and customer service.
-          <br /><br />They personally connected with customers on social media
-          and tweaked the menu based on customer feedback. They also built
-          strong relationships with local suppliers to secure the freshest
-          ingredients, ensuring every dish delivered on taste and quality.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="mt-6 text-2xl font-medium">Adapting and growing</h2>
-        <p class="mt-4 text-lg">
-          By 2018, Nishant noticed a shift in dining habits—people weren’t just
-          visiting restaurants; they wanted great food delivered straight to
-          their doorsteps. <br /><br />Then came the COVID-19 pandemic, a crisis
-          that forced many businesses to shut down. But with the guidance of Key
-          Account Manager Nikesh Kumar, it turned into an unanticipated growth
-          engine for Jashn. He explains, “The decision to work with Zomato
-          changed our operations and reach for the better! Our orders surged
-          threefold during COVID, and our monthly revenue increased 2x between
-          2019 and 2024.”
-        </p>
-      </div>
-    </section>
-
-    <!-- Related Tech Blogs -->
-    <section class="mt-16">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a
-          v-for="(blog, title) in blogs"
-          :key="title"
-          class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg focus:outline-hidden focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5"
-          :href="`/blogs/${blog.title}`"
-        >
-          <div class="aspect-w-16 aspect-h-11">
-            <img
-              class="w-full object-cover rounded-xl"
-              :src="blog.image"
-              alt="Blog Image"
-            />
-          </div>
-          <div class="my-6">
-            <h3 class="text-xl font-semibold text-gray-800 line-clamp-2">
-              {{ blog.title }}
-            </h3>
-            <p class="mt-5 text-gray-600 line-clamp-2">
-              {{ blog.description }}
-            </p>
-          </div>
-          <div class="mt-auto flex items-center gap-x-3">
-            <img
-              class="size-8 rounded-full"
-              :src="blog.authorImage"
-              alt="Avatar"
-            />
-            <div>
-              <h5 class="text-sm text-gray-800">By {{ blog.author }}</h5>
-            </div>
-          </div>
-        </a>
-      </div>
+    <section class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+      <TechBlog
+        v-for="(relatedBlog, index) in blogs"
+        :key="index"
+        :blog="relatedBlog"
+        :href="`/blogs/${relatedBlog.title.toLowerCase().replaceAll(' ', '-')}`"
+      />
     </section>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      blogs: [
-        {
-          title:
-            "How a Laid-Off Engineer Turned Rejection into a Dream Job Offer",
-          description:
-            "When Aarav Mehta was laid off from his tech job in 2022, he felt like a failure. But what looked like an ending became the start of a transformative journey—one that landed him a senior role at a Fortune 500 company within a year.",
-          image:
-            "https://ik.imagekit.io/owncdn/common/blog1.png?updatedAt=1746432468996",
-          authorImage: "/images/founder.png",
-          author: "Mr.Udayalingam.M,",
-        },
-        {
-          title:
-            "How a 45-Year-Old Career Switcher Landed a Tech Job with Zero Experience (Salary Revealed)",
-          description:
-            "Sanjay Patel (name changed), a former bank manager with 20 years in finance, felt stuck. After his bank automated most processes, he faced a choice: retrain or risk obsolescence.",
-          image: "https://ik.imagekit.io/owncdn/common/blog2.png",
-          author: "Mr.Udayalingam.M,",
-          authorImage: "/images/founder.png",
-        },
-        {
-          title: "Rocking Behavioral Interview Questions",
-          description:
-            "Say you just landed an interview. Your experience and education are a great fit, but what else will you say or do to stand out to the hiring manager? Well, in most cases, it’s all about preparation for the questions that may be asked.",
-          image: "https://ik.imagekit.io/owncdn/common/blog3.png",
-          author: "Mr.Udayalingam.M,",
-          authorImage: "/images/founder.png",
-        },
-      ],
-    };
+
+<script setup>
+// import type { title } from "process";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+
+const blogs = [
+  {
+    slug: "laid-off-engineer-dream-job",
+    title: "How a Laid-Off Engineer Turned Rejection into a Dream Job Offer",
+    date: "FEB 20, 2025",
+    image: "https://ik.imagekit.io/owncdn/common/blog1.png",
+    authorImage: "/images/founder.png",
+    author: "Mr.Udayalingam.M",
+    description: `When Aarav Mehta was laid off from his tech job in 2022, he felt like a failure. But what looked like an ending became the start of a transformative journey—one that landed him a senior role at a Fortune 500 company within a year.`,
+    contents: [
+      {
+        content: ["Here’s how he turned setbacks into stepping stones."],
+      },
+      {
+        title: "The Breaking Point",
+        content: [
+          "Aarav had spent five years as a backend engineer at a mid-sized firm when budget cuts left him unemployed overnight. “I sent out 100+ applications in a panic,” he admits. “Only 3 even replied—all rejections.”",
+          "But instead of spiraling, he paused. “I realized I was treating my job search like a numbers game. I needed a strategy.”",
+        ],
+      },
+      {
+        title: "The Pivot: 3 Game-Changing Moves",
+      },
+      {
+        title: "Skills Over Titles",
+        content: [
+          "Aarav analyzed job descriptions for roles he wanted and noticed a pattern: employers valued cloud certifications (AWS/Azure). He spent two months upskilling through Coursera—and added projects to his GitHub to prove his expertise.",
+        ],
+      },
+      {
+        title: "Networking with Purpose",
+        content: [
+          "He reached out to former colleagues for coffee chats, asking, “What’s the biggest challenge your team is facing?” One connection referred him to an unlisted opening.",
+        ],
+      },
+      {
+        title: "The Interview Hack",
+        content: [
+          "Before interviews, Aarav researched the company’s recent press releases. In one interview, he said, “I saw your expansion into Southeast Asia—my experience optimizing scalable systems could help reduce latency there.” The hiring manager later told him this won him the offer.",
+        ],
+      },
+      {
+        title: "The Result",
+        content: [
+          "Within six months, Aarav had three competing offers. He negotiated a 30% higher salary than his previous role by showcasing his certified skills and project impact.",
+        ],
+      },
+      {
+        title: "His advice to job seekers?",
+        content: [
+          "“Rejection isn’t about you—it’s a mismatch. Treat your job search like a project: identify gaps, iterate, and always quantify your value.”",
+        ],
+      },
+    ],
   },
-};
+  {
+    slug: "45-Year-Old Career Switcher Landed a Tech",
+    title:
+      "How a 45-Year-Old Career Switcher Landed a Tech Job with Zero Experience (Salary Revealed)",
+    date: "MARCH 20, 2025",
+    image: "https://ik.imagekit.io/owncdn/common/blog2.png",
+    authorImage: "/images/founder.png",
+    author: "Mr.Udayalingam.M",
+    description: `The BackstorySanjay Patel (name changed) a former bank manager with 20 years in finance, felt stuck.`,
+    contents: [
+      {
+        content: [
+          "After his bank automated most processes he faced a choice: retrain or risk obsolescence.",
+        ],
+      },
+      {
+        title: "The Data-Backed Strategy",
+      },
+      {
+        title: "Skill Mapping:",
+        content: [
+          "Used LinkedIn’s Skills Graph to find overlapping skills (e.g., Excel → SQL, client management → SaaS onboarding)..",
+          "Result : Cut learning time by 40%.",
+        ],
+      },
+
+      {
+        title: "The 6-Month Upskilling Plan",
+        content: [
+          "Enrolled in Google Data Analytics Certificate ($49/month).",
+          "Built 3 Tableau dashboards using free public datasets (e.g., COVID-19 trends).",
+          "Outcome: Added “Data Visualization” and “SQL” to his resume (verified by a Zety scan as “ATS-optimized”).",
+        ],
+      },
+      {
+        title: "Networking Hack",
+        content: [
+          "Joined #BreakingIntoTech Twitter chats.",
+          "Sent personalized cold emails to 10 hiring managers with:",
+        ],
+      },
+      {
+        title:
+          "“I analyzed your app’s review data—here are 3 UX pain points + solutions.”",
+        content: ["Response rate: 30% (vs. 2% from job applications)."],
+      },
+      {
+        title: "The Payoff",
+        content: [
+          "Role: Jr. Data Analyst at a fintech startup.",
+          "Salary: ₹8.5L/year (vs. ₹6L in banking).",
+          "Time to Hire: 7 months.",
+        ],
+      },
+      {
+        title: "Key Takeaway",
+        content: [
+          "“Age is just a number. Transferable skills + proof of work beat degrees.”",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "Rocking Behavioral Interview",
+    title: "Rocking Behavioral Interview Questions",
+    date: "MAY 10, 2025",
+    image: "https://ik.imagekit.io/owncdn/common/blog3.png",
+    authorImage: "/images/founder.png",
+    author: "Mr.Udayalingam.M",
+    description: `Say you just landed an interview. Your experience and education are a great fit, but what else will you say or do to stand out to the hiring manager? Well, in most cases, it’s all about preparation for the questions that may be asked.`,
+    contents: [
+      {
+        content: [
+          "At our company and with most employers, a cultural fit and customer service skills are two integral components of business to look for in candidates. That’s why we base many interviews on behavioral questions just as much as the technical interview questions. Behavioral questions become especially invaluable when an employer is deciding between the top few candidates left.",
+          "The good news is that most of these questions are predictable, and you can prepare for the most common ones before your interview. This will help prevent rambling or giving a long and unfocused response to your future employer. Behavioral questions generally revolve around three categories; adaptability, problem-solving, and teamwork. Here are some examples of what the employer is looking for, and what questions you should expect.",
+        ],
+      },
+      {
+        title: "3 Categories of Behavioral Interview Questions:",
+      },
+      {
+        title: "Adaptability & Handling Conflict",
+        content: [
+          "Employers want to know that a new employee will be on board with them for the long haul and will be adaptable to change. This could be a change in environment, responsibilities, or ad hoc challenges. Certain positions might also require a great deal of interaction with clients, or sometimes challenging situations with other employees. Sample questions under this umbrella may include, “Can you tell me about an instance where you had to defuse a sticky situation?” or “Describe a time when a major change took place at a previous job and how you handled it?”",
+        ],
+      },
+      {
+        title: "Problem-Solving",
+        content: [
+          "If a position is going to require out-of-the-box thinking and a lot of creativity, then the employer may want to hear about an instance where you had to move out of your comfort zone to solve a problem. Sample questions may include, “Can you describe a time when you came up with a new approach to a problem?” or “Tell me about a situation in which you found a creative way to overcome a challenge at work?”",
+        ],
+      },
+      {
+        title: "Teamwork",
+        content: [
+          "By definition, teamwork is the process of working collaboratively with a group of people in order to achieve a goal. One’s ability to work well with others is crucial for almost any position out there. Teamwork questions are the most common type of behavioral interview questions. The answers you provide can inform your future employer about your strengths, weaknesses and ability to lead. A general question may be, “Tell me about an experience on as part of a team that you found rewarding.” For a higher-level management position, a sample question may be, “Can you share an example of a time you stepped up to a leadership role?”",
+          "If you take a little time to brainstorm how you’ll answer these types of questions, you’ll be able to give well thought out answers that will set you apart. When you’re preparing your answers, just think about what the employer is looking for. A little extra preparation could land you that next job!",
+        ],
+      },
+    ],
+  },
+];
+const blog = blogs.find(
+  (b) => b.title.toLowerCase().replaceAll(" ", "-") === route.params.slug
+);
 </script>

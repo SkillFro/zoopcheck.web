@@ -1,8 +1,10 @@
 <template>
-  <div class="max-w-[1104px] mx-auto py-6 mt-40 flex flex-col gap-6">
+  <div
+    class="max-w-[1104px] mx-auto py-6 mt-40 flex flex-col gap-6 md:px-8 px-4"
+  >
     <h1 class="text-3xl font-bold mb-4">{{ blog.title }}</h1>
     <p>{{ blog.date }}</p>
-    <img :src="blog.image" class="rounded-xl mb-6 w-full" />
+    <img :src="blog.image" class="rounded-xl mb-6 w-full md:h-[520px]" />
 
     <p class="text-lg text-gray-800 whitespace-pre-line">
       {{ blog.description }}

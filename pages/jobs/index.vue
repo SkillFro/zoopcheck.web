@@ -116,7 +116,10 @@
       </div>
 
       <!-- Filter Sidebar -->
-      <div v-if="jobs !== null" class="hidden sticky top-0 lg:block w-full md:w-1/3">
+      <div
+        v-if="jobs !== null"
+        class="hidden sticky top-0 lg:block w-full md:w-1/3"
+      >
         <div
           class="p-4 bg-white border border-slate-200 rounded-xl sticky top-28"
         >

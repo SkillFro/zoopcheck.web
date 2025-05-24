@@ -1,102 +1,81 @@
 <template>
-  <div
-    class="bg-[url('/images/jobview.jpg')] px-4 mt-18 lg:mt-22 bg-center bg-cover bg-black/75 bg-blend-overlay w-full md:h-[348px] flex justify-center items-end py-10"
-  >
-    <div class="flex w-[1080px] mx-auto justify-between">
-      <!-- <div class="flex flex-col w-full gap-3"> -->
-      <!-- <div class="flex flex-col justify-between rounded-xl gap-4 w-full"> -->
-      <div
-        class="flex flex-col md:flex-row justify-between items-center w-full"
-      >
-        <div class="flex items-start justify-between">
-          <div class="flex gap-4">
-            <NuxtLink :to="`/recruiter/kkk`" class="block sm:hidden">
-              <img
-                src="/public/dash/user.png"
-                alt="recruiter Logo"
-                class="object-cover w-20 h-20 rounded-lg cursor-pointer"
-              />
-            </NuxtLink>
-            <div class="flex flex-col gap-2">
-              <h2 class="text-lg font-semibold text-white md:text-xl">
-                Suresh
-              </h2>
-              <p class="text-sm text-gray-200">Suresh@gmail.com</p>
-              <div class="flex gap-2 items-center">
-                <img src="/public/icons/number.svg" class="w-4 h-4" alt="" />
-                <p class="text-white">1234567890</p>
-              </div>
+  <div v-if="candidate !== null">
+    <div
+      class="bg-[url('/images/jobview.jpg')] bg-black/50 bg-blend-darken px-4 mt-18 lg:mt-24 bg-center bg-cover w-full md:h-[300px] flex justify-center items-end py-10"
+    ></div>
 
-              <div class="flex gap-2 items-center">
-                <img src="/public/icons/web.svg" class="w-4 h-4" alt="" />
-                <a
-                  class="text-[#2966f4]"
-                  target="_blank"
-                  href="https://my-portfolio-five-mocha-87.vercel.app/"
-                  >Portfolio</a
-                >
-              </div>
-            </div>
+    <div class="flex gap-0.5 max-w-5xl mx-auto">
+      <div class="w-[250px] lg:h-[350px] bg- flex flex-col gap-4 py-6 px-12">
+        <div>
+          <img
+            :src="candidate.profile"
+            alt="user"
+            class="w-[80px] h-[80px] rounded-full bg-auto border border-gray-300"
+          />
+        </div>
+        <div>
+          <h1 class="text-lg font-semibold md:text-xl">{{ candidate.name }}</h1>
+        </div>
+        <div class="flex gap-1.5 flex-col">
+          <div class="flex gap-2 items-center">
+            <img src="/public/icons/mail.svg" class="w-4 h-4" alt="mail" />
+            <p class="text-sm">{{ candidate.email }}</p>
+          </div>
+          <div class="flex gap-2 items-center">
+            <img src="/public/icons/number.svg" class="w-4 h-4" alt="" />
+            <p class="text-sm">{{ candidate.number }}</p>
+          </div>
+
+          <div class="flex gap-2 items-center">
+            <img src="/public/icons/web.svg" class="w-4 h-4" alt="" />
+            <a class="text-[#2966f4]" target="_blank" :href="candidate.website"
+              >Portfolio</a
+            >
           </div>
         </div>
+      </div>
 
-        <div class="flex flex-col items-center gap-5">
-          <NuxtLink :to="`/recruiter/kkk`" class="hidden sm:block">
-            <img
-              src="/public/dash/user.png"
-              alt="recruiter Logo"
-              class="object-cover w-20 h-20 rounded-lg cursor-pointer"
-            />
-          </NuxtLink>
-          <button class="px-4 py-2 rounded bg-[#2966f4] text-white">
-            Apply Now
-          </button>
+      <div class="bg- w-full mt-10 px-8">
+        <div class="w-full border-slate-200 rounded-xl mx-auto">
+          <h2 class="text-xl font-semibold text-gray-800">About Me</h2>
+          <div class="mt-6 text-gray-700">
+            <p class="text-sm">
+              {{ candidate.description }}
+            </p>
+          </div>
         </div>
       </div>
-      <!-- </div> -->
-      <!-- <div class="flex flex-col gap-4">
-            <button class="px-[30px] py-[14px] rounded bg-[#2966f4] text-white">
-              Apply Now
-            </button>
-            <button
-              class="px-[20px] py-[14px] rounded bg-[#2966f4] text-white flex items-center gap-3"
-            >
-              <img
-                src="/public/images/linkedin.svg"
-                class="w-[20px] h-[20px]"
-                alt=""
-              />
-              <span>Apply With Linkedin</span>
-            </button>
-          </div> -->
     </div>
   </div>
-  <div
-    class="xl:max-w-[1080px] w-full px-4 mx-auto mt-8 xl:flex xl:flex-row flex flex-col md:items-start gap-[20px]"
-  >
-    <div class="md:max-w-[1080px] w-full border-slate-200 rounded-xl mx-auto">
-      <h2 class="mb-4 text-lg font-semibold text-gray-800">Job description</h2>
-      <div class="mb-6 text-gray-700">
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam,
-          eius necessitatibus delectus sequi, dicta nisi odit nesciunt similique
-          porro inventore aspernatur. Officia soluta corrupti excepturi id natus
-          repellat impedit recusandae consectetur maiores dolorem animi ea
-          temporibus et, accusamus voluptate sapiente tempore dolores ratione
-          quos. Magni quasi sapiente libero a, veritatis sequi dolorum
-          consequatur ipsam recusandae excepturi, repudiandae ullam optio, quod
-          eaque aliquid illo ab dignissimos reiciendis soluta doloremque
-          expedita autem.
-        </p>
-      </div>
-    </div>
+  <div v-else class="flex justify-center mt-32 items-center py-4 h-screen">
+    <div
+      class="w-8 h-8 animate-spin border-[#086BD8] border-3 rounded-full border-r-gray-400"
+    ></div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
-    return {};
+    return {
+      candidate: null,
+      loading: false,
+    };
+  },
+  methods: {
+    async fetchCandidate() {
+      const response = await axios.get(
+        `https://zoopcheck-api.onrender.com/api/candidate/profile/${
+          useRoute().params.id
+        }`
+      );
+      this.candidate = response.data.user;
+    },
+  },
+  mounted() {
+    this.fetchCandidate();
   },
 };
 </script>

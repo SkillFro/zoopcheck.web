@@ -40,8 +40,8 @@
                 v-if="!user.approved"
                 class="py-2 px-4 mb-4 bg-red-100 rounded-md text-red-500 text-sm"
               >
-                Sorry your account not verified yet! Please complete your
-                profile to proccess it ...
+                Sorry your account not verified yet ! Please complete your
+                profile and wait for admin approval ...
               </div>
               <div class="pb-12">
                 <div class="flex justify-between items-start">
@@ -86,6 +86,31 @@
                         "
                         alt=""
                       />
+                      <label
+                        for="file-upload"
+                        class="relative cursor-pointer rounded-md bg-white font-semibold text-[#086BD8]"
+                      >
+                        <div
+                          v-if="loadingImg"
+                          class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 flex items-center gap-2"
+                        >
+                          <span v-if="loadingImg">Updating...</span>
+                        </div>
+                        <div
+                          v-else
+                          class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 flex items-center gap-2"
+                        >
+                          <span>Change</span>
+                        </div>
+
+                        <input
+                          @change="uploadImage"
+                          id="file-upload"
+                          name="file-upload"
+                          type="file"
+                          class="sr-only"
+                        />
+                      </label>
                     </div>
                   </div>
                   <div class="sm:col-span-4">
@@ -513,7 +538,11 @@
                 <img src="/public/dash/arrrow.svg" alt="arrow" />
                 <li>
                   <p>
-                    <!-- {{jobs.filter((e) => e.id === selectedTab)[0].title ?? ''}} -->
+                    <span
+                      class="text-[#086BD8] cursor-pointer"
+                      @click="useRouter().push('/profile?tab=jobs')"
+                      >{{ jobTitle }}</span
+                    >
                   </p>
                 </li>
               </ol>
@@ -558,7 +587,7 @@
               </div>
               <button
                 @click="openApplicationDetails(true, application)"
-                class="px-6 py-2 text-[#086BD8]"
+                class="px-6 py-2 text-[#086BD8] cursor-pointer bg-[#f0f4ff] rounded-md"
               >
                 View
               </button>
@@ -639,7 +668,7 @@
               <div class="flex items-center gap-8 justify-end w-full">
                 <button
                   @click="openApplicationDetails(false)"
-                  class="py-2 px-4 rounded bg-gray-200 text-gray-900 w-fit"
+                  class="py-2 px-4 rounded bg-gray-200 text-gray-900 w-fit cursor-pointer"
                 >
                   <span>Close</span>
                 </button>
@@ -745,7 +774,7 @@
       <div
         class="md:w-[600px] bg-white w-full p-5 flex flex-col gap-5 overflow-y-auto rounded-lg"
       >
-        <div class="col-span-full">
+        <!-- <div class="col-span-full">
           <label for="photo" class="block text-sm/6 font-medium text-gray-900"
             >Comapany Logo</label
           >
@@ -759,24 +788,8 @@
               "
               alt=""
             />
-            <label
-              for="file-upload"
-              class="relative cursor-pointer rounded-md bg-white font-semibold text-[#086BD8]"
-            >
-              <div
-                class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
-              >
-                Change
-              </div>
-              <input
-                id="file-upload"
-                name="file-upload"
-                type="file"
-                class="sr-only"
-              />
-            </label>
           </div>
-        </div>
+        </div> -->
         <div class="sm:col-span-4">
           <label
             for="username"
@@ -950,6 +963,7 @@ export default {
       isUpdate: false,
       showDelete: false,
       loading: false,
+      loadingImg: false,
       deleteIndex: null,
       jobTitle: "",
       formData: {
@@ -994,6 +1008,46 @@ export default {
     },
   },
   methods: {
+    uploadImage(event) {
+      this.loadingImg = true;
+      console.log(this.loadingImg);
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.user.profile = e.target.result;
+        };
+        reader.readAsDataURL(file);
+
+        // Check user role before uploadingImg
+        const role = useAuth().data.value.user.role;
+        if (!role) {
+          push.error({ title: "Error", message: "User role not found" });
+          return;
+        }
+
+        try {
+          const formData = new FormData();
+          formData.append("profile", file);
+          this.$apiFetch(`/${role}/me/profile`, {
+            method: "PUT",
+            body: formData,
+          }).then((response) => {
+            if (response.success) {
+              this.getUSerInfo();
+              push.success({ title: "Success", message: response.message });
+              this.loadingImg = false;
+            } else {
+              push.error({ title: "Error", message: response.message });
+              this.loadingImg = false;
+            }
+          });
+        } catch (error) {
+          push.error({ title: "Error", message: "Image upload failed" });
+          this.loadingImg = false;
+        }
+      }
+    },
     openCandidate() {
       this.candidateProfile = true;
       document.body.style.overflow = "hidden";
